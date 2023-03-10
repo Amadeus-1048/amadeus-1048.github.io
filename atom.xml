@@ -1,0 +1,4294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://amadeus1240.github.io</id>
+    <title>朝承恩的博客</title>
+    <updated>2023-03-10T05:50:10.985Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://amadeus1240.github.io"/>
+    <link rel="self" href="https://amadeus1240.github.io/atom.xml"/>
+    <subtitle>Purr for myself</subtitle>
+    <logo>https://amadeus1240.github.io/images/avatar.png</logo>
+    <icon>https://amadeus1240.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2023, 朝承恩的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[MacOS下搭建最新Fabric开发环境 2022-12]]></title>
+        <id>https://amadeus1240.github.io/post/macos-xia-da-jian-zui-xin-fabric-kai-fa-huan-jing-2022-12/</id>
+        <link href="https://amadeus1240.github.io/post/macos-xia-da-jian-zui-xin-fabric-kai-fa-huan-jing-2022-12/">
+        </link>
+        <updated>2022-12-19T08:53:50.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="docker">Docker</h2>
+<p>在官网安装docker，并配置镜像拉取加速器</p>
+<figure data-type="image" tabindex="1"><img src="https://s2.loli.net/2023/02/03/1oNCtIOu9BkJsMe.png" alt="" loading="lazy"></figure>
+<p>配置完成点击Apply&amp;Restart，等待docker重启完成</p>
+<h2 id="dependencies">Dependencies</h2>
+<p>以下命令仅为查看已安装的依赖的版本，安装过程自己搜一搜～</p>
+<pre><code class="language-Bash"># docker
+docker --version
+docker-compose --version
+
+# go
+go version
+
+# node 和 npm
+node -v
+npm -v
+
+# python
+python --version
+</code></pre>
+<h2 id="fabric">Fabric</h2>
+<p>在 $gopath/src/github.com/hyperledger 目录下拉取两个仓库</p>
+<pre><code class="language-Bash"># 从git上克隆Hyperledger的一个Demo源码
+git clone https://github.com/hyperledger/fabric-samples
+
+# 从git上克隆fabric项目
+git clone https://github.com/hyperledger/fabric.git
+</code></pre>
+<p>先打开如下网址（可能需要翻墙，注意这个是新版脚本，而非旧版，旧版不适用于mac）： <a href="https://goo.gl/byy2Qj">https://bit.ly/2ysbOFE</a></p>
+<p>在fabric-samples根目录下创建&quot;init.sh&quot;脚本文件（终端执行&quot;vi init.sh&quot;），将网站的内容复制到&quot;init.sh&quot;文件中。</p>
+<pre><code class="language-Bash"># 设置&quot;init.sh&quot;文件最高权限777，执行&quot;./init.sh&quot;命令之前确保已经启动Docker。
+vi init.sh
+chmod 777 init.sh
+./init.sh
+</code></pre>
+<p>执行了&quot;./init.sh&quot;命令之后，会下载一些镜像文件</p>
+<figure data-type="image" tabindex="2"><img src="https://s2.loli.net/2023/02/03/Sd5Q6yIW4bqlzLs.png" alt="" loading="lazy"></figure>
+<p>在<code>fabric-samples</code>代码库的<code>test-network</code>目录中找到启动网络的脚本。 使用以下命令导航至测试网络目录（注意，旧版教程中进入的文件夹可能是first-network，但在新版中已经没有该文件夹了）：</p>
+<pre><code class="language-Bash">cd fabric-samples/test-network
+</code></pre>
+<p>在此目录中，您可以找到带注释的脚本<code>network.sh</code>，该脚本在本地计算机上使用Docker镜像建立Fabric网络。  可以运行<code>./network.sh -h</code>以打印脚本帮助文本</p>
+<figure data-type="image" tabindex="3"><img src="https://s2.loli.net/2023/02/03/Im94ey8grLWsBpP.png" alt="" loading="lazy"></figure>
+<p>在<code>test-network</code>目录中，运行以下命令删除先前运行的所有容器或工程：</p>
+<pre><code class="language-Bash">./network.sh down
+</code></pre>
+<p>然后通过执行以下命令来启动网络</p>
+<pre><code class="language-Bash">./network.sh up
+</code></pre>
+<p>此命令创建一个由两个对等节点和一个排序节点组成的Fabric网络。  如果命令执行成功，您将看到已创建的节点的日志（可以使用 <code>docker ps</code> 重复查看）：</p>
+<figure data-type="image" tabindex="4"><img src="https://s2.loli.net/2023/02/03/jFIeyU9Jl7B4DEi.png" alt="" loading="lazy"></figure>
+<h2 id="参考">参考</h2>
+<p><a href="https://www.jianshu.com/p/3696da2584ff">Hyperledger Fabric开发环境搭建（MacOS系统）</a></p>
+<p><a href="https://blog.csdn.net/dongzhensong/article/details/95500596">MacOS下搭建Fabric开发环境_dongZhenSong的博客-CSDN博客</a></p>
+<p><a href="https://www.jianshu.com/p/a59ff954d3b2">Mac环境安装Hyperledger Fabric</a></p>
+<p><a href="https://hyperledger-fabric.readthedocs.io/zh_CN/latest/test_network.html">官方手册</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux学习笔记]]></title>
+        <id>https://amadeus1240.github.io/post/linux-xue-xi-bi-ji/</id>
+        <link href="https://amadeus1240.github.io/post/linux-xue-xi-bi-ji/">
+        </link>
+        <updated>2022-03-22T06:52:05.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="linux基础操作">Linux基础操作</h1>
+<h2 id="关机和重启">关机和重启</h2>
+<p><strong>不管是重启系统还是关闭系统，首先要运行 sync 命令，把内存中的数据写到磁盘中</strong></p>
+<pre><code class="language-shell">sync # 将数据由内存同步到硬盘中。
+
+shutdown # 关机指令，你可以man shutdown 来看一下帮助文档。例如你可以运行如下命令关机：
+
+shutdown –h 10 # 这个命令告诉大家，计算机将在10分钟后关机
+
+shutdown –h now # 立马关机
+
+shutdown –h 20:25  # 系统会在今天20:25关机  如果该时间小于当前时间，则到隔天  
+
+shutdown –h +10  # 十分钟后自动关机
+
+shutdown –r now # 系统立马重启
+
+shutdown –r +10 # 系统十分钟后重启
+
+shutdown -r +30 'The System Will Reboot in 30 Mins'   --30分钟后重启并并发送通知给其它在线用户
+
+reboot # 就是重启，等同于 shutdown –r now
+
+halt # 关闭系统，等同于shutdown –h now 和 poweroff
+</code></pre>
+<p>linux 重启服务器命令	https://blog.csdn.net/zdb292034/article/details/82793298</p>
+<h2 id="系统目录结构">系统目录结构</h2>
+<p>登录系统后，在当前命令窗口下输入命令 <strong>ls /</strong></p>
+<p>会看到系统目录结构</p>
+<p><strong>以下是对这些目录的解释：</strong></p>
+<ul>
+<li><strong>/bin</strong>：bin是Binary的缩写, 这个目录存放着最经常使用的命令。</li>
+<li><strong>/boot：</strong> 这里存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件。</li>
+<li><strong>/dev ：</strong> dev是Device(设备)的缩写, 存放的是Linux的外部设备，在Linux中访问设备的方式和访问文件的方式是相同的。</li>
+<li><strong>/etc：</strong> <strong>这个目录用来存放所有的系统管理所需要的配置文件和子目录</strong>。</li>
+<li><strong>/home</strong>：<strong>用户的主目录，在Linux中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的</strong>。</li>
+<li><strong>/lib</strong>：这个目录里存放着系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件。</li>
+<li><strong>/lost+found</strong>：这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。</li>
+<li><strong>/media</strong>：linux系统会自动识别一些设备，例如U盘、光驱等等，当识别后，linux会把识别的设备挂载到这个目录下。</li>
+<li><strong>/mnt</strong>：系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在/mnt/上，然后进入该目录就可以查看光驱里的内容了。</li>
+<li><strong>/opt</strong>：<strong>这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的</strong>。</li>
+<li><strong>/proc</strong>：这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。</li>
+<li><strong>/root</strong>：<strong>该目录为系统管理员，也称作超级权限者的用户主目录</strong>。</li>
+<li><strong>/sbin</strong>：s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。</li>
+<li><strong>/srv</strong>：该目录存放一些服务启动之后需要提取的数据。</li>
+<li><strong>/sys</strong>：这是linux2.6内核的一个很大的变化。该目录下安装了2.6内核中新出现的一个文件系统 sysfs 。</li>
+<li><strong>/tmp</strong>：<strong>这个目录是用来存放一些临时文件的</strong>。</li>
+<li><strong>/usr</strong>：<strong>这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于windows下的program files目录</strong>。</li>
+<li><strong>/usr/bin：</strong> 系统用户使用的应用程序。</li>
+<li><strong>/usr/sbin：</strong> 超级用户使用的比较高级的管理程序和系统守护程序。</li>
+<li><strong>/usr/src：</strong> 内核源代码默认的放置目录。</li>
+<li><strong>/var</strong>：<strong>这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件</strong>。</li>
+<li><strong>/run</strong>：是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。</li>
+<li><strong>/www：存放服务器网站相关的资源，环境，网站的项目</strong></li>
+</ul>
+<h2 id="目录管理">目录管理</h2>
+<ul>
+<li>
+<p><strong>ls</strong>: 列出目录</p>
+<ul>
+<li>
+<pre><code class="language-shell">语法  [root@www ~]# ls [-aAdfFhilnrRSt] 目录名称
+
+# 将目录下的所有文件列出来(含属性与隐藏档)
+[root@www ~]# ls -al ~
+
+linux下命令“ll”是“ls -l&quot;的别名。别名相当于windows里的快捷方式。
+所以&quot;ll&quot;和“ls -l”的功能是相同的。
+所以&quot;ll&quot;和&quot;ls&quot;的区别其实是“ls”和&quot;ls -l&quot;的区别。
+”ls“是显示当前目录下文件，”ls -l“是显示当前目录下文件详细信息。
+</code></pre>
+</li>
+<li>
+<p>选项与参数：</p>
+<ul>
+<li>-a ：全部的文件，连同隐藏文件( 开头为 . 的文件) 一起列出来(常用)</li>
+<li>-l ：长数据串列出，包含文件的属性与权限等等数据；(常用)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>cd</strong>：切换目录</p>
+<ul>
+<li>
+<p>cd是Change Directory的缩写，这是用来变换工作目录的命令</p>
+</li>
+<li>
+<pre><code class="language-shell">语法：cd [相对路径或绝对路径]
+
+# 切换到根目录下
+[root@cVzhanshi ~]# cd /
+
+#切换到用户目录下面
+[root@cVzhanshi /]# cd home
+
+# 使用 mkdir 命令创建 cvzhanshi 目录
+[root@cVzhanshi home]# mkdir cvzhanshi
+
+# 进入cvzhanshi目录
+[root@cVzhanshi home]# cd cvzhanshi/
+
+# 返回上一级
+[root@cVzhanshi cvzhanshi]# cd ..
+
+# 返回根目录
+[root@cVzhanshi home]# cd /
+
+# 表示回到自己的家目录，亦即是 /root 这个目录
+[root@cVzhanshi /]# cd ~
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>pwd</strong>：显示目前的目录</p>
+<ul>
+<li>
+<p>pwd 是 <strong>Print Working Directory</strong> 的缩写，也就是显示目前所在目录的命令</p>
+</li>
+<li>
+<pre><code class="language-shell">语法  pwd [-P]
+
+# 单纯显示出目前的工作目录
+[root@cvzhanshi ~]# pwd
+/root
+
+# 如果是链接，要显示真实地址，可以使用 -P参数
+[root@cvzhanshi /]# cd bin
+[root@cvzhanshi bin]# pwd -P
+/usr/bin
+</code></pre>
+</li>
+<li>
+<p>选项与参数：</p>
+<ul>
+<li><strong>-P</strong> ：显示出确实的路径，而非使用连接(link) 路径</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>mkdir</strong>：创建一个新的目录</p>
+<ul>
+<li>
+<pre><code class="language-shell">语法： mkdir [-mp] 目录名称
+
+# 进入我们用户目录下
+[root@cvzhanshi /]# cd /home
+
+# 创建一个 test 文件夹
+[root@cvzhanshi home]# mkdir test
+
+# 创建多层级目录
+[root@cvzhanshi home]# mkdir test1/test2/test3/test4
+mkdir: cannot create directory ‘test1/test2/test3/test4’:
+No such file or directory  # &lt;== 没办法直接创建此目录啊！
+
+# 加了这个 -p 的选项，可以自行帮你创建多层目录！
+[root@cvzhanshi home]# mkdir -p test1/test2/test3/test4
+
+# 创建权限为 rwx--x--x 的目录。
+[root@cvzhanshi home]# mkdir -m 711 test2
+[root@cvzhanshi home]# ls -l
+drwxr-xr-x 2 root root  4096 Mar 12 21:55 test
+drwxr-xr-x 3 root root  4096 Mar 12 21:56 test1
+drwx--x--x 2 root root  4096 Mar 12 21:58 test2
+</code></pre>
+</li>
+<li>
+<p>选项与参数：</p>
+<ul>
+<li>-m ：配置文件的权限喔！直接配置，不需要看默认权限 (umask) 的脸色～</li>
+<li>-p ：帮助你直接将所需要的目录(包含上一级目录)递归创建起来！</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>rmdir</strong>：删除一个空的目录</p>
+<ul>
+<li>
+<p>注意：这个 rmdir 仅能删除空的目录，你可以使用 rm 命令来删除非空目录</p>
+</li>
+<li>
+<pre><code class="language-shell">语法：	rmdir [-p] 目录名称
+
+# 看看有多少目录存在？
+[root@cvzhanshi home]# ls -l
+drwxr-xr-x 2 root root  4096 Mar 12 21:55 test
+drwxr-xr-x 3 root root  4096 Mar 12 21:56 test1
+drwx--x--x 2 root root  4096 Mar 12 21:58 test2
+
+# 可直接删除掉，没问题
+[root@cvzhanshi home]# rmdir test
+
+# 因为尚有内容，所以无法删除！
+[root@cvzhanshi home]# rmdir test1
+rmdir: failed to remove ‘test1’: Directory not empty
+
+# 利用 -p 这个选项，立刻就可以将 test1/test2/test3/test4 依次删除。
+[root@cvzhanshi home]# rmdir -p test1/test2/test3/test4
+
+</code></pre>
+</li>
+<li>
+<p>选项与参数：</p>
+<ul>
+<li>**-p ：**连同上一级『空的』目录也一起删除</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>cp</strong>: 复制文件或目录</p>
+<ul>
+<li>
+<pre><code class="language-shell">语法：
+[root@www ~]# cp [-adfilprsu] 来源档(source) 目标档(destination)
+[root@www ~]# cp [options] source1 source2 source3 .... directory
+
+# 找一个有文件的目录，我这里找到 root目录
+[root@cvzhanshi home]# cd /root
+[root@cvzhanshi ~]# ls
+install.sh
+[root@cvzhanshi ~]# cd /home
+
+# 复制 root目录下的install.sh 到 home目录下
+[root@cvzhanshi home]# cp /root/install.sh /home
+[root@cvzhanshi home]# ls
+install.sh
+
+# 再次复制，加上-i参数，增加覆盖询问？
+[root@cvzhanshi home]# cp -i /root/install.sh /home
+cp: overwrite ‘/home/install.sh’? y # n不覆盖，y为覆盖
+
+</code></pre>
+</li>
+<li>
+<p>选项与参数：</p>
+<ul>
+<li>**-a：**相当于-pdr 的意思，至于 pdr 请参考下列说明；(常用)</li>
+<li>**-p：**连同文件的属性一起复制过去，而非使用默认属性(备份常用)；</li>
+<li>**-d：**若来源档为连结档的属性(link file)，则复制连结档属性而非文件本身；</li>
+<li>**-r：**递归持续复制，用于目录的复制行为；(常用)</li>
+<li>**-f：**为强制(force)的意思，若目标文件已经存在且无法开启，则移除后再尝试一次；</li>
+<li>**-i：**若目标档(destination)已经存在时，在覆盖时会先询问动作的进行(常用)</li>
+<li>**-l：**进行硬式连结(hard link)的连结档创建，而非复制文件本身。</li>
+<li>**-s：**复制成为符号连结档 (symbolic link)，亦即『捷径』文件；</li>
+<li>**-u：**若 destination 比 source 旧才升级 destination ！</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>rm</strong>: 移除文件或目录</p>
+<ul>
+<li>
+<pre><code class="language-shell">语法：	rm [-fir] 文件或目录
+
+# 将刚刚在 cp 的实例中创建的 install.sh删除掉！
+[root@cvzhanshi home]# rm -i install.sh
+rm: remove regular file ‘install.sh’? y
+# 如果加上 -i 的选项就会主动询问喔，避免你删除到错误的档名！
+
+# 尽量不要在服务器上使用 rm -rf /
+</code></pre>
+</li>
+<li>
+<p>选项与参数：</p>
+<ul>
+<li>-f ：就是 force 的意思，忽略不存在的文件，不会出现警告信息；</li>
+<li>-i ：互动模式，在删除前会询问使用者是否动作</li>
+<li>-r ：递归删除啊！最常用在目录的删除了！这是非常危险的选项！！！</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>mv</strong>: 移动文件与目录，或修改文件与目录的名称</p>
+<ul>
+<li>
+<pre><code class="language-shell">语法：
+[root@www ~]# mv [-fiu] source destination
+[root@www ~]# mv [options] source1 source2 source3 .... directory
+
+# 复制一个文件到当前目录
+[root@cvzhanshi home]# cp /root/install.sh /home
+
+# 创建一个文件夹 test
+[root@cvzhanshi home]# mkdir test
+
+# 将复制过来的文件移动到我们创建的目录，并查看
+[root@cvzhanshi home]# mv install.sh test
+[root@cvzhanshi home]# ls
+test
+[root@cvzhanshi home]# cd test
+[root@cvzhanshi test]# ls
+install.sh
+
+# 将文件夹重命名，然后再次查看！
+[root@cvzhanshi test]# cd ..
+[root@cvzhanshi home]# mv test mvtest
+[root@cvzhanshi home]# ls
+mvtest
+</code></pre>
+</li>
+<li>
+<p>选项与参数：</p>
+<ul>
+<li>-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；</li>
+<li>-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！</li>
+<li>-u ：若目标文件已经存在，且 source 比较新，才会升级 (update)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="文件属性">文件属性</h2>
+<h3 id="基本概念">基本概念</h3>
+<p>在Linux中第一个字符代表这个文件是目录、文件或链接文件等等：</p>
+<ul>
+<li><strong>当为[ d ]则是目录</strong></li>
+<li><strong>当为[ - ]则是文件；</strong></li>
+<li><strong>若是[ l ]则表示为链接文档 ( link file )；就是windos中的快捷方式</strong></li>
+<li>若是[ <strong>b</strong> ]则表示为装置文件里面的可供储存的接口设备 ( 可随机存取装置 )；</li>
+<li>若是[ <strong>c</strong> ]则表示为装置文件里面的串行端口设备，例如键盘、鼠标 ( 一次性读取装置 )。</li>
+</ul>
+<p>接下来的字符中，以三个为一组，且均为『rwx』 的三个参数的组合。</p>
+<p>其中，[ r ]代表可读(read)、[ w ]代表可写(write)、[ x ]代表可执行(execute)。</p>
+<p>要注意的是，这三个权限的位置不会改变，如果没有权限，就会出现减号[ - ]而已。</p>
+<h3 id="修改文件属性">修改文件属性</h3>
+<p><strong>1、chgrp：更改文件属组</strong></p>
+<pre><code class="language-bash">chgrp [-R] 属组名 文件名
+</code></pre>
+<p>-R：递归更改文件属组，就是在更改某个目录文件的属组时，如果加上-R的参数，那么该目录下的所有文件的属组都会更改。</p>
+<p><strong>2、chown：更改文件属主，也可以同时更改文件属组</strong></p>
+<pre><code class="language-bash">chown [–R] 属主名 文件名
+chown [-R] 属主名：属组名 文件名
+</code></pre>
+<p><strong>3、chmod：更改文件9个属性</strong></p>
+<pre><code class="language-bash">chmod [-R] xyz 文件或目录
+</code></pre>
+<p>Linux文件属性有两种设置方法，一种是数字，一种是符号。</p>
+<p>Linux文件的基本权限就有九个，分别是owner/group/others三种身份各有自己的read/write/execute权限。</p>
+<p>先复习一下刚刚上面提到的数据：文件的权限字符为：『-rwxrwxrwx』， 这九个权限是三个三个一组的！其中，我们可以使用数字来代表各个权限，各权限的分数对照表如下：</p>
+<pre><code>r:4     w:2      x:1
+</code></pre>
+<p>每种身份(owner/group/others)各自的三个权限(r/w/x)分数是需要累加的，例如当权限为：[-rwxrwx—] 分数则是：</p>
+<ul>
+<li>owner = rwx = 4+2+1 = 7</li>
+<li>group = rwx = 4+2+1 = 7</li>
+<li>others= — = 0+0+0 = 0</li>
+</ul>
+<pre><code class="language-bash">chmod 770 filename
+</code></pre>
+<h2 id="文件内容查看">文件内容查看</h2>
+<h3 id="less">less</h3>
+<p>一页一页翻动(支持前翻)</p>
+<p>less运行时可以输入的命令有：</p>
+<ul>
+<li>空白键 ：向下翻动一页；</li>
+<li>[pagedown]：向下翻动一页；</li>
+<li>[pageup] ：向上翻动一页；</li>
+<li>/字串 ：向下搜寻『字串』的功能；</li>
+<li>?字串 ：向上搜寻『字串』的功能；</li>
+<li>n ：重复前一个搜寻 (与 / 或 ? 有关！)</li>
+<li>N ：反向的重复前一个搜寻 (与 / 或 ? 有关！)</li>
+<li>q ：离开 less 这个程序；</li>
+</ul>
+<h2 id="链接">链接</h2>
+<blockquote>
+<p>Linux 链接分两种，一种被称为硬链接（Hard Link），另一种被称为符号链接（Symbolic Link）</p>
+<p>一般情况下，<strong>ln</strong> 命令产生硬链接</p>
+</blockquote>
+<p><strong>硬链接</strong>: A — B ,假设B是A的硬链接,那么他们两个指向了同一一个文件!允许1个文件拥有多个路径,用户可以通过这种机制建立硬链接到一些重要文件上,防止误删!</p>
+<p><strong>软链接:</strong> 类似Window下的快捷方式,删除的源文件,快捷方式也访问不了!</p>
+<pre><code class="language-shell">[root@cVzhanshi cvzhanshi]# touch f1     # 创建一个测试文件f1
+[root@cVzhanshi cvzhanshi]# ln f1  f2    # 创建f1的一个硬连接文件f2
+
+[root@cVzhanshi cvzhanshi]# ln -s f1 f3  # 创建f1的一个符号连接文件f3    创建软连接只要加-s就可以了
+[root@cVzhanshi cvzhanshi]# ls
+f1  f2  f3
+[root@cVzhanshi cvzhanshi]# ls -li  	 # -i参数显示文件的inode节点信息
+total 0
+1323256 -rw-r--r-- 2 root root 0 Jul 20 11:39 f1
+1323256 -rw-r--r-- 2 root root 0 Jul 20 11:39 f2
+1323257 lrwxrwxrwx 1 root root 2 Jul 20 11:42 f3 -&gt; f1
+
+从上面的结果中可以看出，硬连接文件 f2 与原文件 f1 的 inode 节点相同，均为 1323256，然而符号连接文件的 inode 节点不同
+
+
+# echo 字符串输出 &gt;&gt; f1 输出到 f1文件
+[root@cVzhanshi cvzhanshi]# echo &quot;i am file f1&quot; &gt;&gt; f1
+[root@cVzhanshi cvzhanshi]# cat f1
+i am file f1
+[root@cVzhanshi cvzhanshi]# cat f2
+i am file f1
+[root@cVzhanshi cvzhanshi]# cat f3
+i am file f1
+[root@cVzhanshi cvzhanshi]# rm -rf f1
+[root@cVzhanshi cvzhanshi]# ls
+f2  f3
+[root@cVzhanshi cvzhanshi]# cat f2
+i am file f1
+[root@cVzhanshi cvzhanshi]# cat f3		# f3 （软链接、符号链接）快捷方式失效
+cat: f3: No such file or directory
+
+通过上面的测试可以看出：当删除原始文件 f1 后，硬连接 f2 不受影响，但是符号连接 f3 文件无效
+</code></pre>
+<h2 id="vim编辑器">Vim编辑器</h2>
+<h3 id="三种模式">三种模式</h3>
+<p>基本上 vi/vim 共分为三种模式，分别是<strong>命令模式（Command mode）</strong>，**输入模式（Insert mode）**和 <strong>底线命令模式/末行模式（Last line mode）</strong>。</p>
+<p>这三种模式的作用分别是：</p>
+<p><strong>命令模式：</strong></p>
+<p>用户刚刚启动 vi/vim，便进入了命令模式。</p>
+<p>此状态下敲击键盘动作会被Vim识别为命令，而非输入字符。比如我们此时按下i，并不会输入一个字符，i被当作了一个命令。</p>
+<p>以下是常用的几个命令：</p>
+<ul>
+<li><strong>i/o/a</strong> 切换到输入模式，以输入字符。</li>
+<li><strong>x</strong> 删除当前光标所在处的字符。</li>
+<li><strong>:</strong> 切换到底线命令模式，以在最底一行输入命令。</li>
+</ul>
+<p>若想要编辑文本：启动Vim，进入了命令模式，按下i，切换到输入模式。</p>
+<p>命令模式只有一些最基本的命令，因此仍要依靠底线命令模式输入更多命令。</p>
+<p><strong>输入模式：</strong></p>
+<p>在命令模式下按下i就进入了输入模式。</p>
+<p>在输入模式中，可以使用以下按键：</p>
+<ul>
+<li><strong>字符按键以及Shift组合</strong>，输入字符</li>
+<li><strong>ENTER</strong>，回车键，换行</li>
+<li><strong>BACK SPACE</strong>，退格键，删除光标前一个字符</li>
+<li><strong>DEL</strong>，删除键，删除光标后一个字符</li>
+<li><strong>方向键</strong>，在文本中移动光标</li>
+<li><strong>HOME</strong>/<strong>END</strong>，移动光标到行首/行尾</li>
+<li><strong>Page Up</strong>/<strong>Page Down</strong>，上/下翻页</li>
+<li><strong>Insert</strong>，切换光标为输入/替换模式，光标将变成竖线/下划线</li>
+<li><strong>ESC</strong>，退出输入模式，切换到命令模式</li>
+</ul>
+<p><strong>底线命令模式</strong></p>
+<p>在命令模式下按下:（英文冒号）就进入了底线命令模式。</p>
+<p>底线命令模式可以输入单个或多个字符的命令，可用的命令非常多。</p>
+<p>在底线命令模式中，基本的命令有（已经省略了冒号）：</p>
+<ul>
+<li>q 退出程序</li>
+<li>w 保存文件</li>
+</ul>
+<p>按ESC键可随时退出底线命令模式。</p>
+<h3 id="实践">实践</h3>
+<ol>
+<li>
+<p>vim  文件名，进入vim界面</p>
+</li>
+<li>
+<p><strong>按下 i 进入输入模式(也称为编辑模式)，开始编辑文字</strong></p>
+<p>在一般模式之中，只要按下 i, o, a 等字符就可以进入输入模式了！</p>
+<p>在编辑模式当中，你可以发现在左下角状态栏中会出现 –INSERT- 的字样，那就是可以输入任意字符的提示。</p>
+</li>
+<li>
+<p><strong>按下 ESC 按钮回到一般模式</strong> ，在一般模式中按下 <strong>:wq</strong> 储存后离开 vim！</p>
+</li>
+</ol>
+<h3 id="按键说明">按键说明</h3>
+<p><strong>第一部分：一般模式可用的光标移动、复制粘贴、搜索替换等</strong></p>
+<table>
+<thead>
+<tr>
+<th>移动光标的方法</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>h 或 向左箭头键(←)</strong></td>
+<td>光标向左移动一个字符</td>
+</tr>
+<tr>
+<td><strong>j 或 向下箭头键(↓)</strong></td>
+<td>光标向下移动一个字符</td>
+</tr>
+<tr>
+<td><strong>k 或 向上箭头键(↑)</strong></td>
+<td>光标向上移动一个字符</td>
+</tr>
+<tr>
+<td><strong>l 或 向右箭头键(→)</strong></td>
+<td>光标向右移动一个字符</td>
+</tr>
+<tr>
+<td>[Ctrl] + [f]</td>
+<td>屏幕『向下』移动一页，相当于 [Page Down]按键 (常用)</td>
+</tr>
+<tr>
+<td>[Ctrl] + [b]</td>
+<td>屏幕『向上』移动一页，相当于 [Page Up] 按键 (常用)</td>
+</tr>
+<tr>
+<td>[Ctrl] + [d]</td>
+<td>屏幕『向下』移动半页</td>
+</tr>
+<tr>
+<td>[Ctrl] + [u]</td>
+<td>屏幕『向上』移动半页</td>
+</tr>
+<tr>
+<td>+</td>
+<td>光标移动到非空格符的下一行</td>
+</tr>
+<tr>
+<td>-</td>
+<td>光标移动到非空格符的上一行</td>
+</tr>
+<tr>
+<td><strong>数字&lt; space&gt;</strong></td>
+<td>那个 n 表示『数字』，例如 20 。按下数字后再按空格键，光标会向右移动这一行的 n 个字符。</td>
+</tr>
+<tr>
+<td>0 或功能键[Home]</td>
+<td>这是数字『 0 』：移动到这一行的最前面字符处 (常用)</td>
+</tr>
+<tr>
+<td>$ 或功能键[End]</td>
+<td>移动到这一行的最后面字符处(常用)</td>
+</tr>
+<tr>
+<td>H</td>
+<td>光标移动到这个屏幕的最上方那一行的第一个字符</td>
+</tr>
+<tr>
+<td>M</td>
+<td>光标移动到这个屏幕的中央那一行的第一个字符</td>
+</tr>
+<tr>
+<td>L</td>
+<td>光标移动到这个屏幕的最下方那一行的第一个字符</td>
+</tr>
+<tr>
+<td>G</td>
+<td>移动到这个档案的最后一行(常用)</td>
+</tr>
+<tr>
+<td>nG</td>
+<td>n 为数字。移动到这个档案的第 n 行。例如 20G 则会移动到这个档案的第 20 行(可配合 :set nu)</td>
+</tr>
+<tr>
+<td>gg</td>
+<td>移动到这个档案的第一行，相当于 1G 啊！(常用)</td>
+</tr>
+<tr>
+<td><strong>数字&lt; Enter&gt;</strong></td>
+<td>n 为数字。光标向下移动 n 行(常用)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>搜索替换</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>/word</strong></td>
+<td>向光标之下寻找一个名称为 word 的字符串。例如要在档案内搜寻 vbird 这个字符串，就输入 /vbird 即可！(常用)</td>
+</tr>
+<tr>
+<td>?word</td>
+<td>向光标之上寻找一个字符串名称为 word 的字符串。</td>
+</tr>
+<tr>
+<td><strong>n</strong></td>
+<td>这个 n 是英文按键。代表重复前一个搜寻的动作。举例来说， 如果刚刚我们执行 /vbird 去向下搜寻 vbird 这个字符串，则按下 n 后，会向下继续搜寻下一个名称为 vbird 的字符串。如果是执行 ?vbird 的话，那么按下 n 则会向上继续搜寻名称为 vbird 的字符串！</td>
+</tr>
+<tr>
+<td><strong>N</strong></td>
+<td>这个 N 是英文按键。与 n 刚好相反，为『反向』进行前一个搜寻动作。例如 /vbird 后，按下 N 则表示『向上』搜寻 vbird 。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>删除、复制与粘贴</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x, X</td>
+<td>在一行字当中，x 为向后删除一个字符 (相当于 [del] 按键)， X 为向前删除一个字符(相当于 [backspace] 亦即是退格键) (常用)</td>
+</tr>
+<tr>
+<td>nx</td>
+<td>n 为数字，连续向后删除 n 个字符。举例来说，我要连续删除 10 个字符， 『10x』。</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>删除游标所在的那一整行(常用)</td>
+</tr>
+<tr>
+<td>ndd</td>
+<td>n 为数字。删除光标所在的向下 n 行，例如 20dd 则是删除 20 行 (常用)</td>
+</tr>
+<tr>
+<td>d1G</td>
+<td>删除光标所在到第一行的所有数据</td>
+</tr>
+<tr>
+<td>dG</td>
+<td>删除光标所在到最后一行的所有数据</td>
+</tr>
+<tr>
+<td>d$</td>
+<td>删除游标所在处，到该行的最后一个字符</td>
+</tr>
+<tr>
+<td>d0</td>
+<td>那个是数字的 0 ，删除游标所在处，到该行的最前面一个字符</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>复制游标所在的那一行(常用)</td>
+</tr>
+<tr>
+<td>nyy</td>
+<td>n 为数字。复制光标所在的向下 n 行，例如 20yy 则是复制 20 行(常用)</td>
+</tr>
+<tr>
+<td>y1G</td>
+<td>复制游标所在行到第一行的所有数据</td>
+</tr>
+<tr>
+<td>yG</td>
+<td>复制游标所在行到最后一行的所有数据</td>
+</tr>
+<tr>
+<td>y0</td>
+<td>复制光标所在的那个字符到该行行首的所有数据</td>
+</tr>
+<tr>
+<td>y$</td>
+<td>复制光标所在的那个字符到该行行尾的所有数据</td>
+</tr>
+<tr>
+<td>p, P</td>
+<td>p 为将已复制的数据在光标下一行贴上，P 则为贴在游标上一行！举例来说，我目前光标在第 20 行，且已经复制了 10 行数据。则按下 p 后， 那 10 行数据会贴在原本的 20 行之后，亦即由 21 行开始贴。但如果是按下 P 呢？那么原本的第 20 行会被推到变成 30 行。(常用)</td>
+</tr>
+<tr>
+<td>J</td>
+<td>将光标所在行与下一行的数据结合成同一行</td>
+</tr>
+<tr>
+<td>c</td>
+<td>重复删除多个数据，例如向下删除 10 行，[ 10cj ]</td>
+</tr>
+<tr>
+<td><strong>u</strong></td>
+<td>复原前一个动作。(常用)</td>
+</tr>
+<tr>
+<td>[Ctrl]+r</td>
+<td>重做上一个动作。(常用)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>第二部分：一般模式切换到编辑模式的可用的按钮说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>进入输入或取代的编辑模式</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>i, I</strong></td>
+<td>进入输入模式(Insert mode)：i 为『从目前光标所在处输入』， I 为『在目前所在行的第一个非空格符处开始输入』。(常用)</td>
+</tr>
+<tr>
+<td>a, A</td>
+<td>进入输入模式(Insert mode)：a 为『从目前光标所在的下一个字符处开始输入』， A 为『从光标所在行的最后一个字符处开始输入』。(常用)</td>
+</tr>
+<tr>
+<td>o, O</td>
+<td>进入输入模式(Insert mode)：这是英文字母 o 的大小写。o 为『在目前光标所在的下一行处输入新的一行』；O 为在目前光标所在处的上一行输入新的一行！(常用)</td>
+</tr>
+<tr>
+<td>r, R</td>
+<td>进入取代模式(Replace mode)：r 只会取代光标所在的那一个字符一次；R会一直取代光标所在的文字，直到按下 ESC 为止；(常用)</td>
+</tr>
+<tr>
+<td><strong>[Esc]</strong></td>
+<td>退出编辑模式，回到一般模式中(常用)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>第三部分：一般模式切换到指令行模式的可用的按钮说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>指令行的储存、离开等指令</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:w</td>
+<td>将编辑的数据写入硬盘档案中(常用)</td>
+</tr>
+<tr>
+<td>:w!</td>
+<td>若文件属性为『只读』时，强制写入该档案。不过，到底能不能写入， 还是跟你对该档案的档案权限有关啊！</td>
+</tr>
+<tr>
+<td>:q</td>
+<td>离开 vi (常用)</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>若曾修改过档案，又不想储存，使用 ! 为强制离开不储存档案。</td>
+</tr>
+<tr>
+<td>注意一下啊，那个惊叹号 (!) 在 vi 当中，常常具有『强制』的意思～</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>:wq</strong></td>
+<td><strong>储存后离开，若为 :wq! 则为强制储存后离开 (常用)</strong></td>
+</tr>
+<tr>
+<td>ZZ</td>
+<td>这是大写的 Z 喔！若档案没有更动，则不储存离开，若档案已经被更动过，则储存后离开！</td>
+</tr>
+<tr>
+<td>:w [filename]</td>
+<td>将编辑的数据储存成另一个档案（类似另存新档）</td>
+</tr>
+<tr>
+<td>:r [filename]</td>
+<td>在编辑的数据中，读入另一个档案的数据。亦即将 『filename』 这个档案内容加到游标所在行后面</td>
+</tr>
+<tr>
+<td>:n1,n2 w [filename]</td>
+<td>将 n1 到 n2 的内容储存成 filename 这个档案。</td>
+</tr>
+<tr>
+<td>:! command</td>
+<td>暂时离开 vi 到指令行模式下执行 command 的显示结果！例如 『:! ls /home』即可在 vi 当中看 /home 底下以 ls 输出的档案信息！</td>
+</tr>
+<tr>
+<td><strong>:set nu</strong></td>
+<td><strong>显示行号，设定之后，会在每一行的前缀显示该行的行号</strong></td>
+</tr>
+<tr>
+<td><strong>:set nonu</strong></td>
+<td>与 set nu 相反，为取消行号！</td>
+</tr>
+</tbody>
+</table>
+<h2 id="进程管理">进程管理</h2>
+<h3 id="基本概念-2">基本概念</h3>
+<ol>
+<li>在Linux中，每一个程序都是有自己的一个进程，每一个进程都有一个id号！</li>
+<li>每一个进程呢，都会有一个父进程！</li>
+<li>进程可以有两种存在方式：前台!后台运行！</li>
+<li>一般的话服务都是后台运行的，基本的程序都是前台运行的！</li>
+</ol>
+<h3 id="ps">ps</h3>
+<h4 id="旧">旧</h4>
+<p>在 Linux 下如何查看一个进程的运行时间	https://linux.cn/article-7697-1.html</p>
+<p>Linux中查看进程状态信息	https://blog.csdn.net/qq_24754061/article/details/83350691</p>
+<pre><code class="language-shell"># 在控制台使用ps命令“ps -aux | less”，查看当前系统正在运行的所有进程
+ps -aux | less
+ps -aux	# 这样也可以
+
+# 用ps查看进程号，例如
+ps -ef|grep 进程名
+
+ps -l   列出与本次登录有关的进程信息；
+ps -aux   查询内存中进程信息；
+ps -aux | grep ***   查询***进程的详细信息；
+top   查看内存中进程的动态信息；
+kill -9 pid   杀死进程
+</code></pre>
+<h4 id="新">新</h4>
+<p><strong>ps查看当前系统中正在执行的各种进程的信息</strong></p>
+<p>语法 ps -[参数]：</p>
+<ul>
+<li>-a，显示当前终端运行的所有的进程信息(显示当前进程一个)</li>
+<li>-u，以用户的信息显示进程</li>
+<li>-x，显示后台运行进程的参数</li>
+</ul>
+<p>示例1</p>
+<pre><code class="language-shell">#查看mysql的进程
+ps -aux|grep mysql
+#查看redis的进程
+ps -aux|grep redis
+#查看java的进程
+ps -aux|grep java
+#注：
+#1.ps -aux：表示查看所有的进程
+#2.|：在Linux中|被叫做管道符   如：A|B，可以将A的结果给B执行
+#3.grep：（过滤）查找文件中符合条件的字符串
+
+</code></pre>
+<p>示例2</p>
+<p>ps -ef：可以查看父进程的信息</p>
+<pre><code class="language-bash">ps -ef|grep mysql #查看父进程我们一般通过目录树结构来查看
+
+#进程树，这个比较清晰
+pstree -pu
+	-p显示父id
+	-u显示用户组
+</code></pre>
+<h3 id="top">top</h3>
+<p>linux下用top命令查看cpu利用率超过100%	https://blog.csdn.net/huangshanchun/article/details/44397581</p>
+<p>Linux CPU飙升到了100%怎么排查	https://blog.csdn.net/zc19921215/article/details/87989536</p>
+<pre><code class="language-shell"># top显示的所有的cpu加起来的使用率，超过100说明你的CPU是多核
+top
+# 运行top后按大键盘1看看，可以显示每个cpu的使用率
+1
+# 按大写“P”让它们从大到小排序
+P
+</code></pre>
+<p>Linux下监控服务器状态命令——top:各数据详解	https://blog.csdn.net/weixin_42073965/article/details/81232937</p>
+<blockquote>
+<p>打开linux服务器。输入top命令。</p>
+<p>按下数字1，可以看到所有逻辑CPU的使用情况。</p>
+<p>再次按下，取消显示。</p>
+<p>按下c键。显示所有进程的执行命令。</p>
+<p>按下 M键，根据内存占用排序。</p>
+<p>按下P键，按CPU占用排序。</p>
+<p>按下b键，高亮显示排序列。</p>
+</blockquote>
+<h3 id="kill">kill</h3>
+<h4 id="旧-2">旧</h4>
+<p>https://www.cnblogs.com/liaojie970/p/7131043.html</p>
+<p>killall和pkill是相似的,不过如果给出的进程名不完整，killall会报错。pkill或者pgrep只要给出进程名的一部分就可以终止进程。</p>
+<p>killall -9 firefox</p>
+<h4 id="新-2">新</h4>
+<p><strong>结束进程：杀掉进程，等价于windows结束任务</strong></p>
+<p>语法：</p>
+<pre><code class="language-bash">kill -9 进程id
+</code></pre>
+<h3 id="nohup">nohup</h3>
+<p><a href="https://blog.csdn.net/qq_29663071/article/details/81030396">nohup和&amp;后台运行，进程查看及终止</a>	https://blog.csdn.net/qq_29663071/article/details/81030396</p>
+<p>停止</p>
+<pre><code class="language-shell"># 用ps查看进程号，例如
+ps -ef|grep 进程名
+# jobs -l选项可显示当前终端所有任务的PID
+jobs -l
+# 得到进程号后
+kill 123
+# 如果杀不掉
+kill -9 123
+</code></pre>
+<p>nohup后台运行&amp;关闭后台程序	https://blog.csdn.net/xiaoliyi185/article/details/90704812</p>
+<p>nohup后台运行&amp;关闭后台程序	https://blog.csdn.net/xiaoliyi185/article/details/90704812</p>
+<p>关于Linux中nohup.out日志过大问题	https://www.cnblogs.com/zhangmingcheng/p/11577967.html</p>
+<h3 id="screen">screen</h3>
+<p>浅析Linux中使用nohup及screen运行后台任务的示例和区别	https://cloud.tencent.com/developer/article/1722221</p>
+<p>利用screen和nohup让Linux服务器后台运行程序	https://blog.csdn.net/Cowry5/article/details/80630324</p>
+<p><a href="https://www.cnblogs.com/mchina/archive/2013/01/30/2880680.html">linux screen 命令详解</a>	https://www.cnblogs.com/mchina/archive/2013/01/30/2880680.html</p>
+<p>Linux中的screen命令使用	https://blog.csdn.net/han0373/article/details/81352663</p>
+<p>screen 状态为Attached 连不上 解决方法	https://www.xcwmoon.com/post/143</p>
+<p>screen 状态为Attached 连不上	https://blog.csdn.net/gdali/article/details/72799581</p>
+<pre><code class="language-shell"># 创建新窗口
+screen -S name
+# 输入你想要的运行的内容
+./main &gt; MQTT.log 2&gt;&amp;1 &amp;	# 运行输出保存在MQTT.log中
+# 先按ctrl+a，再按d，dettach，此时你可以关闭连接了
+ctrl-a d
+# 查看当前有哪些会话，并显示id
+screen -ls
+# 恢复会话
+screen -r id
+# 删除会话1
+screen -S id -X quit
+# 删除会话2
+kill -9 screen前面的编号
+screen -ls	# 显示dead
+screen -wipe
+# 连接状态为Attached的screen
+screen -D  -r ＜session-id&gt;
+</code></pre>
+<h3 id="history">history</h3>
+<p><a href="https://blog.csdn.net/gui951753/article/details/79225429">linux查看历史命令history</a></p>
+<p><a href="https://www.cnblogs.com/liwei0526vip/p/14757774.html">谁动了我的 Linux？原来 history 可以这么强大！</a></p>
+<h3 id="htop">htop</h3>
+<p><a href="https://www.cnblogs.com/tonglin0325/p/5406149.html">Linux下htop的使用</a></p>
+<p><a href="https://blog.csdn.net/skh2015java/article/details/53173896">Linux htop工具使用详解</a></p>
+<p><a href="https://blog.csdn.net/qq_34672033/article/details/89735983">Linux系统状态命令htop详细解释说明</a></p>
+<p><a href="https://blog.csdn.net/freeking101/article/details/79173903">htop 命令详解</a></p>
+<h1 id="进阶操作">进阶操作</h1>
+<h2 id="curl">curl</h2>
+<p>参考：</p>
+<p><a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">curl 的用法指南</a></p>
+<p><a href="https://www.cnblogs.com/duhuo/p/5695256.html">Linux curl命令详解 - 都市烟火 - 博客园</a></p>
+<p>curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就是客户端（client）的 URL 工具的意思。</p>
+<pre><code class="language-shell"># 基本用法
+curl http://www.linux.com
+
+# 执行后，www.linux.com 的html就会显示在屏幕上了
+# Ps：由于安装linux的时候很多时候是没有安装桌面的，也意味着没有浏览器，因此这个方法也经常用于测试一台服务器是否可以到达一个网站
+</code></pre>
+<h2 id="make">make</h2>
+<p><a href="https://www.ruanyifeng.com/blog/2015/02/make.html">Make 命令教程</a></p>
+<h1 id="服务器可视化">服务器可视化</h1>
+<h2 id="安装可视化界面">安装可视化界面</h2>
+<p>搭建 CentOS 可视化界面	https://cloud.tencent.com/document/product/213/59484</p>
+<pre><code class="language-shell">执行以下命令，安装图形化界面组件。
+yum groupinstall &quot;Server with GUI&quot; -y
+执行以下命令，设置默认启动图形化界面。
+systemctl set-default graphical
+执行以下命令，重启实例。
+reboot
+以 VNC 方式登录实例，详情请参见 使用 VNC 登录 Linux 实例。
+</code></pre>
+<h2 id="vnc登录">VNC登录</h2>
+<p>使用 VNC 登录 Linux 实例	https://cloud.tencent.com/document/product/213/35701</p>
+<ol>
+<li>登录 <a href="https://console.cloud.tencent.com/cvm/index">云服务器控制台</a>。</li>
+<li>在打开的“标准登录 | Linux 实例”窗口，单击 <strong>VNC登录</strong>。  <a href="https://console.cloud.tencent.com/lighthouse/instance/detail?searchParams=action%3DDescribeInstanceLoginKeyPair&amp;rid=4&amp;id=lhins-3o6glzeu">链接</a></li>
+</ol>
+<h2 id="安装浏览器">安装浏览器</h2>
+<p>VNC界面自带火狐浏览器</p>
+<p>在 CentOS 8 上安装 Google Chrome 网络浏览器	https://cloud.tencent.com/developer/article/1626832</p>
+<blockquote>
+<p>sudo: dnf: command not found 命令找不到，进行安装	https://blog.yongit.com/note/891986.html</p>
+</blockquote>
+<p>将chrome浏览器快捷方式放到桌面上</p>
+<p>将 /usr/share/application/ 目录下的 Google Chrome 图片右键--&gt;复制到桌面即可，如下图中所示：</p>
+<figure data-type="image" tabindex="1"><img src="https://img-blog.csdnimg.cn/2020102114455430.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dhbmd6YWl4aWFvY2hvbmd6aQ==,size_16,color_FFFFFF,t_70" alt="img" loading="lazy"></figure>
+<p>放到桌面后显示的不是图标，而是像个文件的样子，不要紧张，继续向下看，</p>
+<p>复制到桌面后第一次从桌面打开，需要确认是信任的执行程序，然后桌面的图标会显示成chrome的图标。</p>
+<h1 id="软件安装">软件安装</h1>
+<h2 id="git">git</h2>
+<p>git clone 太慢</p>
+<p>https://www.zhihu.com/question/27159393</p>
+<blockquote>
+<p>使用github的镜像网站进行访问</p>
+<pre><code class="language-shell">#原地址
+git clone https://github.com/kubernetes/kubernetes.git
+#改为
+git clone https://github.com.cnpmjs.org/kubernetes/kubernetes.git
+#或者
+git clone https://hub.fastgit.org/kubernetes/kubernetes.git
+#或者  推荐使用这个
+git clone https://gitclone.com/github.com/kubernetes/kubernetes.git
+</code></pre>
+</blockquote>
+<h2 id="go">go</h2>
+<p><a href="https://www.linuxprobe.com/linux-go.html">如何为Linux安装Go语言</a></p>
+<p>https://learnku.com/docs/the-way-to-go/install-go-on-linux/3566</p>
+<p><a href="http://c.biancheng.net/view/3993.html">在Linux上安装Go语言开发包</a></p>
+<h2 id="caddy">caddy</h2>
+<p>https://www.e-learn.cn/topic/3694443</p>
+<p>https://zhuanlan.zhihu.com/p/144208057</p>
+<h2 id="nodejs">Node.js</h2>
+<p><a href="https://www.cnblogs.com/fps2tao/p/9956139.html">在CentOS 7上安装Node.js的4种方法（yum安装和源码安装）</a></p>
+<h1 id="问题">问题</h1>
+<p>kill无法结束进程</p>
+<p>参考：https://www.cnblogs.com/liaojie970/p/7131043.html</p>
+<p>解决：killall -9 进程名</p>
+<h3 id="端口占用">端口占用</h3>
+<p><a href="https://blog.csdn.net/qq_41157588/article/details/108889620">解决linux系统Error starting userland proxy: listen tcp 0.0.0.0:xxx端口: bind: address already in use端口占用问题</a></p>
+<p>查看当前占用端口命令</p>
+<pre><code class="language-shell">netstat -tanlp
+</code></pre>
+<p>杀死进程(注意不是杀死端口，而是pid的端口)，如下图参考</p>
+<pre><code class="language-shell">kill 1785进程 (自己的pid端口)
+</code></pre>
+<p>listen tcp 0.0.0.0:xxx端口: bind: address already in use解决办法</p>
+<p>https://blog.csdn.net/weixin_49092628/article/details/118974972</p>
+<p>https://blog.csdn.net/LeslieTsai2019/article/details/118683499</p>
+<p>go run或者go build运行很慢</p>
+<p>https://blog.csdn.net/longzhoufeng/article/details/111187418</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[《SQL基础教程》读书笔记]]></title>
+        <id>https://amadeus1240.github.io/post/lesslesssql-ji-chu-jiao-cheng-greatergreater-du-shu-bi-ji/</id>
+        <link href="https://amadeus1240.github.io/post/lesslesssql-ji-chu-jiao-cheng-greatergreater-du-shu-bi-ji/">
+        </link>
+        <updated>2022-03-20T08:08:49.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="查询基础">查询基础</h2>
+<h3 id="select">SELECT</h3>
+<h3 id="as">AS</h3>
+<pre><code class="language-mysql">-- as
+select product_name as '商品名', product_id as '商品编号'
+	from product;
+</code></pre>
+<h3 id="distinct">DISTINCT</h3>
+<pre><code class="language-mysql">-- distinct
+select DISTINCT product_type 
+	from product;
+	
+select DISTINCT purchase_price 
+	from product;
+
+-- distinct 放在第一位   全部相同才能进行合并
+select DISTINCT product_type, regist_date 
+	from product;
+</code></pre>
+<h3 id="where">WHERE</h3>
+<pre><code class="language-mysql">-- where
+select product_name, product_type
+	from product
+	where product_type = '衣服';
+</code></pre>
+<h4 id="-">+ - * /</h4>
+<pre><code class="language-mysql">-- 算术运算
+SELECT product_name, sale_price,
+	sale_price * 2 AS &quot;sale_price_x2&quot;
+	FROM Product;
+</code></pre>
+<h4 id="is-null">&gt; &lt; = IS NULL</h4>
+<pre><code class="language-mysql">-- 比较运算
+SELECT product_name, product_type, sale_price
+	FROM Product
+	WHERE sale_price &gt;= 1000;
+	
+SELECT product_name, product_type, regist_date
+	FROM Product
+	WHERE regist_date &lt; '2009-09-27';
+
+SELECT product_name, sale_price, purchase_price
+	FROM Product
+	WHERE sale_price - purchase_price &gt;= 500;
+
+-- 选取NULL
+SELECT product_name, purchase_price
+	FROM Product
+	WHERE purchase_price IS NULL;
+	
+-- 不选取NULL
+SELECT product_name, purchase_price
+	FROM Product
+	WHERE purchase_price IS NOT NULL;
+</code></pre>
+<h4 id="not-and-or">NOT AND OR</h4>
+<pre><code class="language-mysql">-- 逻辑运算
+
+-- not
+SELECT product_name, product_type, sale_price
+FROM Product
+WHERE NOT sale_price &gt;= 1000;
+
+-- and
+SELECT product_name, purchase_price
+FROM Product
+WHERE product_type = '厨房用具'
+AND sale_price &gt;= 3000;
+
+-- or
+SELECT product_name, purchase_price
+FROM Product
+WHERE product_type = '厨房用具'
+OR sale_price &gt;= 3000;
+</code></pre>
+<h3 id="聚合函数-count-等">聚合函数 COUNT 等</h3>
+<p>COUNT： 计算表中的记录数（行数）<br>
+SUM： 计算表中数值列中数据的合计值<br>
+AVG： 计算表中数值列中数据的平均值<br>
+MAX： 求出表中任意列中数据的最大值<br>
+MIN： 求出表中任意列中数据的最小值</p>
+<pre><code class="language-mysql">-- 包含NULL和不包含NULL
+select count(*), count(purchase_price)
+from product;
+
+-- 其他的聚合函数都不包含NULL
+
+-- 使用聚合函数删除重复值
+SELECT COUNT(DISTINCT product_type)
+FROM Product	-- 先删除重复数据，再计算行数
+SELECT DISTINCT COUNT(product_type)
+FROM Product;	-- 先计算行数，再删除重复数据（几乎没有用）
+</code></pre>
+<h3 id="group-by">GROUP BY</h3>
+<p>GROUP BY 子句的书写位置有严格要求</p>
+<p>一定要写在FROM 语句之后（如果有WHERE 子句的话需要写在WHERE 子句之后）。</p>
+<pre><code class="language-mysql">-- 按照商品种类统计数据行数
+SELECT product_type, COUNT(*)
+FROM Product
+GROUP BY product_type;
+</code></pre>
+<p>子句的书写顺序（暂定）</p>
+<ol>
+<li>SELECT → 2. FROM → 3. WHERE → 4. GROUP BY</li>
+</ol>
+<p>当聚合键中包含NULL 时，会将NULL 作为一组特定的数据</p>
+<pre><code class="language-mysql">-- 聚合包含NULL的情况
+SELECT purchase_price, COUNT(*)
+FROM Product
+GROUP BY purchase_price;
+</code></pre>
+<p>使用WHERE 子句进行汇总处理时，会先根据WHERE 子句指定的条件进行过滤，然后再进行汇总处理。</p>
+<p>GROUP BY 和WHERE 并用时SELECT 语句的执行顺序<br>
+FROM → WHERE → GROUP BY → SELECT</p>
+<pre><code class="language-mysql">-- 同时使用WHERE子句和GROUP BY子句
+SELECT purchase_price, COUNT(*)
+FROM Product
+WHERE product_type = '衣服'
+GROUP BY purchase_price;
+</code></pre>
+<p>易错点</p>
+<ul>
+<li>使用GROUP BY子句时，SELECT子句中不能出现聚合键之外的列名。</li>
+<li>在GROUP BY 子句中不能使用SELECT子句中定义的别名。</li>
+<li>GROUP BY子句结果的显示是无序的，是按照随机顺序进行排序的</li>
+<li>只有SELECT子句和HAVING子句（以及ORDER BY子句）中能够使用聚合函数，WHERE中不可以</li>
+</ul>
+<h3 id="having">HAVING</h3>
+<p>使用HAVING 子句时SELECT 语句的顺序<br>
+SELECT → FROM → WHERE → GROUP BY → HAVING</p>
+<p>HAVING 子句必须写在GROUP BY 子句之后，其在DBMS 内部的执行顺序也排在GROUP BY 子句之后</p>
+<p>HAVING 子句中能够使用的3 种要素</p>
+<ul>
+<li>常数</li>
+<li>聚合函数</li>
+<li>GROUP BY子句中指定的列名（即聚合键）</li>
+</ul>
+<blockquote>
+<p>例如HAVING COUNT（* ）= 2，其中COUNT( *）是聚合函数，2 是常数，全都满足上述要求</p>
+</blockquote>
+<p>WHERE 子句 = 指定行所对应的条件<br>
+HAVING 子句 = 指定组所对应的条件</p>
+<p>聚合键所对应的条件不应该书写在HAVING子句当中，而应该书写在WHERE子句当中</p>
+<pre><code class="language-mysql">-- 从按照商品种类进行分组后的结果中，取出“包含的数据行数为2行”的组
+SELECT product_type, COUNT(*)
+FROM Product
+GROUP BY product_type
+HAVING COUNT(*) = 2;
+</code></pre>
+<h3 id="order-by">ORDER BY</h3>
+<p>不论何种情况，ORDER BY 子句都需要写在SELECT 语句的末尾。这是因为对数据行进行排序的操作必须在结果即将返回时执行。ORDER BY子句中书写的列名称为排序键</p>
+<p>子句的书写顺序	1. SELECT 子句 → 2. FROM 子句 → 3. WHERE 子句 → 4. GROUP BY 子句 → 5.HAVING 子句 → 6. ORDER BY 子句</p>
+<p>降序排列时，在列名后面使用DESC 关键字</p>
+<p>升序排列时，正式的书写方式应该是使用关键字ASC，但是省略该关键字时会默认使用升序进行排序</p>
+<p>ASC 和DESC 是ascendent（上升的）和descendent（下降的）这两个单词的缩写</p>
+<p>可以在ORDER BY 子句中同时指定多个排序键，规则是优先使用左侧的键，如果该列存在相同值的话，再接着参考右侧的键</p>
+<pre><code class="language-mysql">-- 按照销售单价由低到高（升序）进行排列
+SELECT product_id, product_name, sale_price, purchase_price
+FROM Product
+ORDER BY sale_price;
+
+-- 相同价格的商品的顺序并没有特别指定，或者可以说是随机排列的
+-- 如果想要对该顺序的商品进行更细致的排序的话，就需要再添加一个排序键
+
+-- 按照销售单价和商品编号的升序进行排序
+SELECT product_id, product_name, sale_price, purchase_price
+FROM Product
+ORDER BY sale_price, product_id;
+
+</code></pre>
+<p>使用含有NULL 的列作为排序键时，NULL 会在结果的开头或末尾汇总显示</p>
+<p>在GROUP BY 子句中不能使用SELECT 子句中定义的别名，但是在ORDER BY 子句中却是允许使用别名的</p>
+<p>SELECT 语句按照子句为单位的执行顺序如下所示<br>
+使用HAVING 子句时SELECT 语句的顺序<br>
+FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY</p>
+<p>一定要记住SELECT 子句的执行顺序在GROUP BY 子句之后，ORDER BY 子句之前。因此，在执行GROUP BY 子句时，SELECT 语句中定义的别名无法被识别。对于在SELECT 子句之后执行的ORDER BY 子句来说，就没有这样的问题了</p>
+<pre><code class="language-mysql">-- ORDER BY子句中可以使用列的别名
+SELECT product_id AS id, product_name, sale_price AS sp, purchase_price
+FROM Product
+ORDER BY sp, id;
+</code></pre>
+<p>ORDER BY 子句中也可以使用存在于表中、但并不包含在SELECT子句之中的列</p>
+<pre><code class="language-mysql">-- SELECT子句中未包含的列也可以在ORDER BY子句中使用
+SELECT product_name, sale_price, purchase_price
+FROM Product
+ORDER BY product_id;
+
+-- ORDER BY子句中也可以使用聚合函数
+SELECT product_type, COUNT(*)
+FROM Product
+GROUP BY product_type
+ORDER BY COUNT(*);
+</code></pre>
+<h2 id="数据更新">数据更新</h2>
+<pre><code class="language-mysql">-- 创建案例表
+CREATE TABLE ProductIns
+(product_id CHAR(4) NOT NULL,
+product_name VARCHAR(100) NOT NULL,
+product_type VARCHAR(32) NOT NULL,
+sale_price INTEGER DEFAULT 0,
+purchase_price INTEGER ,
+regist_date DATE ,
+PRIMARY KEY (product_id));
+</code></pre>
+<h3 id="insert">INSERT</h3>
+<p>对表进行全列INSERT 时，可以省略表名后的列清单</p>
+<p>这时VALUES子句的值会默认按照从左到右的顺序赋给每一列</p>
+<pre><code class="language-mysql">-- 向表中插入一行数据
+INSERT INTO ProductIns (product_id, product_name, product_type, sale_price, purchase_price, regist_date) 
+VALUES ('0001', 'T恤衫', '衣服', 1000, 500, '2009-09-20');
+
+-- 包含列清单
+INSERT INTO ProductIns (product_id, product_name, product_type, sale_price, purchase_price, regist_date) 
+VALUES ('0005', '高压锅', '厨房用具', 6800, 5000, '2009-01-15');
+
+-- 省略列清单
+INSERT INTO ProductIns 
+VALUES ('0005', '高压锅', '厨房用具', 6800, 5000, '2009-01-15');
+</code></pre>
+<p>INSERT 语句中想给某一列赋予NULL 值时，可以直接在VALUES子句的值清单中写入NULL</p>
+<p>想要插入NULL 的列一定不能设置NOT NULL 约束。向设置了NOT NULL 约束的列中插入NULL 时，INSERT 语句会出错，导致数据插入失败</p>
+<pre><code class="language-mysql">-- 向purchase_price列中插入NULL
+INSERT INTO ProductIns (product_id, product_name, product_type, sale_price, purchase_price, regist_date) 
+VALUES ('0006', '叉子', '厨房用具', 500, NULL, '2009-09-20');
+</code></pre>
+<p>可以向表中插入默认值（初始值）。可以通过在创建表的CREATE TABLE 语句中设置DEFAULT 约束来设定默认值</p>
+<p>在创建表的同时设定了默认值，就可以在INSERT 语句中自动为列赋值。默认值的使用方法通常有显式和隐式两种</p>
+<p>通过显式方法插入默认值<br>
+在VALUES 子句中指定DEFAULT 关键字</p>
+<p>通过隐式方法插入默认值<br>
+插入默认值时也可以不使用DEFAULT 关键字，只要在列清单和VALUES 中省略设定了默认值的列就可以了。</p>
+<pre><code class="language-mysql">-- 通过显式方法设定默认值
+INSERT INTO ProductIns (product_id, product_name, product_type, sale_price, purchase_price, regist_date) 
+VALUES ('0007', '擦菜板', '厨房用具', DEFAULT, 790, '2009-04-28');
+
+-- 通过隐式方法设定默认值
+INSERT INTO ProductIns (product_id, product_name, product_type, purchase_price, regist_date) 
+VALUES ('0007', '擦菜板', '厨房用具', 790, '2009-04-28');
+</code></pre>
+<p>使用INSERT・・・SELECT语句可以在关联的表之间传递数据</p>
+<pre><code class="language-mysql">-- 用来插入数据的商品复制表
+CREATE TABLE ProductCopy
+(product_id CHAR(4) NOT NULL,
+product_name VARCHAR(100) NOT NULL,
+product_type VARCHAR(32) NOT NULL,
+sale_price INTEGER ,
+purchase_price INTEGER ,
+regist_date DATE ,
+PRIMARY KEY (product_id));
+
+-- 将商品表中的数据复制到商品复制表中
+INSERT INTO ProductCopy (product_id, product_name, product_type, sale_price, purchase_price, regist_date)
+SELECT product_id, product_name, product_type, sale_price, purchase_price, regist_date
+FROM Product;
+
+
+</code></pre>
+<p>INSERT 语句中的SELECT 语句，也可以使用WHERE 子句或者GROUP BY 子句等任何SQL语法</p>
+<pre><code class="language-mysql">-- 根据商品种类进行汇总的表；
+CREATE TABLE ProductType
+(product_type VARCHAR(32) NOT NULL,
+sum_sale_price INTEGER ,
+sum_purchase_price INTEGER ,
+PRIMARY KEY (product_type));
+
+-- 使用聚合函数SUM
+INSERT INTO ProductType (product_type, sum_sale_price, sum_purchase_price)
+SELECT product_type, SUM(sale_price), SUM(purchase_price)
+FROM Product
+GROUP BY product_type;
+</code></pre>
+<h3 id="delect">DELECT</h3>
+<p>删除数据的方法大体可以分为以下两种</p>
+<ul>
+<li>DROP TABLE 语句可以将表完全删除
+<ul>
+<li>删除之后再想插入数据，就必须使用CREATE TABLE 语句重新创建一张表</li>
+</ul>
+</li>
+<li>DELETE 语句会留下表（容器），而删除表中的全部数据
+<ul>
+<li>删除之后再想插入数据，可以通过INSERT 语句再次向表中插入数据</li>
+</ul>
+</li>
+</ul>
+<p>DELETE语句的删除对象并不是表或者列，而是记录（行）。</p>
+<p>所以DELETE 语句无法只删除部分列的数据。</p>
+<p>因此，在DELETE 语句中指定列名是错误的。</p>
+<p>使用星号的写法（DELETE * FROM Product ；）也是不对的，同样会出错</p>
+<p>可以通过WHERE子句指定对象条件来删除部分数据。这种指定了删除对象的DELETE语句称为搜索型DELETE</p>
+<p>与SELECT 语句不同的是，DELETE 语句中不能使用GROUP BY、HAVING 和ORDER BY 三类子句，只能使用WHERE 子句。</p>
+<pre><code class="language-mysql">-- 清空Product表
+DELETE FROM Product;
+
+-- 想要删除部分数据行时，可以使用WHERE子句指定删除条件
+-- 删除销售单价（sale_price）大于等于4000日元的数据
+DELETE FROM Product
+WHERE sale_price &gt;= 4000;
+</code></pre>
+<h3 id="update">UPDATE</h3>
+<h4 id="基本语法">基本语法</h4>
+<p>使用UPDATE语句可以更改（更新）表中的数据</p>
+<p>将更新对象的列和更新后的值都记述在SET 子句中</p>
+<pre><code class="language-mysql">-- 将登记日期全部更新为“2009-10-10”
+UPDATE Product
+SET regist_date = '2009-10-10';
+</code></pre>
+<h4 id="指定条件-搜索型update">指定条件 (搜索型UPDATE)</h4>
+<p>更新数据可以像DELETE 语句那样使用WHERE 子句，这种指定更新对象的UPDATE 语句称为搜索型UPDATE 语句。</p>
+<pre><code class="language-mysql">-- 将商品种类为厨房用具的记录的销售单价更新为原来的10倍
+UPDATE Product
+SET sale_price = sale_price * 10
+WHERE product_type = '厨房用具';
+</code></pre>
+<p>使用UPDATE 也可以将列更新为NULL（该更新俗称为NULL 清空）。此时只需要将赋值表达式右边的值直接写为NULL 即可</p>
+<p>但是只有未设置NOT NULL 约束和主键约束的列才可以清空为NULL</p>
+<pre><code class="language-mysql">-- 将商品编号为0008的数据（圆珠笔）的登记日期更新为NULL
+UPDATE Product
+SET regist_date = NULL
+WHERE product_id = '0008';
+</code></pre>
+<h4 id="多列更新">多列更新</h4>
+<p>UPDATE 语句的SET 子句支持同时将多个列作为更新对象。</p>
+<pre><code class="language-mysql">/* 将两条UPDATE语句合并为一条UPDATE语句 */
+
+-- 方法①：使用逗号对列进行分隔排列
+UPDATE Product
+SET sale_price = sale_price * 10, purchase_price = purchase_price / 2
+WHERE product_type = '厨房用具';
+
+-- 方法②：将列用()括起来的清单形式
+UPDATE Product
+SET (sale_price, purchase_price) = (sale_price * 10, purchase_price / 2)
+WHERE product_type = '厨房用具';
+</code></pre>
+<h3 id="事务">事务</h3>
+<h4 id="基本语法-2">基本语法</h4>
+<p>在RDBMS 中，事务是对表中数据进行更新的单位。简单来讲，事务就是需要在同一个处理单元中执行的一系列更<br>
+新处理的集合。</p>
+<p>遇到需要在同一个处理单元中执行一系列更新操作的情况，一定要使用事务来进行处理。一个事务中包含多少个更新处理或者包含哪些处理，在DBMS 中并没有固定的标准，而是根据用户的要求决定的。</p>
+<pre><code class="language-mysql">-- 更新商品信息的事务
+START TRANSACTION;
+	-- 将运动T恤的销售单价降低1000日元
+	UPDATE Product
+	SET sale_price = sale_price - 1000
+	WHERE product_name = '运动T恤';
+	
+	-- 将T恤衫的销售单价上浮1000日元
+	UPDATE Product
+	SET sale_price = sale_price + 1000
+	WHERE product_name = 'T恤衫';
+COMMIT;
+</code></pre>
+<h4 id="commit">COMMIT</h4>
+<p>COMMIT 是提交事务包含的全部更新处理的结束指令，相当于文件处理中的覆盖保存。一旦提交，就无法恢复到事务开始前的状态了。</p>
+<h4 id="rollback">ROLLBACK</h4>
+<p>ROLLBACK 是取消事务包含的全部更新处理的结束指令，相当于文件处理中的放弃保存。一旦回滚，数据库就会恢复到事务开始之前的状态。</p>
+<pre><code class="language-mysql">-- 事务回滚的例子
+
+BEGIN TRANSACTION;
+	-- 将运动T恤的销售单价降低1000日元
+	UPDATE Product
+	SET sale_price = sale_price - 1000
+	WHERE product_name = '运动T恤';
+	
+	-- 将T恤衫的销售单价上浮1000日元
+	UPDATE Product
+	SET sale_price = sale_price + 1000
+	WHERE product_name = 'T恤衫';
+ROLLBACK;
+</code></pre>
+<p>上述事务处理执行之后，表中的数据不会发生任何改变。这是因为执行最后一行的ROLLBACK 之后，所有的处理都被取消了。因此，回滚执行起来就无需像提交时那样小心翼翼了（即使是想要提交的情况，也只需要重新执行事务处理就可以了）。</p>
+<h2 id="复杂查询">复杂查询</h2>
+<h3 id="视图">视图</h3>
+<p>从SQL的角度来看，视图和表是相同的，两者的区别在于表中保存的是实际的数据，而视图中保存的是SELECT语句（视图本身并不存储数据）。</p>
+<h4 id="创建视图">创建视图</h4>
+<p>创建视图需要使用CREATE VIEW 语句</p>
+<p>不要省略第 2 行的关键字AS。这里的 AS 与定义别名时使用的 AS 并不相同</p>
+<p>定义视图时可以使用任何SELECT 语句，既可以使用WHERE、GROUP BY、HAVING，也可以通过SELECT * 来指定全部列。</p>
+<pre><code class="language-mysql">-- ProductSum视图
+CREATE VIEW ProductSum (product_type, cnt_product)
+AS
+SELECT product_type, COUNT(*)
+FROM Product
+GROUP BY product_type;
+</code></pre>
+<h4 id="使用视图">使用视图</h4>
+<p>视图和表一样，可以书写在 SELECT 语句的 FROM 子句之中</p>
+<pre><code class="language-mysql">-- 使用视图
+SELECT product_type, cnt_product
+FROM ProductSum;
+</code></pre>
+<p>Product 表中的数据更新之后，视图也会自动更新，非常灵活方便</p>
+<h4 id="视图的限制">视图的限制</h4>
+<p>应该避免在视图的基础上创建视图</p>
+<p>定义视图时不能使用ORDER BY子句</p>
+<p>因为视图和表一样，数据行都是没有顺序的。</p>
+<pre><code class="language-mysql">-- 不能像这样定义视图
+CREATE VIEW ProductSum (product_type, cnt_product)
+AS
+SELECT product_type, COUNT(*)
+FROM Product
+GROUP BY product_type
+ORDER BY product_type;
+</code></pre>
+<p>对视图进行更新</p>
+<p>视图归根结底还是从表派生出来的，因此，如果原表可以更新，那么视图中的数据也可以更新。反之亦然，如果视图发生了改变，而原表没有进行相应更新的话，就无法保证数据的一致性了。</p>
+<p>视图和表需要同时进行更新，因此通过汇总得到的视图无法进行更新。</p>
+<pre><code class="language-mysql">-- 可以更新的视图
+CREATE VIEW ProductJim (product_id, product_name, product_type, sale_price, purchase_price, regist_date)
+AS
+SELECT *
+FROM Product
+WHERE product_type = '办公用品';
+
+-- 向视图中添加数据行
+INSERT INTO ProductJim VALUES ('0009', '印章', '办公用品', 95, 10, '2009-11-30');
+</code></pre>
+<h4 id="删除视图">删除视图</h4>
+<p>删除视图需要使用 DROP VIEW 语句</p>
+<pre><code class="language-mysql">-- 删除视图
+DROP VIEW ProductSum;
+</code></pre>
+<h3 id="子查询">子查询</h3>
+<p>子查询就是将用来定义视图的SELECT语句直接用于FROM子句当中</p>
+<p>该 SELECT 语句包含嵌套的结构，首先会执行FROM 子句中的 SELECT 语句，然后才会执行外层的 SELECT 语句</p>
+<p>子查询作为内层查询会首先执行</p>
+<pre><code class="language-mysql">-- 在FROM子句中直接书写定义视图的SELECT语句
+SELECT product_type, cnt_product
+FROM ( SELECT product_type, COUNT(*) AS cnt_product
+	FROM Product
+	GROUP BY product_type ) AS ProductSum;
+</code></pre>
+<h4 id="标量子查询">标量子查询</h4>
+<p>标量子查询就是返回单一值的子查询。</p>
+<p>由于返回的是单一的值，因此标量子查询的返回值可以用在 = 或者 &lt;&gt; 这样需要单一值的比较运算符之中。</p>
+<p>题目：查询出销售单价高于平均销售单价的商品</p>
+<pre><code class="language-mysql">-- 在WHERE子句中不能使用聚合函数
+SELECT product_id, product＿name, sale_price
+FROM Product
+WHERE sale_price &gt; AVG(sale_price);
+
+-- 选取出销售单价（sale_price）高于全部商品的平均单价的商品
+SELECT product_id, product_name, sale_price
+FROM Product
+WHERE sale_price &gt; (SELECT AVG(sale_price) FROM Product);	-- 计算平均销售单价的标量子查询
+
+</code></pre>
+<h4 id="标量子查询的书写位置">标量子查询的书写位置</h4>
+<p>标量子查询的书写位置并不仅仅局限于WHERE 子句中，通常任何可以使用单一值的位置都可以使用。也就是说，能够使用常数或者列名的地方，无论是SELECT 子句、GROUP BY 子句、HAVING 子句，还是ORDER BY 子句，几乎所有的地方都可以使用。</p>
+<pre><code class="language-mysql">-- 在SELECT子句中使用标量子查询
+SELECT product_id, product_name, sale_price, (SELECT AVG(sale_price) FROM Product) AS avg_price
+FROM Product;
+
+-- 在HAVING子句中使用标量子查询
+-- 该查询的含义是想要选取出按照商品种类计算出的销售单价高于全部商品的平均销售单价的商品种类
+SELECT product_type, AVG(sale_price)
+FROM Product
+GROUP BY product_type
+HAVING AVG(sale_price) &gt; (SELECT AVG(sale_price) FROM Product);
+</code></pre>
+<h4 id="注意事项">注意事项</h4>
+<p>使用标量子查询时的注意事项，那就是该子查询绝对不能返回多行结果</p>
+<p>如果子查询返回了多行结果，那么它就不再是标量子查询，而仅仅是一个普通的子查询了，因此不能被用在= 或者&lt;&gt; 等需要单一输入值的运算符当中，也不能用在SELECT 等子句当中</p>
+<h3 id="关联子查询">关联子查询</h3>
+<p>普通的子查询和关联子查询的区别</p>
+<p>在细分的组内进行比较时，需要使用关联子查询</p>
+<pre><code class="language-mysql">-- 选取出各商品种类中高于该商品种类的平均销售单价的商品
+-- 通过关联子查询按照商品种类对平均销售单价进行比较
+SELECT product_type, product_name, sale_price
+FROM Product AS P1
+WHERE sale_price &gt; (SELECT AVG(sale_price)
+	FROM Product AS P2
+	WHERE P1.product_type = P2.product_type
+	GROUP BY product_type);
+</code></pre>
+<p>这里起到关键作用的就是在子查询中添加的WHERE 子句的条件。该条件的意思就是，在同一商品种类中对各商品的销售单价和平均单价进行比较</p>
+<p>由于作为比较对象的都是同一张Product 表，因此为了进行区别，分别使用了P1 和P2 两个别名。在使用关联子查询时，需要在表所对应的列名之前加上表的别名</p>
+<p>换个角度来看，其实关联子查询也和GROUP BY 子句一样，可以对集合进行切分</p>
+<p>结合条件一定要写在子查询中</p>
+<pre><code class="language-mysql">-- 错误的关联子查询书写方法：将关联条件写在子查询之外的外层查询之中
+SELECT product_type, product_name, sale_price
+FROM Product AS P1
+WHERE P1.product_type = P2.product_type
+	AND sale_price &gt; (SELECT AVG(sale_price)	-- 此SELECT为内层子查询
+	FROM Product AS P2
+	GROUP BY product_type);
+</code></pre>
+<p>该书写方法违反了关联名称的作用域。</p>
+<p>关联名称就是像P1、P2 这样作为表别名的名称，作用域（scope）就是生存范围（有效范围）。也就是说，关联名称存在一个有效范围的限制</p>
+<p>具体来讲，子查询内部设定的关联名称，只能在该子查询内部使用。换句话说，就是“内部可以看到外部，而外部看不到内部”。</p>
+<p>SQL是按照先内层子查询后外层查询的顺序来执行的</p>
+<p>子查询执行结束时只会留下执行结果，作为抽出源的P2 表其实已经不存在了A。因此，在执行外层查询时，由于P2 表已经不存在了，因此就会返回“不存在使用该名称的表”这样的错误</p>
+<h2 id="函数-谓词-case表达式">函数、谓词、CASE表达式</h2>
+<h3 id="函数">函数</h3>
+<p>函数，就是输入某一值得到相应输出结果的功能，输入值称为参数（parameter），输出值称为返回值</p>
+<p>函数大致可以分为以下几种。<br>
+● 算术函数（用来进行数值计算的函数）<br>
+● 字符串函数（用来进行字符串操作的函数）<br>
+● 日期函数（用来进行日期操作的函数）<br>
+● 转换函数（用来转换数据类型和值的函数）<br>
+● 聚合函数（用来进行数据聚合的函数）</p>
+<h4 id="算术函数">算术函数</h4>
+<p>创建数字表</p>
+<pre><code class="language-mysql">CREATE TABLE SampleMath
+(m NUMERIC (10,3),	-- SQL数据库中Numeric(10,3)是指字段是数值型，Numeric(10,3)表示总位数为10，小数点后为3位的数，也就是说这个字段的整数位最大是7位。
+n INTEGER,
+p INTEGER);
+</code></pre>
+<p>插入数据</p>
+<pre><code class="language-mysql">INSERT INTO SampleMath(m, n, p) VALUES (500, 0, NULL);
+INSERT INTO SampleMath(m, n, p) VALUES (-180, 0, NULL);
+INSERT INTO SampleMath(m, n, p) VALUES (NULL, NULL, NULL);
+INSERT INTO SampleMath(m, n, p) VALUES (NULL, 7, 3);
+INSERT INTO SampleMath(m, n, p) VALUES (NULL, 5, 2);
+INSERT INTO SampleMath(m, n, p) VALUES (NULL, 4, NULL);
+INSERT INTO SampleMath(m, n, p) VALUES (8, NULL, 3);
+INSERT INTO SampleMath(m, n, p) VALUES (2.27, 1, NULL);
+INSERT INTO SampleMath(m, n, p) VALUES (5.555,2, NULL);
+INSERT INTO SampleMath(m, n, p) VALUES (NULL, 1, NULL);
+INSERT INTO SampleMath(m, n, p) VALUES (8.76, NULL, NULL);
+</code></pre>
+<h5 id="abs">ABS</h5>
+<p>ABS 是计算绝对值的函数。绝对值（absolute value）不考虑数值的符号，表示一个数到原点的距离</p>
+<pre><code class="language-mysql">-- 计算数值的绝对值
+SELECT m, ABS(m) AS abs_col	-- 右侧的abs_col 列就是通过ABS 函数计算出的m 列的绝对值
+FROM SampleMath;
+</code></pre>
+<p>ABS 函数的参数为NULL 时，结果也是NULL。并非只有ABS 函数如此，其实绝大多数函数对于NULL 都返回NULL。但是转换函数中的COALESCE函数除外。</p>
+<h5 id="mod">MOD</h5>
+<p>MOD 是计算除法余数（求余）的函数，是modulo 的缩写</p>
+<p>例如，7 / 3 的余数是1，因此MOD（7, 3）的结果也是1</p>
+<p>因为小数计算中并没有余数的概念，所以只能对整数类型的列使用MOD 函数</p>
+<pre><code class="language-mysql">-- 计算除法（n ÷ p）的余数
+SELECT n, p, MOD(n, p) AS mod_col
+FROM SampleMath;
+</code></pre>
+<h5 id="round">ROUND</h5>
+<p>ROUND 函数用来进行四舍五入操作。四舍五入在英语中称为round。</p>
+<p>如果指定四舍五入的位数为1，那么就会对小数点第2 位进行四舍五入处理。如果指定位数为2，那么就会对第3 位进行四舍五入处理</p>
+<pre><code class="language-mysql">-- 对m列的数值进行n列位数的四舍五入处理
+SELECT m, n, ROUND(m, n) AS round_col
+FROM SampleMath;
+</code></pre>
+<h4 id="字符串函数">字符串函数</h4>
+<p>创建字符串表</p>
+<pre><code class="language-mysql">CREATE TABLE SampleStr
+(str1 VARCHAR(40),
+str2 VARCHAR(40),
+str3 VARCHAR(40));
+</code></pre>
+<p>插入数据</p>
+<pre><code class="language-mysql">INSERT INTO SampleStr (str1, str2, str3) VALUES ('opx' , 'rt',NULL);
+INSERT INTO SampleStr (str1, str2, str3) VALUES ('abc' , 'def' ,NULL);
+INSERT INTO SampleStr (str1, str2, str3) VALUES ('山田' , '太郎' ,'是我');
+INSERT INTO SampleStr (str1, str2, str3) VALUES ('aaa' , NULL ,NULL);
+INSERT INTO SampleStr (str1, str2, str3) VALUES (NULL ,'xyz',NULL);
+INSERT INTO SampleStr (str1, str2, str3) VALUES ('@!#$%' ,NULL ,NULL);
+INSERT INTO SampleStr (str1, str2, str3) VALUES ('ABC' ,NULL ,NULL);
+INSERT INTO SampleStr (str1, str2, str3) VALUES ('aBC' ,NULL ,NULL);
+INSERT INTO SampleStr (str1, str2, str3) VALUES ('abc太郎' ,'abc' ,'ABC');
+INSERT INTO SampleStr (str1, str2, str3) VALUES ('abcdefabc' ,'abc' ,'ABC');
+INSERT INTO SampleStr (str1, str2, str3) VALUES ('micmic' ,'i' ,'I');
+</code></pre>
+<h5 id="concat">CONCAT</h5>
+<p>在MySQL 中，可以通过CONCAT函数来实现 abc + de = abcde 这样将字符串进行拼接的情况。</p>
+<pre><code class="language-mysql">-- 拼接两个字符串（str1+str2）
+SELECT str1, str2, CONCAT(str1, str2) AS str_concat
+FROM SampleStr;
+</code></pre>
+<h5 id="length">LENGTH</h5>
+<p>想要知道字符串中包含多少个字符时，可以使用LENGTH（长度）函数</p>
+<pre><code class="language-mysql">SELECT str1, LENGTH(str1) AS len_str
+FROM SampleStr;
+</code></pre>
+<h5 id="lower">LOWER</h5>
+<p>LOWER 函数只能针对英文字母使用，它会将参数中的字符串全都转换为小写</p>
+<pre><code class="language-mysql">-- 大写转换为小写
+SELECT str1, LOWER(str1) AS low_str
+FROM SampleStr
+WHERE str1 IN ('ABC', 'aBC', 'abc', '山田');
+</code></pre>
+<p>既然存在小写转换函数，那么肯定也有大写转换函数，UPPER 就是大写转换函数</p>
+<h5 id="replace">REPLACE</h5>
+<p>使用REPLACE 函数，可以将字符串的一部分替换为其他的字符串</p>
+<p>REPLACE(对象字符串，替换前的字符串，替换后的字符串)</p>
+<pre><code class="language-mysql">-- 替换字符串的一部分
+SELECT str1, str2, str3, REPLACE(str1, str2, str3) AS rep_str
+FROM SampleStr;
+/*
+str1 ：对象字符串
+str2 ：替换前的字符串
+str3 ：替换后的字符串
+rep_str ：REPLACE(str1,str2,str3)的返回值(替换结果)
+*/
+</code></pre>
+<h5 id="substring">SUBSTRING</h5>
+<p>使用SUBSTRING 函数可以截取出字符串中的一部分字符串。截取的起始位置从字符串最左侧开始计算</p>
+<p>SUBSTRING（对象字符串 FROM 截取的起始位置 FOR 截取的字符数）</p>
+<pre><code class="language-mysql">-- 截取出字符串中第3位和第4位的字符
+SELECT str1, SUBSTRING(str1 FROM 3 FOR 2) AS sub_str
+FROM SampleStr;
+</code></pre>
+<h4 id="日期函数">日期函数</h4>
+<h5 id="current_date">CURRENT_DATE</h5>
+<p>CURRENT_DATE 函数能够返回SQL 执行的日期，也就是该函数执行时的日期。由于没有参数，因此无需使用括号。</p>
+<p>执行日期不同，CURRENT_DATE 函数的返回值也不同。如果在2009 年12 月13 日执行该函数，会得到返回值“2009-12-13”。</p>
+<pre><code class="language-mysql">SELECT CURRENT_DATE;
+</code></pre>
+<h5 id="current_time">CURRENT_TIME</h5>
+<p>CURRENT_TIME 函数能够取得SQL 执行的时间，也就是该函数执行时的时间。由于该函数也没有参数，因此同样无需使用括号。</p>
+<pre><code class="language-mysql">-- 取得当前时间
+SELECT CURRENT_TIME;
+</code></pre>
+<h5 id="current_timestamp">CURRENT_TIMESTAMP</h5>
+<p>CURRENT_TIMESTAMP 函数具有CURRENT_DATE + CURRENT_TIME 的功能。使用该函数可以同时得到当前的日期和时间，当然也可以从结果中截取日期或者时间。</p>
+<pre><code class="language-mysql">-- 取得当前日期和时间
+SELECT CURRENT_TIMESTAMP;
+</code></pre>
+<h5 id="extract">EXTRACT</h5>
+<p>EXTRACT(日期元素 FROM 日期)</p>
+<p>使用EXTRACT 函数可以截取出日期数据中的一部分，例如“年”“月”，或者“小时”“秒”等。该函数的返回值并不是日期类型而是数值类型。</p>
+<pre><code class="language-mysql">-- 截取日期元素
+SELECT CURRENT_TIMESTAMP,
+EXTRACT(YEAR FROM CURRENT_TIMESTAMP) AS year,
+EXTRACT(MONTH FROM CURRENT_TIMESTAMP) AS month,
+EXTRACT(DAY FROM CURRENT_TIMESTAMP) AS day,
+EXTRACT(HOUR FROM CURRENT_TIMESTAMP) AS hour,
+EXTRACT(MINUTE FROM CURRENT_TIMESTAMP) AS minute,
+EXTRACT(SECOND FROM CURRENT_TIMESTAMP) AS second;
+</code></pre>
+<h4 id="转换函数">转换函数</h4>
+<p>“转换”在SQL 中主要有两层意思：一是数据类型的转换，简称为类型转换，在英语中称为castA ；另一层意思是值的转换。</p>
+<h5 id="cast">CAST</h5>
+<p>CAST（转换前的值 AS 想要转换的数据类型）</p>
+<p>进行类型转换需要使用CAST 函数</p>
+<pre><code class="language-mysql">-- 将字符串类型转换为数值类型
+SELECT CAST('0001' AS SIGNED INTEGER) AS int_col;	-- 将字符串类型转换为整数类型时，前面的“000”消失了
+
+-- 将字符串类型转换为日期类型
+SELECT CAST('2009-12-14' AS DATE) AS date_col;	-- 将字符串转换为日期类型时，从结果上并不能看出数据发生了什么变化，是为了方便 DBMS 内部处理而开发的功能
+</code></pre>
+<h5 id="coalesce">COALESCE</h5>
+<p>COALESCE(数据1，数据2，数据3……)</p>
+<p>COALESCE 是SQL 特有的函数。该函数会返回可变参数 A 中左侧开始第1 个不是NULL 的值。</p>
+<pre><code class="language-mysql">-- 将NULL转换为其他值
+SELECT COALESCE(NULL, 1) AS col_1,
+	COALESCE(NULL, 'test', NULL) AS col_2,
+	COALESCE(NULL, NULL, '2009-11-01') AS col_3;
+	
+-- 使用SampleStr表中的列作为例子
+-- 这个例子是意思是，如果在str2中遇到了NULL，就返回右侧的'NULL'字符串
+SELECT COALESCE(str2, 'NULL')
+FROM SampleStr;
+</code></pre>
+<h3 id="谓词">谓词</h3>
+<p>通俗来讲谓词就是函数中的一种，是需要满足特定条件的函数，该条件就是返回值是真值。对通常的函数来说，返回值有可能是数字、字符串或者日期等，但是谓词的返回值全都是真值（TRUE/FALSE/UNKNOWN）。这也是谓词和函数的最大区别。</p>
+<h4 id="like">LIKE</h4>
+<p>LIKE谓词——字符串的部分一致查询</p>
+<p>部分一致大体可以分为前方一致、中间一致和后方一致三种类型</p>
+<p>创建SampleLike表</p>
+<pre><code class="language-mysql">CREATE TABLE SampleLike
+( strcol VARCHAR(6) NOT NULL,
+PRIMARY KEY (strcol));
+</code></pre>
+<p>插入数据</p>
+<pre><code class="language-mysql">INSERT INTO SampleLike (strcol) VALUES ('abcddd');
+INSERT INTO SampleLike (strcol) VALUES ('dddabc');
+INSERT INTO SampleLike (strcol) VALUES ('abdddc');
+INSERT INTO SampleLike (strcol) VALUES ('abcdd');
+INSERT INTO SampleLike (strcol) VALUES ('ddabc');
+INSERT INTO SampleLike (strcol) VALUES ('abddc');
+</code></pre>
+<p>前方一致，就是选取出作为查询条件的字符串（这里是“ddd”）与查询对象字符串起始部分相同的记录的查询方法</p>
+<p>中间一致，就是选取出查询对象字符串中含有作为查询条件的字符串（这里是“ddd”）的记录的查询方法。无论该字符串出现在对象字符串的最后还是中间都没有关系</p>
+<p>后方一致与前方一致相反，也就是选取出作为查询条件的字符串（这里是“ddd”）与查询对象字符串的末尾部分相同的记录的查询方法</p>
+<p>中间一致的查询条件最宽松，能够取得最多记录。这是因为它同时包含前方一致和后方一致的查询结果。</p>
+<p>像这样不使用“=”来指定条件字符串，而以字符串中是否包含该条件（本例中是“包含ddd”）的规则为基础的查询称为模式匹配，其中的模式也就是前面提到的“规则”</p>
+<p>% 是代表“0 字符以上的任意字符串”的特殊符号</p>
+<pre><code class="language-mysql">-- 使用LIKE进行前方一致查询
+SELECT *
+FROM SampleLike
+WHERE strcol LIKE 'ddd%';	-- 查出“以ddd 开头的所有字符串”
+
+-- 使用LIKE进行中间一致查询
+SELECT *
+FROM SampleLike
+WHERE strcol LIKE '%ddd%';	-- 查询出包含字符串“ddd”的记录
+
+-- 使用LIKE进行后方一致查询
+SELECT *
+FROM SampleLike
+WHERE strcol LIKE '%ddd';	-- 选取出以字符串“ddd”结尾的记录
+</code></pre>
+<p>可以使用_（下划线）来代替%，与% 不同的是，它代表了“任意1 个字符”</p>
+<pre><code class="language-mysql">-- 使用LIKE和_（下划线）进行后方一致查询
+SELECT *
+FROM SampleLike
+WHERE strcol LIKE 'abc__';
+
+-- 查询“abc+任意3个字符”的字符串
+SELECT *
+FROM SampleLike
+WHERE strcol LIKE 'abc___';
+</code></pre>
+<h4 id="between">BETWEEN</h4>
+<p>使用BETWEEN 可以进行范围查询。该谓词与其他谓词或者函数的不同之处在于它使用了3 个参数。</p>
+<pre><code class="language-mysql">-- 选取销售单价为100 ～ 1000日元的商品
+SELECT product_name, sale_price
+FROM Product
+WHERE sale_price BETWEEN 100 AND 1000;
+</code></pre>
+<p>BETWEEN 的特点就是结果中会包含100 和1000 这两个临界值</p>
+<h4 id="is-null-2">IS NULL</h4>
+<p>为了选取出某些值为NULL 的列的数据，不能使用=，而只能使用特定的谓词IS NULL</p>
+<pre><code class="language-mysql">-- 选取出进货单价（purchase_price）为NULL的商品
+SELECT product_name, purchase_price
+FROM Product
+WHERE purchase_price IS NULL;
+</code></pre>
+<p>与此相反，想要选取NULL 以外的数据时，需要使用IS NOT NULL</p>
+<pre><code class="language-mysql">-- 选取进货单价（purchase_price）不为NULL的商品
+SELECT product_name, purchase_price
+FROM Product
+WHERE purchase_price IS NOT NULL;
+</code></pre>
+<h4 id="in">IN</h4>
+<p>IN谓词——OR的简便用法</p>
+<pre><code class="language-mysql">-- 通过IN来指定多个进货单价进行查询
+SELECT product_name, purchase_price
+FROM Product
+WHERE purchase_price IN (320, 500, 5000);
+
+-- 可以用来代替以下的OR语句
+-- 通过OR指定多个进货单价进行查询
+SELECT product_name, purchase_price
+FROM Product
+WHERE purchase_price = 320
+OR purchase_price = 500
+OR purchase_price = 5000;
+</code></pre>
+<p>否定形式NOT IN</p>
+<pre><code class="language-mysql">-- 使用NOT IN进行查询时指定多个排除的进货单价进行查询
+SELECT product_name, purchase_price
+FROM Product
+WHERE purchase_price NOT IN (320, 500, 5000);
+</code></pre>
+<p>使用IN 和NOT IN 时是无法选取出NULL 数据的</p>
+<p>NULL 终究还是需要使用IS NULL 和IS NOT NULL 来进行判断</p>
+<h4 id="in和子查询">IN和子查询</h4>
+<p>IN 谓词（NOT IN 谓词）具有其他谓词所没有的用法，那就是可以使用子查询作为其参数。</p>
+<p>可以说“能够将表作为IN 的参数”。同理，也可以说“能够将视图作为IN 的参数”。</p>
+<p>创建表</p>
+<pre><code class="language-mysql">-- 创建ShopProduct（商店商品）表的CREATE TABLE语句
+CREATE TABLE ShopProduct
+(shop_id CHAR(4) NOT NULL,
+shop_name VARCHAR(200) NOT NULL,
+product_id CHAR(4) NOT NULL,
+quantity INTEGER NOT NULL,
+PRIMARY KEY (shop_id, product_id));
+</code></pre>
+<p>插入数据</p>
+<pre><code class="language-mysql">-- 向ShopProduct表中插入数据的INSERT语句
+INSERT INTO ShopProduct (shop_id, shop_name, product_id, quantity) VALUES ('000A', '东京', '0001', 30);
+INSERT INTO ShopProduct (shop_id, shop_name, product_id, quantity) VALUES ('000A', '东京', '0002', 50);
+INSERT INTO ShopProduct (shop_id, shop_name, product_id, quantity) VALUES ('000A', '东京', '0003', 15);
+INSERT INTO ShopProduct (shop_id, shop_name, product_id, quantity) VALUES ('000B', '名古屋', '0002', 30);
+INSERT INTO ShopProduct (shop_id, shop_name, product_id, quantity) VALUES ('000B', '名古屋', '0003', 120);
+INSERT INTO ShopProduct (shop_id, shop_name, product_id, quantity) VALUES ('000B', '名古屋', '0004', 20);
+INSERT INTO ShopProduct (shop_id, shop_name, product_id, quantity) VALUES ('000B', '名古屋', '0006', 10);
+INSERT INTO ShopProduct (shop_id, shop_name, product_id, quantity) VALUES ('000B', '名古屋', '0007', 40);
+INSERT INTO ShopProduct (shop_id, shop_name, product_id, quantity) VALUES ('000C', '大阪', '0003', 20);
+INSERT INTO ShopProduct (shop_id, shop_name, product_id, quantity) VALUES ('000C', '大阪', '0004', 50);
+INSERT INTO ShopProduct (shop_id, shop_name, product_id, quantity) VALUES ('000C', '大阪', '0006', 90);
+INSERT INTO ShopProduct (shop_id, shop_name, product_id, quantity) VALUES ('000C', '大阪', '0007', 70);
+INSERT INTO ShopProduct (shop_id, shop_name, product_id, quantity) VALUES ('000D', '福冈', '0001', 100);
+</code></pre>
+<p>子查询是从内层开始执行的。因此，该SELECT 语句也是从内层的子查询开始执行</p>
+<pre><code class="language-mysql">-- 使用子查询作为IN的参数
+-- 取得“在大阪店销售的商品的销售单价”
+SELECT product_name, sale_price
+FROM Product
+WHERE product_id IN (SELECT product_id
+	FROM ShopProduct
+	WHERE shop_id = '000C');
+	
+-- 子查询展开后的结果
+SELECT product_name, sale_price
+FROM Product
+WHERE product_id IN ('0003', '0004', '0006', '0007');
+</code></pre>
+<p>IN 的否定形式NOT IN 同样可以使用子查询作为参数，其语法也和IN 完全一样</p>
+<pre><code class="language-mysql">-- 使用子查询作为NOT IN的参数
+SELECT product_name, sale_price
+FROM Product
+WHERE product_id NOT IN (SELECT product_id
+	FROM ShopProduct
+	WHERE shop_id = '000A');
+
+-- 执行子查询
+SELECT product_name, sale_price
+FROM Product
+WHERE product_id NOT IN ('0001', '0002', '0003');
+</code></pre>
+<h4 id="exist">EXIST</h4>
+<p>谓词的作用就是“判断是否存在满足某种条件的记录”。如果存在这样的记录就返回真（TRUE），如果不存在就返回假（FALSE）。<br>
+EXIST（存在）谓词的主语是“记录”。</p>
+<p>EXIST 是只有1 个参数的谓词。EXIST 只需要在右侧书写1 个参数，该参数通常都会是一个子查询</p>
+<pre><code class="language-mysql">-- 使用EXIST选取出“大阪店在售商品的销售单价”
+SELECT product_name, sale_price
+FROM Product AS P 
+WHERE EXISTS (SELECT *	-- 通常指定关联子查询作为EXIST的参数。
+	FROM ShopProduct AS SP 
+	WHERE SP.shop_id = '000C'
+	AND SP.product_id = P.product_id);
+</code></pre>
+<p>EXIST 只关心记录是否存在，因此返回哪些列都没有关系。EXIST 只会判断是否存在满足子查询中WHERE 子句指定的条件“商店编号（shop_id）为'000C'，商品（Product）表和商店商品（ShopProduct）表中商品编号（product_id）相同”的记录，只有存在这样的记录时才返回真（TRUE）</p>
+<p>作为EXIST参数的子查询中经常会使用SELECT *。</p>
+<h3 id="case">CASE</h3>
+<p>CASE 表达式是一种进行运算的功能，是在区分情况时使用的，这种情况的区分在编程中通常称为（条件）分支</p>
+<p>CASE表达式的语法分为简单CASE表达式和搜索CASE表达式两种</p>
+<pre><code class="language-mysql">-- 搜索CASE表达式的语法
+CASE WHEN &lt;求值表达式&gt; THEN &lt;表达式&gt;
+WHEN &lt;求值表达式&gt; THEN &lt;表达式&gt;
+WHEN &lt;求值表达式&gt; THEN &lt;表达式&gt;
+.. .
+ELSE &lt;表达式&gt;
+END
+</code></pre>
+<p>WHEN 子句中的“&lt; 求值表达式&gt;”就是类似“列 = 值”这样，返回值为真值（TRUE/FALSE/UNKNOWN）的表达式</p>
+<p>CASE 表达式会从对最初的WHEN 子句中的“&lt; 求值表达式&gt;”进行求值开始执行。所谓求值，就是要调查该表达式的真值是什么。如果结果为真（TRUE），那么就返回THEN 子句中的表达式，CASE 表达式的执行到此为止。如果结果不为真，那么就跳转到下一条WHEN 子句的求值之中。如果直到最后的WHEN 子句为止返回结果都不为真，那么就会返回ELSE中的表达式，执行终止。</p>
+<p>ELSE 子句指定了应该如何处理不满足WHEN 子句中的条件的记录</p>
+<p>ELSE 子句也可以省略不写，这时会被默认为ELSE NULL</p>
+<pre><code class="language-mysql">-- 通过CASE表达式将A ～ C的字符串加入到商品种类当中
+SELECT product_name,
+	CASE WHEN product_type = '衣服'
+		THEN CONCAT('A ：', product_type)
+	WHEN product_type = '办公用品'
+		THEN CONCAT('B ：', product_type)
+	WHEN product_type = '厨房用具'
+		THEN CONCAT('C ：', product_type)
+	ELSE NULL	-- 上述情况之外时返回NULL
+	END AS abc_product_type	-- CASE表达式中的END不能省略。
+FROM Product;
+</code></pre>
+<h2 id="集合运算">集合运算</h2>
+<h3 id="union">UNION</h3>
+<p>UNION（并集）：进行记录加法运算的集合运算符</p>
+<p>创建表</p>
+<pre><code class="language-mysql">-- 创建表Product2（商品2）
+CREATE TABLE Product2
+(product_id CHAR(4) NOT NULL,
+product_name VARCHAR(100) NOT NULL,
+product_type VARCHAR(32) NOT NULL,
+sale_price INTEGER ,
+purchase_price INTEGER ,
+regist_date DATE ,
+PRIMARY KEY (product_id));
+</code></pre>
+<p>插入数据</p>
+<pre><code class="language-mysql">-- 将数据插入到表Product2（商品2）中
+INSERT INTO Product2 VALUES ('0001', 'T恤衫' ,'衣服', 1000, 500, '2008-09-20');
+INSERT INTO Product2 VALUES ('0002', '打孔器', '办公用品', 500, 320, '2009-09-11');
+INSERT INTO Product2 VALUES ('0003', '运动T恤', '衣服', 4000, 2800, NULL);
+INSERT INTO Product2 VALUES ('0009', '手套', '衣服', 800, 500, NULL);
+INSERT INTO Product2 VALUES ('0010', '水壶', '厨房用具', 2000, 1700, '2009-09-20');
+</code></pre>
+<p>对上述两张表进行“Product表+Product2 表”的加法计算</p>
+<pre><code class="language-mysql">-- 使用UNION对表进行加法运算
+SELECT product_id, product_name
+FROM Product
+UNION
+SELECT product_id, product_name
+FROM Product2;
+</code></pre>
+<p>商品编号为“0001”~“0003”的3 条记录在两个表中都存在，但是UNION 等集合运算符通常都会除去重复的记录</p>
+<h4 id="注意事项-2">注意事项</h4>
+<p>① 作为运算对象的记录的列数必须相同</p>
+<pre><code class="language-mysql">-- 列数不一致时会发生错误
+SELECT product_id, product_name
+FROM Product
+UNION
+SELECT product_id, product_name, sale_price
+FROM Product2;
+</code></pre>
+<p>② 作为运算对象的记录中列的类型必须一致</p>
+<pre><code class="language-mysql">-- 数据类型不一致时会发生错误
+SELECT product_id, sale_price
+FROM Product
+UNION
+SELECT product_id, regist_date
+FROM Product2;
+</code></pre>
+<p>③ 可以使用任何SELECT语句，但ORDER BY子句只能在最后使用一次</p>
+<p>通过UNION 进行并集运算时可以使用任何形式的SELECT 语句，之前学过的WHERE、GROUP BY、HAVING 等子句都可以使用。但是ORDER BY 只能在最后使用一次</p>
+<pre><code class="language-mysql">-- ORDER BY子句只在最后使用一次
+SELECT product_id, product_name
+FROM Product
+WHERE product_type = '厨房用具'
+UNION
+SELECT product_id, product_name
+FROM Product2
+WHERE product_type = '厨房用具'
+ORDER BY product_id;
+</code></pre>
+<h4 id="all">ALL</h4>
+<p>在 UNION 后面添加 ALL 关键字：能在UNION 的结果中保留重复行</p>
+<p>ALL 选项在 UNION 之外的集合运算符中同样可以使用</p>
+<pre><code class="language-mysql">-- 保留重复行
+SELECT product_id, product_name
+FROM Product
+UNION ALL
+SELECT product_id, product_name
+FROM Product2;
+</code></pre>
+<h4 id="inner-join">INNER JOIN</h4>
+<p>INNER JOIN（交集）：选取两个记录集合中的公共部分</p>
+<pre><code class="language-mysql">-- 选取出表中公共部分
+SELECT product_id, product_name
+FROM Product
+INNER JOIN
+Product2
+USING(product_id,product_name);
+
+-- USING(id,name) 等价于 on 后面的条件
+
+-- 选取出表中公共部分
+SELECT Product.product_id, Product.product_name
+FROM Product
+INNER JOIN Product2
+on Product.product_id = Product2.product_id
+and Product.product_name = Product2.product_name;
+</code></pre>
+<h4 id="left-join">LEFT JOIN</h4>
+<h4 id="right-join">RIGHT JOIN</h4>
+<p>差集：进行减法运算</p>
+<pre><code class="language-mysql">-- 对记录进行减法运算
+SELECT product_id, product_name
+FROM Product
+LEFT JOIN product2
+USING(product_id,product_name)
+where product2.product_id is null;
+
+-- 被减数和减数位置不同，得到的结果也不同
+SELECT product_id, product_name
+FROM Product
+RIGHT JOIN product2
+USING(product_id,product_name)
+where product.product_id is null;	-- 注意，这里是product，不是product2
+</code></pre>
+<h3 id="联结">联结</h3>
+<p>联结（JOIN）就是将其他表中的列添加过来，进行“添加列”的集合运算。<br>
+UNION是以行（纵向）为单位进行操作，而联结则是以列（横向）为单位进行的</p>
+<h4 id="inner-join-2">INNER JOIN</h4>
+<p>内联结（INNER JOIN）</p>
+<pre><code class="language-mysql">-- 将两张表进行内联结
+SELECT SP.shop_id, SP.shop_name, SP.product_id, P.product_name, P.sale_price
+FROM ShopProduct AS SP 
+INNER JOIN Product AS P 
+ON SP.product_id = P.product_id;
+</code></pre>
+<p>内联结要点① ——FROM子句<br>
+第一点要注意的是，之前的FROM 子句中只有一张表，进行联结时需要在FROM子句中使用多张表</p>
+<p>使用关键字INNER JOIN 就可以将两张表联结在一起了。SP 和P分别是这两张表的别名，但别名并不是必需的。在SELECT 子句中直接使用ShopProduct 和product_id 这样的表的原名也没有关系，但由于表名太长会影响SQL 语句的可读性，</p>
+<p>内联结要点② —— ON子句<br>
+第二点要注意的是ON 后面的联结条件。</p>
+<p>在ON 之后指定两张表联结所使用的列（联结键）</p>
+<p>ON 是专门用来指定联结条件的，它能起到与WHERE 相同的作用。需要指定多个键时，同样可以使用AND、OR。在进行内联结时ON 子句是必不可少的（如果没有ON会发生错误），并且ON 必须书写在FROM 和WHERE 之间。</p>
+<p>使用“=”将联结键关联起来，就能够将两张表中满足相同条件的记录进行“联结”了。</p>
+<p>内联结要点③ ——SELECT子句<br>
+第三点要注意的是，在SELECT 子句中指定的列</p>
+<p>在SELECT 子句中，像SP.shop_id 和P.sale_price 这样使用“&lt; 表的别名&gt;.&lt; 列名&gt;”的形式来指定列。和使用一张表时不同，由于多表联结时，某个列到底属于哪张表比较容易混乱，因此采用了这样的防范措施。</p>
+<p>使用联结时SELECT子句中的列需要按照“&lt;表的别名&gt;.&lt;列名&gt;”的格式进行书写。</p>
+<p>内联结和WHERE子句结合使用</p>
+<pre><code class="language-mysql">-- 如果并不想了解所有商店的情况，例如只想知道东京店（000A）的信息时，可以在 WHERE 子句中添加条件
+-- 内联结和WHERE子句结合使用
+SELECT SP.shop_id, SP.shop_name, SP.product_id, P.product_name, P.sale_price
+FROM ShopProduct AS SP INNER JOIN Product AS P 
+ON SP.product_id = P.product_id
+WHERE SP.shop_id = '000A';
+</code></pre>
+<p>像这样使用联结运算将满足相同规则的表联结起来时，WHERE、GROUP BY、HAVING、ORDER BY 等工具都可以正常使用。</p>
+<p>我们可以将联结之后的结果想象为新创建出来的一张表，对这张表使用WHERE 子句等工具</p>
+<p>当然，这张“表”只在SELECT 语句执行期间存在，SELECT 语句执行之后就会消失。如果希望继续使用这张“表”，还是将它创建成视图吧</p>
+<h4 id="outer-join">OUTER JOIN</h4>
+<p>外联结（OUTER JOIN）</p>
+<pre><code class="language-mysql">-- 将两张表进行外联结
+SELECT SP.shop_id, SP.shop_name, SP.product_id, P.product_name, P.sale_price
+FROM ShopProduct AS SP RIGHT OUTER JOIN Product AS P 
+ON SP.product_id = P.product_id;
+</code></pre>
+<p>外联结要点① ——选取出单张表中全部的信息<br>
+与内联结的结果相比，不同点显而易见，那就是结果的行数不一样</p>
+<p>内联结只能选取出同时存在于两张表中的数据</p>
+<p>相反，对于外联结来说，只要数据存在于某一张表当中，就能够读取出来</p>
+<p>外联结名称的由来跟NULL 有关，即“结果中包含原表中不存在（在原表之外）的信息”。相反，只包含表内信息的联结就被称为内联结</p>
+<p>外联结要点② ——外联结中使用LEFT、RIGHT来指定主表。使用二者所得到的结果完全相同。<br>
+外联结还有一点非常重要，那就是要把哪张表作为主表。最终的结果中会包含主表内所有的数据。指定主表的关键字是LEFT 和RIGHT。顾名思义，使用LEFT 时FROM 子句中写在左侧的表是主表，使用RIGHT时右侧的表是主表。上方代码中使用了RIGHT，因此，右侧的表，也就是Product 表是主表</p>
+<pre><code class="language-mysql">-- 改写后外联结的结果完全相同
+SELECT SP.shop_id, SP.shop_name, SP.product_id, P.product_name, P.sale_price
+FROM Product AS P LEFT OUTER JOIN ShopProduct AS SP 
+ON SP.product_id = P.product_id;
+</code></pre>
+<p>​</p>
+<p>3张以上的表的联结</p>
+<p>原则上联结表的数量并没有限制</p>
+<p>创建表</p>
+<pre><code class="language-mysql">-- 创建InventoryProduct表并向其中插入数据
+CREATE TABLE InventoryProduct
+( inventory_id CHAR(4) NOT NULL,
+product_id CHAR(4) NOT NULL,
+inventory_quantity INTEGER NOT NULL,
+PRIMARY KEY (inventory_id, product_id));
+</code></pre>
+<p>插入数据</p>
+<pre><code class="language-mysql">INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P001', '0001', 0);
+INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P001', '0002', 120);
+INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P001', '0003', 200);
+INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P001', '0004', 3);
+INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P001', '0005', 0);
+INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P001', '0006', 99);
+INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P001', '0007', 999);
+INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P001', '0008', 200);
+INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P002', '0001', 10);
+INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P002', '0002', 25);
+INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P002', '0003', 34);
+INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P002', '0004', 19);
+INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P002', '0005', 99);
+INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P002', '0006', 0);
+INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P002', '0007', 0);
+INSERT INTO InventoryProduct (inventory_id, product_id, inventory_quantity) VALUES ('P002', '0008', 18);
+</code></pre>
+<p>从上表中取出保存在P001 仓库中的商品数量，并将该列添加到上文所得到的结果中。联结方式为内联结（外联结的使用方法完全相同），联结键为商品编号（product_id）</p>
+<pre><code class="language-mysql">-- 对3张表进行内联结
+SELECT SP.shop_id, SP.shop_name, SP.product_id, P.product_name, P.sale_price, IP.inventory_quantity
+FROM ShopProduct AS SP INNER JOIN Product AS P 
+ON SP.product_id = P.product_id
+	INNER JOIN InventoryProduct AS IP 
+	ON SP.product_id = IP.product_id
+WHERE IP.inventory_id = 'P001';
+</code></pre>
+<h4 id="cross-join">CROSS JOIN</h4>
+<p>交叉联结（CROSS JOIN）</p>
+<pre><code class="language-mysql">-- 将两张表进行交叉联结
+SELECT SP.shop_id, SP.shop_name, SP.product_id, P.product_name
+FROM ShopProduct AS SP CROSS JOIN Product AS P;
+</code></pre>
+<p>对满足相同规则的表进行交叉联结的集合运算符是CROSS JOIN（笛卡儿积）。进行交叉联结时无法使用内联结和外联结中所使用的ON 子句，这是因为交叉联结是对两张表中的全部记录进行交叉组合，因此结果中的记录数通常是两张表中行数的乘积。</p>
+<p>内联结是交叉联结的一部分，“内”也可以理解为“包含在交叉联结结果中的部分”。相反，外联结的“外”可以理解为“交叉联结结果之外的部分”。</p>
+<p>这样的书写方式所得到的结果与标准语法完全相同，并且这样的语法可以在所有的DBMS 中执行，并不能算是特定的语法，只是过时了而已。对于联结的过时语法和特定语法，虽然不建议使用，但还是希望大家能够读懂。</p>
+<pre><code class="language-mysql">-- 使用过时语法的内联结（结果与代码清单7-9相同）
+SELECT SP.shop_id, SP.shop_name, SP.product_id, P.product_name, P.sale_price
+FROM ShopProduct SP, Product P
+WHERE SP.product_id = P.product_id
+AND SP.shop_id = '000A';
+</code></pre>
+<h2 id="sql高级处理">SQL高级处理</h2>
+<h3 id="窗口函数">窗口函数</h3>
+<p>窗口函数也称为OLAP 函数。OLAP 是OnLine Analytical Processing 的简称，意思是对数据库数据进行实时分析处理。例如，市场分析、创建财务报表、创建计划等日常性商务工作。<br>
+窗口函数就是为了实现OLAP 而添加的标准SQL 功能</p>
+<pre><code class="language-mysql">-- 对记录进行减法运算
+SELECT product_id, product_nam
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docker学习笔记]]></title>
+        <id>https://amadeus1240.github.io/post/docker-xue-xi-bi-ji/</id>
+        <link href="https://amadeus1240.github.io/post/docker-xue-xi-bi-ji/">
+        </link>
+        <updated>2022-01-15T06:35:06.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="学习资料">学习资料</h1>
+<p>电子书</p>
+<ul>
+<li><a href="https://yeasy.gitbook.io/docker_practice/">《Docker — 从入门到实践》</a></li>
+</ul>
+<p>视频</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1s54y1n7Ev">Docker 10分钟快速入门</a></li>
+<li><a href="https://www.bilibili.com/video/BV1og4y1q7M4">【狂神说Java】Docker最新超详细版教程通俗易懂</a>
+<ul>
+<li><a href="https://blog.csdn.net/huangjhai/category_11216713.html">课件笔记</a>    <a href="https://www.cnblogs.com/koktlzz/p/14105026.html">Docker基础（狂神说Docker课程笔记）</a></li>
+</ul>
+</li>
+<li><a href="https://www.bilibili.com/video/BV1kv411q7Qc">【狂神说Java】Docker进阶篇超详细版教程通俗易懂</a>
+<ul>
+<li><a href="https://www.cnblogs.com/th11/p/15433080.html">Docker进阶笔记（狂神说） </a></li>
+</ul>
+</li>
+</ul>
+<h1 id="docker的安装">Docker的安装</h1>
+<h2 id="卸载旧的版本">卸载旧的版本</h2>
+<pre><code class="language-shell">yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+</code></pre>
+<h2 id="下载需要的安装包">下载需要的安装包</h2>
+<pre><code class="language-shell">yum install -y yum-utils
+</code></pre>
+<h2 id="设置镜像的仓库">设置镜像的仓库</h2>
+<pre><code class="language-shell"># 境外服务器用官方的仓库
+yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo  #国外的地址
+    
+# 境内服务器设置阿里云的Docker镜像仓库  
+yum-config-manager \
+    --add-repo \
+    https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+</code></pre>
+<h2 id="更新yum软件包索引">更新yum软件包索引</h2>
+<pre><code class="language-shell">yum makecache fast
+</code></pre>
+<h2 id="安装docker相关的配置">安装docker相关的配置</h2>
+<p>docker-ce 是社区版，docker-ee 企业版</p>
+<pre><code class="language-shell">yum install docker-ce docker-ce-cli containerd.io
+</code></pre>
+<p>出现了completed即安装成功。</p>
+<h2 id="启动docker">启动Docker</h2>
+<pre><code class="language-shell">systemctl start docker
+
+# 查看当前版本号，是否启动成功
+docker version
+
+# 设置开机自启动
+systemctl enable docker
+</code></pre>
+<h2 id="docker的卸载">Docker的卸载</h2>
+<pre><code class="language-shell"># 1. 卸载依赖
+yum remove docker-ce docker-ce-cli containerd.io
+
+# 2. 删除资源  . /var/lib/docker是docker的默认工作路径
+rm -rf /var/lib/docker
+</code></pre>
+<h1 id="docker常用命令">Docker常用命令</h1>
+<figure data-type="image" tabindex="1"><img src="https://img-blog.csdnimg.cn/20210717134852290.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h1YW5namhhaQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"></figure>
+<h2 id="基础命令">基础命令</h2>
+<pre><code class="language-shell">docker version          #查看docker的版本信息
+docker info             #查看docker的系统信息,包括镜像和容器的数量
+docker 命令 --help       #帮助命令(可查看可选的参数)
+docker COMMAND --help
+</code></pre>
+<h2 id="镜像命令">镜像命令</h2>
+<h3 id="docker-images"><strong>docker images</strong></h3>
+<p>查看本地主机的所有镜像</p>
+<pre><code class="language-shell">[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker images
+REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
+hello-world   latest    bf756fb1ae65   11 months ago   13.3kB
+
+#解释:
+1.REPOSITORY  镜像的仓库源
+
+2.TAG  镜像的标签
+
+3.IMAGE ID 镜像的id
+
+4.CREATED 镜像的创建时间
+
+5.SIZE 镜像的大小
+
+
+# 可选参数
+
+-a	# /--all 列出所有镜像
+
+-q	# /--quiet 只显示镜像的id
+
+</code></pre>
+<h3 id="docker-search"><strong>docker search</strong></h3>
+<p>搜索镜像</p>
+<pre><code class="language-shell">[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker search mysql
+NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+mysql                             MySQL is a widely used, open-source relation…   10308     [OK]
+mariadb                           MariaDB is a community-developed fork of MyS…   3819      [OK]
+mysql/mysql-server                Optimized MySQL Server Docker images. Create…   754                  [OK]
+percona                           Percona Server is a fork of the MySQL relati…   517       [OK]
+centos/mysql-57-centos7           MySQL 5.7 SQL database server                   86
+mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   79
+centurylink/mysql                 Image containing mysql. Optimized to be link…   60                   [OK]
+
+
+#可选参数
+
+Search the Docker Hub for images
+
+Options:
+  -f, --filter filter   Filter output based on conditions provided
+      --format string   Pretty-print search using a Go template
+      --limit int       Max number of search results (default 25)
+      --no-trunc        Don't truncate output
+      
+      
+#搜索收藏数大于3000的镜像
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker search mysql --filter=STARS=3000
+NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+mysql     MySQL is a widely used, open-source relation…   10308     [OK]
+mariadb   MariaDB is a community-developed fordockerk of MyS…   3819      [OK]
+
+</code></pre>
+<h3 id="docker-pull">docker pull</h3>
+<h4 id="加速-docker-pull">加速 docker pull</h4>
+<p>在境内服务器中使用 docker pull 前，请参考：<a href="https://www.cnblogs.com/Neeo/articles/12726262.html">Docker - 解决镜像拉取慢</a></p>
+<p>下载镜像</p>
+<pre><code class="language-shell">[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker pull mysql
+Using default tag: latest            #如果不写tag默认就是latest
+latest: Pulling from library/mysql
+6ec7b7d162b2: Pull complete          #分层下载,docker image的核心-联合文件系统
+fedd960d3481: Pull complete
+7ab947313861: Pull complete
+64f92f19e638: Pull complete
+3e80b17bff96: Pull complete
+014e976799f9: Pull complete
+59ae84fee1b3: Pull complete
+ffe10de703ea: Pull complete
+657af6d90c83: Pull complete
+98bfb480322c: Pull complete
+6aa3859c4789: Pull complete
+1ed875d851ef: Pull complete
+Digest: sha256:78800e6d3f1b230e35275145e657b82c3fb02a27b2d8e76aac2f5e90c1c30873 #签名
+Status: Downloaded newer image for mysql:latest
+docker.io/library/mysql:latest  #下载来源的真实地址  
+#docker pull mysql等价于docker pull docker.io/library/mysql:latest
+</code></pre>
+<p>指定版本下载</p>
+<pre><code class="language-shell">docker pull mysql:5.7
+</code></pre>
+<h3 id="docker-rmi"><strong>docker rmi</strong></h3>
+<p>删除镜像</p>
+<pre><code class="language-shell">#1.删除指定的镜像id
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker rmi -f  镜像id
+
+#2.删除多个镜像id   用空格隔开
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker rmi -f  镜像id 镜像id 镜像id
+
+#3.删除全部的镜像id
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker rmi -f  $(docker images -aq)
+
+</code></pre>
+<h2 id="容器命令">容器命令</h2>
+<h3 id="docker-run">docker run</h3>
+<p>运行容器</p>
+<p>docker run 相当于执行了两步操作：将镜像放入容器中（docker create）,然后将容器启动，使之变成运行时容器（docker start）</p>
+<pre><code class="language-shell">docker run [可选参数] image
+
+#参数说明
+--name=&quot;名字&quot;           指定容器名字
+-d                     后台方式运行
+-it                    使用交互方式运行,进入容器查看内容
+-p                     指定容器的端口(小写的p)
+(
+-p ip:主机端口:容器端口  配置主机端口映射到容器端口
+-p 主机端口:容器端口
+-p 容器端口
+)
+-P                     随机指定端口(大写的P)
+</code></pre>
+<p>运行并进入容器centos</p>
+<pre><code class="language-shell">[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker run -it centos /bin/bash
+[root@bd1b8900c547 /]# ls      
+bin  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+</code></pre>
+<h3 id="docker-exec">docker exec</h3>
+<p>进入当前正在运行的容器</p>
+<p>进入容器后开启一个新的终端，可以在里面操作（常用）</p>
+<pre><code class="language-shell">docker exec -it c703b5b1911f /bin/bash
+</code></pre>
+<h3 id="docker-attach">docker attach</h3>
+<p>进入容器正在执行的终端，不会启动新的进程（不常用）</p>
+<pre><code class="language-shell">docker attach c703b5b1911f
+</code></pre>
+<h3 id="退出容器">退出容器</h3>
+<pre><code class="language-shell">#exit 停止并退出容器（后台方式运行则仅退出）
+#Ctrl+P+Q  不停止容器退出
+[root@bd1b8900c547 /]# exit
+exit
+[root@iZwz99sm8v95sckz8bd2c4Z ~]#
+</code></pre>
+<h3 id="docker-ps">docker ps</h3>
+<p>列出运行过的容器</p>
+<pre><code class="language-shell">#docker ps 
+     # 列出当前正在运行的容器
+-a   # 列出所有容器的运行记录
+-n=? # 显示最近创建的n个容器
+-q   # 只显示容器的编号
+
+
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker ps -a
+CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS                     PORTS     NAMES
+bca129320bb5   centos         &quot;/bin/bash&quot;   4 minutes ago   Exited (0) 3 minutes ago             optimistic_shtern
+bd1b8900c547   centos         &quot;/bin/bash&quot;   6 minutes ago   Exited (0) 5 minutes ago             cool_tesla
+cf6adbf1b506   bf756fb1ae65   &quot;/hello&quot;      5 hours ago     Exited (0) 5 hours ago               optimistic_darwin
+</code></pre>
+<h3 id="docker-rm">docker rm</h3>
+<p>删除容器</p>
+<pre><code class="language-shell">docker rm 容器id                 #删除指定的容器,不能删除正在运行的容器,强制删除使用 rm -f
+docker rm -f $(docker ps -aq)   #删除所有的容器
+docker ps -a -q|xargs docker rm #删除所有的容器
+</code></pre>
+<h3 id="启动和停止容器">启动和停止容器</h3>
+<p>docker start的作用是，<strong>重新启动</strong>已存在的镜像。也就是说，如果使用这个命令，我们必须事先知道这个容器的ID，或者这个容器的名字，我们可以使用docker ps找到这个容器的信息</p>
+<p><strong>docker start</strong> :启动一个或多个已经被停止的容器</p>
+<p><strong>docker stop</strong> :停止一个运行中的容器</p>
+<p><strong>docker restart</strong> :重启容器</p>
+<pre><code class="language-shell">docker start 容器id          #启动容器
+docker restart 容器id        #重启容器
+docker stop 容器id           #停止当前运行的容器
+docker kill 容器id           #强制停止当前容器
+</code></pre>
+<h3 id="docker-logs">docker logs</h3>
+<p>日志的查看</p>
+<pre><code class="language-shell">[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker logs --help
+
+Usage:  docker logs [OPTIONS] CONTAINER
+
+Fetch the logs of a container
+
+Options:
+      --details        Show extra details provided to logs
+  -f, --follow         Follow log output
+      --since string   Show logs since timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)
+  -n, --tail string    Number of lines to show from the end of the logs (default &quot;all&quot;)
+  -t, --timestamps     Show timestamps
+      --until string   Show logs before a timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)
+
+常用：
+docker logs -tf 容器id
+docker logs --tail number 容器id #num为要显示的日志条数
+
+#docker容器后台运行，必须要有一个前台的进程，否则会自动停止
+#编写shell脚本循环执行，使得centos容器保持运行状态
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker run -d centos /bin/sh -c &quot;while true;do echo hi;sleep 5;done&quot;
+c703b5b1911ff84d584390263a35707b6024816e1f46542b61918a6327a570dc
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
+c703b5b1911f   centos    &quot;/bin/sh -c 'while t…&quot;   13 seconds ago   Up 10 seconds             pedantic_banach
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker logs -tf --tail 10 c703b5b1911f
+2020-12-27T03:34:07.255599560Z hi
+2020-12-27T03:34:12.257641517Z hi
+2020-12-27T03:34:17.259706294Z hi
+2020-12-27T03:34:22.261693707Z hi
+2020-12-27T03:34:27.262609289Z hi
+2020-12-27T03:34:32.267862677Z hi
+2020-12-27T03:34:37.270382873Z hi
+2020-12-27T03:34:42.272414182Z hi
+2020-12-27T03:34:47.274823243Z hi
+2020-12-27T03:34:52.277419274Z hi
+</code></pre>
+<h3 id="docker-top">docker top</h3>
+<p>查看容器内的进程信息</p>
+<pre><code class="language-shell">[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker top c703b5b1911f
+UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+root                11156               11135               0                   11:31               ?                   00:00:00            /bin/sh -c while true;do echo hi;sleep 5;done
+root                11886               11156               0                   11:43               ?                   00:00:00            /usr/bin/coreutils --coreutils-prog-shebang=sleep /usr/bin/sleep 5
+
+</code></pre>
+<h3 id="docker-inspects">docker inspects</h3>
+<p>docker inspects 容器id</p>
+<h3 id="docker-cp">docker cp</h3>
+<pre><code class="language-shell">#拷贝容器的文件到主机中
+docker cp 容器id:容器内路径  目的主机路径
+
+#拷贝宿主机的文件到容器中
+docker cp 目的主机路径 容器id:容器内路径
+
+
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker exec -it c703b5b1911f /bin/bash
+[root@c703b5b1911f /]# cd home
+[root@c703b5b1911f home]# ls
+#touch 新建文件
+[root@c703b5b1911f home]# touch test.java
+[root@c703b5b1911f home]# ls
+test.java
+[root@c703b5b1911f home]# exit
+exit
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
+c703b5b1911f   centos    &quot;/bin/sh -c 'while t…&quot;   35 minutes ago   Up 35 minutes             pedantic_banach
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker cp c703b5b1911f:/home/test.java /home
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# ls /home
+hai  pan  test.java
+
+</code></pre>
+<h2 id="常用容器部署案例">常用容器部署案例</h2>
+<h3 id="nginx部署">Nginx部署</h3>
+<p><strong>搜索并下载镜像</strong></p>
+<pre><code class="language-shell">[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker search nginx
+NAME                               DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+nginx                              Official build of Nginx.                        14207     [OK]       
+jwilder/nginx-proxy                Automated Nginx reverse proxy for docker con…   1932                 [OK]
+richarvey/nginx-php-fpm            Container running Nginx + PHP-FPM capable of…   797                  [OK]
+linuxserver/nginx                  An Nginx container, brought to you by LinuxS…   137                  
+jc21/nginx-proxy-manager           Docker container for managing Nginx proxy ho…   123                  
+tiangolo/nginx-rtmp                Docker image with Nginx using the nginx-rtmp…   107                  [OK]
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker pull nginx
+Using default tag: latest
+latest: Pulling from library/nginx
+6ec7b7d162b2: Already exists 
+cb420a90068e: Pull complete 
+2766c0bf2b07: Pull complete 
+e05167b6a99d: Pull complete 
+70ac9d795e79: Pull complete 
+Digest: sha256:4cf620a5c81390ee209398ecc18e5fb9dd0f5155cd82adcbae532fec94006fb9
+Status: Downloaded newer image for nginx:latest
+docker.io/library/nginx:latest
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker images;
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+mysql        5.7       f07dfa83b528   5 days ago    448MB
+nginx        latest    ae2feff98a0c   11 days ago   133MB
+centos       latest    300e315adb2f   2 weeks ago   209MB
+
+</code></pre>
+<p><strong>运行测试</strong></p>
+<pre><code class="language-shell">docker run -d --name nginx01 -p 3334:80 nginx
+
+-d 后台运行
+--name 给容器命名
+-p 3334:80 将宿主机的端口3334映射到该容器的80端口
+</code></pre>
+<p>运行结果：</p>
+<pre><code class="language-bash">[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker exec -it nginx01 /bin/bash
+Error: No such container: nginx01
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker run -d --name nginx01 -p 3334:80 nginx
+20c896637ff5de8be835797109d62ee2465e28d9d716be5a8d550ef7d547fcf5
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                  NAMES
+20c896637ff5   nginx     &quot;/docker-entrypoint.…&quot;   7 seconds ago   Up 5 seconds   0.0.0.0:3334-&gt;80/tcp   nginx01
+
+</code></pre>
+<p><strong>进入容器，自定义配置文件</strong></p>
+<pre><code class="language-bash">[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker exec -it nginx01 /bin/bash
+root@20c896637ff5:/# whereis nginx
+nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx
+root@20c896637ff5:/# cd /etc/nginx
+root@20c896637ff5:/etc/nginx# ls
+conf.d	fastcgi_params	koi-utf  koi-win  mime.types  modules  nginx.conf  scgi_params	uwsgi_params  win-utf
+root@20c896637ff5:/# cd /etc/nginx
+root@20c896637ff5:/etc/nginx# ls
+conf.d	fastcgi_params	koi-utf  koi-win  mime.types  modules  nginx.conf  scgi_params	uwsgi_params  win-utf
+</code></pre>
+<p><strong>访问测试</strong></p>
+<pre><code class="language-shell">[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                  NAMES
+20c896637ff5   nginx     &quot;/docker-entrypoint.…&quot;   7 minutes ago   Up 7 minutes   0.0.0.0:3334-&gt;80/tcp   nginx01
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# curl localhost:3334
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="mysql部署">MySQL部署</h3>
+<h4 id="拉取镜像并运行">拉取镜像并运行</h4>
+<pre><code class="language-shell">#拉取并运行容器
+docker run -d --name mysql1 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=zhaomu12 mysql
+
+
+# 参数说明
+-p 3306:3306 ：映射容器服务的 3306 端口到宿主机的 3306 端口，外部主机可以直接通过 宿主机ip:3306 访问到 MySQL 的服务。
+MYSQL_ROOT_PASSWORD=123456：设置 MySQL 服务 默认账号root 用户的密码。
+
+# 配置数据卷
+docker run -it -v 主机目录:容器目录
+
+docker run -d -p 6603:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 --name mysql01 mysql:5.7
+
+-d 后台运行
+-p 端口映射
+-v 数据卷挂载
+-e 环境配置（密码是必须配置的）
+--name 容器名字
+</code></pre>
+<h4 id="进入mysql容器">进入mysql容器</h4>
+<p><a href="https://blog.csdn.net/weixin_39800144/article/details/78817278">先启动mysql服务</a>，启动mysql后，如果想进入mysql的<a href="https://so.csdn.net/so/search?q=%E5%91%BD%E4%BB%A4%E8%A1%8C&amp;spm=1001.2101.3001.7020">命令行</a>，执行如下命令</p>
+<pre><code class="language-shell">[root@izbp163wlhi02tcaxyuxb7z ~]# docker exec -it mysql1 bash //mysql1是我启动的mysql服务的name
+
+root@654c15160c66:/# mysql -u root -p
+Enter password: 
+//输入密码即可
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.11 MySQL Community Server - GPL
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql&gt; 
+
+# 已经进入命令行模式
+</code></pre>
+<h4 id="配置远程连接">配置远程连接</h4>
+<p>参考：docker部署mysql 并实现远程连接（navicat）	https://blog.csdn.net/tyt_XiaoTao/article/details/84621087</p>
+<pre><code class="language-shell"># 查看用户信息  
+# 备注：host为 % 表示不限制ip localhost表示本机使用 plugin非mysql_native_password 则需要修改密码
+mysql&gt; select host,user,plugin,authentication_string from mysql.user; 
+
+# 修改加密方式
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'zhaomu12';  ### zhaomu12 mysql的登录密码
+flush privileges;
+
+# 再查看用户信息
+mysql&gt; select host,user,plugin,authentication_string from mysql.user;
+
+# 可以去navicat测试连接了
+</code></pre>
+<h3 id="容器可视化">容器可视化</h3>
+<p>Portaniner是Docker的图形化管理工具，类似的工具还有Rancher(CI/CD再用)</p>
+<p>下载运行Portaniner镜像并运行，设置本机映射端口为8088（云服务器记得设置安全组）</p>
+<p>第一次登录设置admin用户的密码</p>
+<pre><code class="language-shell">[root@localhost conf]# docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer
+Unable to find image 'portainer/portainer:latest' locally
+latest: Pulling from portainer/portainer
+94cfa856b2b1: Pull complete
+49d59ee0881a: Pull complete
+a2300fd28637: Pull complete
+Digest: sha256:fb45b43738646048a0a0cc74fcee2865b69efde857e710126084ee5de9be0f3f
+Status: Downloaded newer image for portainer/portainer:latest
+8c525a0137be22965bd1e3944da622a2c4248f8ad20883f4b3ea4f8a6b11e163
+
+[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker ps
+CONTAINER ID   IMAGE                 COMMAND        CREATED         STATUS         PORTS                    NAMES
+7789d4505a00   portainer/portainer   &quot;/portainer&quot;   6 seconds ago   Up 5 seconds   0.0.0.0:8088-&gt;9000/tcp   quirky_sinoussi
+</code></pre>
+<h1 id="docker进阶">Docker进阶</h1>
+<h2 id="数据卷">数据卷</h2>
+<p>参考：<a href="https://blog.csdn.net/huangjhai/article/details/119860628">Docker容器数据卷详解</a></p>
+<h3 id="介绍">介绍</h3>
+<p>Docker容器产生的数据，如果不通过docker commit生成新的镜像，使得数据做为镜像的一部分保存下来， 那么当容器删除后，数据自然也就没有了。 为了能保存数据在Docker中我们使用卷。</p>
+<p>卷就是目录或文件，存在于一个或多个容器中，由Docker挂载到容器，但卷不属于联合文件系统（Union FileSystem），因此能够绕过联合文件系统提供一些用于持续存储或共享数据的特性:。</p>
+<p><strong>卷的设计目的就是数据的持久化，完全独立于容器的生存周期，因此Docker不会在容器删除时删除其挂载的数据卷。</strong></p>
+<p>数据卷的特点:</p>
+<ol>
+<li>数据卷可在容器之间共享或重用数据</li>
+<li>卷中的更改可以直接生效</li>
+<li>数据卷中的更改不会包含在镜像的更新中</li>
+<li>数据卷的生命周期一直持续到没有容器使用它为止</li>
+</ol>
+<h3 id="使用">使用</h3>
+<p>运行容器，指定挂载数据卷命令：</p>
+<pre><code class="language-shell">docker run -it -v 主机目录:容器目录
+</code></pre>
+<p>查看容器对应元数据<code>docker inspect 容器id</code>，可以在Mounts节点查看建立的数据卷信息</p>
+<figure data-type="image" tabindex="2"><img src="https://s2.loli.net/2022/03/15/WuZxJ9bAUvMfLjY.png" alt="image-20220315000721814" loading="lazy"></figure>
+<h3 id="常用命令">常用命令</h3>
+<p>（1）创建数据卷</p>
+<pre><code class="language-bash">docker volume create my-vol
+</code></pre>
+<p>（2）查看所有的数据卷</p>
+<pre><code class="language-bash">$ docker volume ls
+local my-vol
+</code></pre>
+<p>（3）查看指定数据卷的信息</p>
+<pre><code class="language-bash">$ docker volume inspect my-vol
+[
+{
+&quot;Driver&quot;: &quot;local&quot;,
+&quot;Labels&quot;: {},
+&quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/my-vol/_data&quot;,
+&quot;Name&quot;: &quot;my-vol&quot;,
+&quot;Options&quot;: {},
+&quot;Scope&quot;: &quot;local&quot;
+}
+]
+</code></pre>
+<p>（4）删除数据卷 <code>docker volume rm ...</code></p>
+<pre><code class="language-bash">$ docker volume rm my-vol
+</code></pre>
+<p>（5）删除容器之时删除相关的卷</p>
+<pre><code class="language-bash">$ docker rm -v ...
+</code></pre>
+<p>数据卷是被设计用来持久化数据的，它的生命周期独立于容器，Docker 不会在容器被删除后自动删除数据卷，并且也不存在垃圾回收这样的机制来处理没有任何容器引用的数据卷 。如果需要在删除容器的同时移除数据卷。可以在删除容器的时候使用 docker rm -v 这个命令。</p>
+<p>无主的数据卷可能会占据很多空间，要清理请使用以下命令</p>
+<pre><code class="language-bash">$ docker volume prune
+</code></pre>
+<h3 id="实践">实践</h3>
+<h4 id="mysql容器建立数据卷同步数据">MySQL容器建立数据卷同步数据</h4>
+<p>在Linux下的MySQL默认的数据文档存储目录为/var/lib/mysql，默认的配置文件的位置/etc/mysql/conf.d，为了确保MySQL镜像或容器删除后，造成的数据丢失，下面建立数据卷保存MySQL的数据和文件。</p>
+<pre><code class="language-shell">docker pull mysql:5.7
+
+docker run -d -p 6603:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 --name mysql01 mysql:5.7
+
+-d 后台运行
+-p 端口映射
+-v 数据卷挂载	docker run -it -v 主机目录:容器目录
+-e 环境配置（密码是必须配置的）
+--name 容器名字
+
+# 我在 腾讯云 上海 中使用的命令
+docker run -d -p 3306:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=zhaomu12 --name MySQL01 mysql
+# 注意，命令是有顺序的，具体参考：https://blog.csdn.net/zouguo1211/article/details/84960898
+</code></pre>
+<pre><code class="language-shell">[root@iZwz99sm8v95sckz8bd2c4Z home]# docker images;
+REPOSITORY            TAG       IMAGE ID       CREATED             SIZE
+mytomcat              1.0       f189aac861de   About an hour ago   653MB
+mysql                 5.7       f07dfa83b528   6 days ago          448MB
+tomcat                latest    feba8d001e3f   10 days ago         649MB
+nginx                 latest    ae2feff98a0c   12 days ago         133MB
+centos                latest    300e315adb2f   2 weeks ago         209MB
+portainer/portainer   latest    62771b0b9b09   5 months ago        79.1MB
+elasticsearch         7.6.2     f29a1ee41030   9 months ago        791MB
+[root@iZwz99sm8v95sckz8bd2c4Z home]# docker run -d -p 6603:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 --name mysql01 mysql:5.7
+72efdb845471b6bd19077b596af51122baa982c01211c39f989afaca556b149f
+[root@iZwz99sm8v95sckz8bd2c4Z home]# cd /home
+[root@iZwz99sm8v95sckz8bd2c4Z home]# ls
+hai  mysql  pan  test  test.java
+[root@iZwz99sm8v95sckz8bd2c4Z home]# cd mysql/conf
+[root@iZwz99sm8v95sckz8bd2c4Z conf]# ls
+[root@iZwz99sm8v95sckz8bd2c4Z conf]# cd /home/mysql/data
+[root@iZwz99sm8v95sckz8bd2c4Z data]# ls
+auto.cnf    client-cert.pem  ibdata1      ibtmp1              private_key.pem  server-key.pem
+ca-key.pem  client-key.pem   ib_logfile0  mysql               public_key.pem   sys
+ca.pem      ib_buffer_pool   ib_logfile1  performance_schema  server-cert.pem
+[root@iZwz99sm8v95sckz8bd2c4Z data]# ls
+auto.cnf    client-cert.pem  ibdata1      ibtmp1              private_key.pem  server-key.pem
+ca-key.pem  client-key.pem   ib_logfile0  mysql               public_key.pem   sys
+ca.pem      ib_buffer_pool   ib_logfile1  performance_schema  server-cert.pem  test
+</code></pre>
+<p>如果使用配置的密码连接mysql服务失败，原因很大可能是本机挂载的配置文件中已有文件,将容器中的配置给覆盖了,我们将相应的本机文件中的文件配置删除即可.</p>
+<h2 id="dockerfile">DockerFile</h2>
+<p>参考：<a href="https://blog.csdn.net/huangjhai/article/details/120278039">Dockerfile详解与镜像发布</a></p>
+<h3 id="定义">定义</h3>
+<p>Dockerfile是用来构建<a href="https://so.csdn.net/so/search?q=Docker&amp;spm=1001.2101.3001.7020">Docker</a>镜像的文本文件，也可以说是命令参数脚本。</p>
+<p><code>docker build</code>命令用于从Dockerfile构建镜像。</p>
+<h3 id="步骤">步骤</h3>
+<p>Docker镜像发布的步骤：<br>
+1、编写一个dockerfile文件</p>
+<p>2、docker build 构建成为一个镜像</p>
+<p>3、docker run 镜像</p>
+<p>4、docker push 镜像（发布镜像到DockerHub、阿里云镜像仓库）</p>
+<h2 id="docker-网络">Docker 网络</h2>
+<p>参考：<a href="https://blog.csdn.net/huangjhai/article/details/120425457">Docker网络详解与实战</a></p>
+<h3 id="实践-2">实践</h3>
+<p>安装ubuntu	参考：https://blog.csdn.net/u010164190/article/details/80065555</p>
+<pre><code class="language-shell">docker run -it --name ubuntu01 ubuntu bash
+
+# 退出：ctrl+p+q
+</code></pre>
+<p>安装ping  ifconfig命令		参考：https://www.cnblogs.com/hellojesson/p/10002239.html</p>
+<pre><code class="language-shell"># 进入容器执行：ifconfig  ping 没有该命令
+
+apt-get update
+# 命令 ifconfig
+apt-get install net-tools 
+# 命令 ping 
+apt-get install iputils-ping 
+# 命令 ip
+apt-get install iproute2
+</code></pre>
+<p>ip addr</p>
+<pre><code class="language-shell">root@16f882caa021:/# ip addr
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+99: eth0@if100: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+
+</code></pre>
+<p>在linux中ping ubuntu的ip</p>
+<p>可以看见能ping的通</p>
+<pre><code class="language-shell"># 容器作为服务器自己生产出来的东西，当然是ping的通的
+
+[root@VM-12-7-centos ~]# ping 172.17.0.3
+PING 172.17.0.3 (172.17.0.3) 56(84) bytes of data.
+64 bytes from 172.17.0.3: icmp_seq=1 ttl=64 time=0.038 ms
+64 bytes from 172.17.0.3: icmp_seq=2 ttl=64 time=0.035 ms
+64 bytes from 172.17.0.3: icmp_seq=3 ttl=64 time=0.032 ms
+64 bytes from 172.17.0.3: icmp_seq=4 ttl=64 time=0.034 ms
+^C
+--- 172.17.0.3 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 2999ms
+rtt min/avg/max/mdev = 0.032/0.034/0.038/0.007 ms
+</code></pre>
+<p>再启动一个ubuntu，尝试容器间互相ping</p>
+<pre><code class="language-shell">docker run -it --name ubuntu02 ubuntu bash
+
+
+root@c95fea0d2dee:/# ip addr
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+101: eth0@if102: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:04 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.4/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+
+# 省略安装ip等命令
+
+# 也可以互相ping通
+root@c95fea0d2dee:/# ping 172.17.0.3
+PING 172.17.0.3 (172.17.0.3) 56(84) bytes of data.
+64 bytes from 172.17.0.3: icmp_seq=1 ttl=64 time=0.090 ms
+64 bytes from 172.17.0.3: icmp_seq=2 ttl=64 time=0.040 ms
+64 bytes from 172.17.0.3: icmp_seq=3 ttl=64 time=0.267 ms
+64 bytes from 172.17.0.3: icmp_seq=4 ttl=64 time=0.048 ms
+64 bytes from 172.17.0.3: icmp_seq=5 ttl=64 time=0.080 ms
+64 bytes from 172.17.0.3: icmp_seq=6 ttl=64 time=0.063 ms
+64 bytes from 172.17.0.3: icmp_seq=7 ttl=64 time=0.067 ms
+64 bytes from 172.17.0.3: icmp_seq=8 ttl=64 time=0.062 ms
+64 bytes from 172.17.0.3: icmp_seq=9 ttl=64 time=0.057 ms
+64 bytes from 172.17.0.3: icmp_seq=10 ttl=64 time=0.045 ms
+^C
+--- 172.17.0.3 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9000ms
+rtt min/avg/max/mdev = 0.040/0.081/0.267/0.063 ms
+</code></pre>
+<h3 id="基础命令-2">基础命令</h3>
+<p>使用以下命令查看所有的Docker网络</p>
+<pre><code class="language-shell">docker network ls
+</code></pre>
+<p>Docker默认提供了四个网络模式：</p>
+<ol>
+<li>bridge：容器默认的网络是桥接模式(自己搭建的网络默认也是使用桥接模式，启动容器默认也是使用桥接模式)。此模式会为每一个容器分配、设置IP等，并将容器连接到一个docker0虚拟<a href="https://so.csdn.net/so/search?q=%E7%BD%91%E6%A1%A5&amp;spm=1001.2101.3001.7020">网桥</a>，通过docker0网桥以及Iptables nat表配置与宿主机通信。</li>
+<li>none：不配置网络，容器有独立的Network namespace，但并没有对其进行任何网络设置，如分配veth pair 和网桥连接，配置IP等。</li>
+<li>host：容器和宿主机共享Network namespace。容器将不会虚拟出自己的网卡，配置自己的IP等，而是使用宿主机的IP和端口。</li>
+<li>container：创建的容器不会创建自己的网卡，配置自己的IP容器网络连通。容器和另外一个容器共享Network namespace（共享IP、端口范围）。</li>
+</ol>
+<p>容器默认使用bridge网络模式，我们使用该<code>docker run --network=</code>选项指定容器使用的网络</p>
+<h2 id="docker-compose">Docker compose</h2>
+<h3 id="学习资料-2">学习资料</h3>
+<p>https://segmentfault.com/a/1190000015706722</p>
+<p>https://juejin.cn/post/6844903891977371662</p>
+<p>https://juejin.cn/post/7042663735156015140</p>
+<h3 id="定义-2">定义</h3>
+<p>Docker Compose 用来轻松高效的管理容器，定义运行多个容器</p>
+<p>Compose是Docker官方的开源项目，需要安装</p>
+<p><code>Dockerfile</code>让程序在任何地方运行，但一个程序可能会涉及到web服务，redis、mysql、nginx等多个容器</p>
+<p>Docker Compose 可以省略重复的步骤，把多个要开启的容器组成一个完整的项目</p>
+<p>以前都是单个docker run启动容器</p>
+<p><strong>docker-compose通过docker-compose编写yaml配置文件、可以通过compose一键启动所有服务，停止</strong></p>
+<h3 id="三步骤">三步骤</h3>
+<ol>
+<li>Dockerfile
+<ul>
+<li>通过构建一个镜像，保证项目在任何地方可以运行，成为一个容器</li>
+</ul>
+</li>
+<li>docker-compose.yml
+<ul>
+<li>这个文件怎么写</li>
+</ul>
+</li>
+<li>docker-compose up
+<ul>
+<li>启动项目</li>
+</ul>
+</li>
+</ol>
+<h1 id="问题">问题</h1>
+<h2 id="镜像拉取慢">镜像拉取慢</h2>
+<p><a href="https://www.cnblogs.com/Neeo/articles/12726262.html">Docker - 解决镜像拉取慢</a></p>
+<h2 id="network已存在">network已存在</h2>
+<p>response from daemon: network with name ionnet already exists</p>
+<blockquote>
+<p>解决方法：https://zhuanlan.zhihu.com/p/353128736</p>
+<pre><code class="language-shell">docker network prune
+</code></pre>
+</blockquote>
+<h2 id="docker-run失败">docker run失败</h2>
+<h3 id="参数顺序">参数顺序</h3>
+<p><a href="https://blog.csdn.net/zouguo1211/article/details/84960898">Docker ERROR: mysqld failed while attempting to check config</a></p>
+<p>命令的参数是有顺序的</p>
+<h3 id="端口占用">端口占用</h3>
+<p><a href="https://blog.csdn.net/qq_41157588/article/details/108889620">解决linux系统Error starting userland proxy: listen tcp 0.0.0.0:xxx端口: bind: address already in use端口占用问题</a></p>
+<p>查看当前占用端口命令</p>
+<pre><code class="language-shell">netstat -tanlp
+</code></pre>
+<p>杀死进程(注意不是杀死端口，而是pid的端口)，如下图参考</p>
+<pre><code class="language-shell">kill 1785进程 (自己的pid端口)
+</code></pre>
+<h2 id="ipv4不能使用">IPv4不能使用</h2>
+<p><a href="https://blog.csdn.net/yelllowcong/article/details/78295600">Docker之WARNING: IPv4 forwarding is disabled. Networking will not work.</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/374715083">docker启动WARNING：IPv4 forwarding is disabled. Networking will not work. 报错解决办法</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[typora图片自动上传教程]]></title>
+        <id>https://amadeus1240.github.io/post/typora-tu-pian-zi-dong-shang-chuan-jiao-cheng/</id>
+        <link href="https://amadeus1240.github.io/post/typora-tu-pian-zi-dong-shang-chuan-jiao-cheng/">
+        </link>
+        <updated>2021-10-12T06:23:37.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="typora上传图片服务设定smms图床">Typora上传图片服务设定（SMMS图床）</h1>
+<h2 id="进入偏好设置">进入偏好设置</h2>
+<p>在左上角打开：文件 &gt;&gt; 偏好设置 &gt;&gt; 图像</p>
+<p>按照如下图片进行勾选</p>
+<img src="https://i.loli.net/2021/10/10/rT7ZNfYtvMS8GIc.png" alt="image-20211010231714716" style="zoom: 67%;" />
+<h2 id="安装picgo-core">安装PicGo-Core</h2>
+<p>点击	下载或更新</p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/10/10/4SLAw5yOQMup2Hd.png" alt="image-20211010231844502" loading="lazy"></figure>
+<h2 id="注册云存储服务器">注册云存储服务器</h2>
+<p>下载完成后，去    <a href="https://link.zhihu.com/?target=https%3A//sm.ms/">https://sm.ms/</a>    注册账号，这是一个云存储服务器，注册送你免费5G的容量，只要控制好上传图片的大小，这5G肯定是够用的，觉得不够还可以升级VIP</p>
+<p>Login：登录</p>
+<p>Register：注册</p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2021/10/10/NHDaJXsPVjZMn7f.png" alt="image-20211010232621965" loading="lazy"></figure>
+<h2 id="更改配置文件">更改配置文件</h2>
+<p>注册完账号后，在User处点击Dashboard，进入用户界面</p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2021/10/10/cH1IGV5vrNM2fSo.png" alt="image-20211010232801791" loading="lazy"></figure>
+<p>点击 API Token，点击Generate Secret Token，然后会生成一个Token</p>
+<p>储存好这个Token，接下来要用到</p>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2021/10/10/vkdQRMeAq1fDn7S.png" alt="image-20211010232934115" loading="lazy"></figure>
+<p>点击    打开配置文件，会出来一个config.json文件，如下图所示，用记事本打开</p>
+<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2021/10/10/ACO6VDnsQE2dNXh.png" alt="image-20211010232041716" loading="lazy"></figure>
+<p>把下面的复制进去，然后把刚才保存的Token替换到文本中，保存关闭</p>
+<pre><code> {
+   &quot;picBed&quot;: {
+     &quot;uploader&quot;: &quot;smms&quot;, // 代表当前的默认上传图床为 SM.MS,
+     &quot;smms&quot;: {
+       &quot;token&quot;: &quot;自己生成的token&quot; // 一定要换
+     }
+   },
+   &quot;picgoPlugins&quot;: {} // 为插件预留
+ }
+</code></pre>
+<figure data-type="image" tabindex="6"><img src="https://i.loli.net/2021/10/10/TPHRN9YqvXmUaAS.png" alt="image-20211010232139540" loading="lazy"></figure>
+<h2 id="验证图片上传">验证图片上传</h2>
+<p>配置好以后点击验证图片上传选项，显示成功上传图片并获得新的url就是配置成功了</p>
+<figure data-type="image" tabindex="7"><img src="https://i.loli.net/2021/10/10/ph2NKdSBJQ7CPGr.png" alt="image-20211010233454688" loading="lazy"></figure>
+<h1 id="注意事项">注意事项</h1>
+<p>如果验证图片上传的结果显示成功，说明可以自动上传图片了</p>
+<p>但是，在之后的使用中，可能会出现图片上传失败的问题</p>
+<p>这可能是由于网络波动引起的</p>
+<p>只要右键点击图片多上传几次，或者等待一会再上传，就可以解决问题，不必再重新配置上传设定。</p>
+<h1 id="参考">参考</h1>
+<p>如何配置Typora中的自动上传图片选项	https://zhuanlan.zhihu.com/p/267488477</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Pycharm连接远程服务器（用服务器GPU深度学习）]]></title>
+        <id>https://amadeus1240.github.io/post/pycharm-lian-jie-yuan-cheng-fu-wu-qi-yong-fu-wu-qi-gpu-shen-du-xue-xi/</id>
+        <link href="https://amadeus1240.github.io/post/pycharm-lian-jie-yuan-cheng-fu-wu-qi-yong-fu-wu-qi-gpu-shen-du-xue-xi/">
+        </link>
+        <updated>2021-10-11T13:03:07.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="正文">正文</h1>
+<h2 id="1-进入浏览远程主机界面">① 进入“浏览远程主机”界面</h2>
+<p>打开Pycharm，选择工具，部署，浏览远程主机</p>
+<img src="https://i.loli.net/2021/10/09/PSFoEdim1JCuH7V.png" alt="image-20211009112756595" style="zoom:67%;" />
+<h2 id="2-添加服务器">② 添加服务器</h2>
+<p>在右侧点击省略号，添加服务器，选择连接方式为SFTP，填写服务器的名称，这里建议修改为自己的容器名称，点击ok</p>
+<img src="https://i.loli.net/2021/10/09/hFI9BjfqG8ey5c7.png" alt="image-20211009113007590" style="zoom:67%;" />
+<h2 id="3-服务器部署">③ 服务器部署</h2>
+<p>在步骤②点击OK后，会弹出远程主机的部署框</p>
+<p>首先在“连接”里，点开“高级”，填写通信编码</p>
+<img src="https://i.loli.net/2021/10/09/C5DX37Vk8igmTwE.png" alt="image-20211009113203290" style="zoom:67%;" />
+<p>在“映射”的部署路径中加上一个/</p>
+<img src="https://i.loli.net/2021/10/09/lEvQY6KPrxhgVf2.png" alt="image-20211009113628823" style="zoom:67%;" />
+<p>点击“连接”处的SSH 配置右侧省略号</p>
+<img src="https://i.loli.net/2021/10/09/XpImTnxyiC5u6F2.png" alt="image-20211009113742201" style="zoom:67%;" />
+<p>填写如下信息：</p>
+<p>端口号为Docker容器创建时绑定的端口号</p>
+<p>账号为容器默认的root，密码为刚才输入的passwd</p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/10/11/MqghxUf5DByCIZz.png" alt="image-20211011191427653" loading="lazy"></figure>
+<p>点击测试链接</p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2021/10/11/wtoygukKB7rAXb8.png" alt="image-20211011191521088" loading="lazy"></figure>
+<p>测试连接成功，点击ok</p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2021/10/11/nhrwjITqVPiZQCD.png" alt="image-20211011191554320" loading="lazy"></figure>
+<p>之后在Pycharm右侧便出现远程的容器文件结构，注意在/data下的文件编辑都会映射到服务器本机的/data/tangxinzhe/txz-mmdetection目录下，所以开发过程中所有文件都要放在/data下</p>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2021/10/11/1dSbIyH5vJaCtzc.png" alt="image-20211011191643462" loading="lazy"></figure>
+<p>之后，也可以选择在下方使用ssh连接，即输入<code>ssh -p 端口号 root@服务器IP地址</code>，再输入密码。</p>
+<p>下方可以直接进行输入Linux命令行调试/运行程序。左侧为本地文件，右侧为服务器容器中的文件，可以直接拖拽进行上传/下载。</p>
+<p>之后可以检测CUDA是否可用，这里注意要使用的是/opt/conda/python3的环境</p>
+<h2 id="4-配置远程python解释器">④ 配置远程python解释器</h2>
+<p>点文件-&gt;设置-&gt;项目-&gt;Python解释器</p>
+<p>选SSH 解释器，选择现有服务器配置</p>
+<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2021/10/09/gRCtMQ2zqVHnxTO.png" alt="image-20211009140459793" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://i.loli.net/2021/10/09/C5ZntJwsduyiqlE.png" alt="image-20211009140645060" loading="lazy"></figure>
+<p>在“编辑同步文件夹”中，Local Path 和 Remote Path会进行同步，可以自己选择远程路径的位置，我这里选择了data文件夹</p>
+<figure data-type="image" tabindex="7"><img src="https://i.loli.net/2021/10/11/LWuTBZ34Dhfic5v.png" alt="image-20211011191853857" loading="lazy"></figure>
+<p>两个路径内的文件会自动同步</p>
+<figure data-type="image" tabindex="8"><img src="https://i.loli.net/2021/10/11/iIWsBgSNc8t9THF.png" alt="image-20211011191937192" loading="lazy"></figure>
+<p>确定以后，可以看到Python解释器用的就是远程服务器的Python解释器了</p>
+<p>红框内的mmcv和mmdet就是mmdetection要用到的Package</p>
+<figure data-type="image" tabindex="9"><img src="https://i.loli.net/2021/10/11/8svLb2nzQBiTcxO.png" alt="image-20211011192018387" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://i.loli.net/2021/10/11/4Ag1nia8oDje2qf.png" alt="image-20211011192043343" loading="lazy"></figure>
+<h1 id="参考">参考</h1>
+<p>pycharm连接远程服务器	https://www.cnblogs.com/jimlau/p/13162664.html</p>
+<p>vi/vim基本使用方法	https://www.cnblogs.com/itech/archive/2009/04/17/1438439.html</p>
+<p>MMDetection v2 目标检测（1）：环境搭建	https://www.jianshu.com/p/b304a6e94b4f</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[在服务器中用Docker创建mmdetection容器]]></title>
+        <id>https://amadeus1240.github.io/post/zai-fu-wu-qi-zhong-yong-docker-chuang-jian-mmdetection-rong-qi/</id>
+        <link href="https://amadeus1240.github.io/post/zai-fu-wu-qi-zhong-yong-docker-chuang-jian-mmdetection-rong-qi/">
+        </link>
+        <updated>2021-10-11T12:58:33.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="正文">正文</h1>
+<p>注意：如果需要的镜像已经在服务器中存在，则步骤①和②不用进行操作，了解一下就好，从③开始操作</p>
+<h2 id="1-查看所有本地主机上的镜像">① 查看所有本地主机上的镜像</h2>
+<pre><code class="language-shell">docker images
+</code></pre>
+<p>查看所有本地主机上的镜像</p>
+<p>发现没有mmdetection</p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/10/09/MlF9O73L4BItxdW.png" alt="image-20211009121425016" loading="lazy"></figure>
+<h2 id="2-搜索并拉取镜像">② 搜索并拉取镜像</h2>
+<pre><code class="language-shell">docker search mmdetection
+</code></pre>
+<p>搜索mmdetection镜像</p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2021/10/09/rBc9KHgFJRTsmwz.png" alt="image-20211009121507817" loading="lazy"></figure>
+<pre><code>docker pull vistart/mmdetection
+</code></pre>
+<p>拉取mmdetection镜像</p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2021/10/09/arbNvFWxJ7Mdlsk.png" alt="image-20211009121537571" loading="lazy"></figure>
+<p>拉取结束后，可以查看镜像，在最下方可以看到成功拉取到的镜像名</p>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2021/10/09/OytpT1J7g3srvFM.png" alt="image-20211009122918636" loading="lazy"></figure>
+<h2 id="3-创建容器">③ 创建容器</h2>
+<p>有了镜像才能创建容器</p>
+<p>查看当前服务器所有的镜像后，可以看到mmdetection的镜像id为085dad9cd4b0</p>
+<p>这里以创建mmdetection容器为示例，注意创建过程中的所有参数，尤其是命名格式以及文件映射：</p>
+<pre><code class="language-shell">docker run --gpus all -it --name=txz-mmdetection --shm-size 8G -p 9011:22 -v /data/tangxinzhe/txz-mmdetection:/data 085dad9cd4b0 /bin/bash
+
+
+# 这里的所有参数记得换成自己的
+# 不能和别人是一样的
+# 不能直接复制这个命令输入进去
+
+</code></pre>
+<pre><code class="language-shell">示例参数：
+--gpus all：使用gpu，这样在进入容器后可以直接使用nvidia-smi查看显卡状态
+-it：以交互模式运行
+--name=txz-mmdetection：容器取名为txz-mmdetection
+--shm-size 8G：限制大小8G
+-p 9011:22：将容器的22端口映射到服务器的9011端口上，便于后续通过openssh远程登录，注意这里创建的时候需要使用未出现过的端口号，在创建时，需要使用docker ps -a 查看所有人的端口，选择未使用的端口号，避免发生冲突。同时，如果需要再使用jupyternoebook，则在创建的时候再添加一下-p 8001:8888，这样本地浏览器可以访问
+-v /data/tangxinzhe/txz-mmdetection:/data：将自己容器下的/data目录映射到服务器本机的/data/tangxinzhe/txz-mmdetection 目录下，这里注意取名规范，为方便辨认，后续开发过程中的所有数据都放在data下
+085dad9cd4b0：通过docker images 可以查看到，这里代表mmdetection的id号
+/bin/bash：通过bash启动
+之后便进入自己的容器中了，可以进行各种类型的操作，注意退出时需要ctrl+p+q，才可以保持容器不关闭，如果想退出后关闭容器直接ctrl+d即可
+</code></pre>
+<p>输入命令后，我们进入了容器root@2cdde346c961:/#</p>
+<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2021/10/09/CRZciUaPV521djN.png" alt="image-20211009124940016" loading="lazy"></figure>
+<p>随便输入一下：python</p>
+<p>可以看到python的版本，并进入python</p>
+<p>输入quit()退出python</p>
+<p>按ctrl+d后退出容器</p>
+<p>这样退出以后容器也会关闭</p>
+<p>要再次启动容器，输入：</p>
+<pre><code class="language-shell">docker start txz-mmdetection
+</code></pre>
+<figure data-type="image" tabindex="6"><img src="https://i.loli.net/2021/10/09/R1LV8MtbXE7fBTD.png" alt="image-20211009125922550" loading="lazy"></figure>
+<h1 id="以下操作为pycharm连接服务器做准备">以下操作为Pycharm连接服务器做准备</h1>
+<h2 id="4-安装vim">④ 安装vim</h2>
+<pre><code class="language-shell">apt update
+
+apt install vim
+</code></pre>
+<h2 id="5-安装openssh">⑤ 安装openssh</h2>
+<p>由于容器内为简陋版系统，需要自行安装配置openssh</p>
+<pre><code class="language-shell">apt install openssh-server
+
+ssh-keygen -t rsa #生成ssh key，连续按回车即可
+
+
+# 示例如下
+root@93daf41b5136:/workspace# ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): #这里回车
+Created directory '/root/.ssh'.
+Enter passphrase (empty for no passphrase): #按回车
+Enter same passphrase again: #按回车
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:jBoMGW..........战术性替换............763BMcntShe0w root@93daf41b5136
+The key's randomart image is:
++---[RSA 2048]----+
+|BO.+             |
+|战术性替换         |
+|战术性替换         |
+|战术性替换         |
+|战术性替换         |
+|战术性替换         |
+|战术性替换         |
+|+.+..            |
+|.o=+..           |
++----[SHA256]-----+
+
+</code></pre>
+<p>生成密钥并启动服务以后</p>
+<pre><code class="language-shell">vim /etc/ssh/sshd_config #编辑输入/Permi，回车，找到#PermitRootLogin prohibit-password取消注释, 修改成PermitRootLogin yesesc+:wq!退出即可开放通过密码登录再输入：passwd/etc/init.d/ssh restart #重启ssh服务
+</code></pre>
+<figure data-type="image" tabindex="7"><img src="https://i.loli.net/2021/10/09/zUh7N8MiBLev6YJ.png" alt="image-20211009135402452" loading="lazy"></figure>
+<h1 id="参考">参考</h1>
+<h2 id="拉取镜像出错">拉取镜像出错</h2>
+<p>Error response from daemon: pull access denied for xxx , repository does not exist or may require 'docker login'</p>
+<p>https://www.cnblogs.com/52liming/p/13539120.html</p>
+<p>报错说明：拒绝获取xxx,  仓库不存在或者需要登录docker</p>
+<p>https://www.cnblogs.com/meloncodezhang/p/11229778.html</p>
+<h2 id="无法进入镜像">无法进入镜像</h2>
+<p>本地镜像Unable to find image :latest’ locally</p>
+<p>https://blog.csdn.net/AOSIDIN/article/details/115001461</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[用MobaXterm连接服务器]]></title>
+        <id>https://amadeus1240.github.io/post/yong-mobaxterm-lian-jie-fu-wu-qi/</id>
+        <link href="https://amadeus1240.github.io/post/yong-mobaxterm-lian-jie-fu-wu-qi/">
+        </link>
+        <updated>2021-10-11T12:57:19.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="正文">正文</h1>
+<h2 id="1-下载mobaxterm并安装">① 下载MobaXterm并安装</h2>
+<p>下载地址：https://mobaxterm.mobatek.net/download.html</p>
+<p>选择 家庭版</p>
+<img src="https://i.loli.net/2021/10/08/hOfljbc9zLTxNAy.png" alt="image-20211008223552780" style="zoom:67%;" />
+<h2 id="2-安装好后点开mobaxterm">② 安装好后点开MobaXterm</h2>
+<img src="https://i.loli.net/2021/10/08/Nf6MRZPphKFWxqE.png" alt="image-20211008223934754" style="zoom:67%;" />
+<p>显示主界面如下</p>
+<img src="https://i.loli.net/2021/10/08/HAfhIyrm4jWsYvt.png" alt="image-20211008221938618" style="zoom:67%;" />
+<h2 id="3-点击主界面的session点击ssh输入服务器的ip地址">③ 点击主界面的Session，点击SSH，输入服务器的IP地址</h2>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/10/11/hD1qpmaUWy5cuxd.png" alt="image-20211011184511934" loading="lazy"></figure>
+<h2 id="4-输入用户名和密码">④ 输入用户名和密码</h2>
+<p>本指南是面向新手的</p>
+<p>所以用户名和密码是服务器管理员已经提前创建好并给你的</p>
+<p>注意：在Linux中输入密码是不显示的，输入完毕后直接按Enter键就好</p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2021/10/11/cy9HhXrUgTtjaM8.png" alt="image-20211011185602719" loading="lazy"></figure>
+<h2 id="5-ssh免密码登录">⑤ SSH免密码登录</h2>
+<p>如果不想每次登录时输入用户名和密码，在有私钥的情况下（通常由服务器管理员给出），在本教程第③步时，可以使用SSH免密码登录</p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2021/10/11/geECsx3pWatVJNX.png" alt="image-20211011185246556" loading="lazy"></figure>
+<h2 id="6-成功连接服务器">⑥ 成功连接服务器</h2>
+<p>成功连接服务器后显示界面如下：</p>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2021/10/11/7z6Y2qCNcWo4Axm.png" alt="image-20211011185404624" loading="lazy"></figure>
+<img src="https://i.loli.net/2021/10/11/ML8ieDg3woT5uFs.png" alt="image-20211011185434512" style="zoom: 60%;" />
+<p>可以在左侧的文件列表浏览服务器文件</p>
+<p>也可以在右侧的黑色窗口区域使用bash</p>
+<h1 id="参考">参考</h1>
+<p>MobaXterm 的安装和使用	https://blog.csdn.net/qq_44204058/article/details/99688195</p>
+<p>MobaXterm 使用SSH 免密码登录问题	https://www.jiangxianli.com/?p=331</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[在服务器上的mmdetection食用说明]]></title>
+        <id>https://amadeus1240.github.io/post/zai-fu-wu-qi-shang-de-mmdetection-shi-yong-shuo-ming/</id>
+        <link href="https://amadeus1240.github.io/post/zai-fu-wu-qi-shang-de-mmdetection-shi-yong-shuo-ming/">
+        </link>
+        <updated>2021-09-28T03:21:57.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="mmdetection使用指南">mmdetection使用指南</h1>
+<h2 id="连接服务器">连接服务器</h2>
+<h3 id="启动docker某个image镜像的container容器">启动docker某个image（镜像）的container（容器）</h3>
+<p>Docker的镜像称为image，容器称为container。</p>
+<p>对于Docker来说，image是静态的，类似于操作系统快照，而container则是动态的，是image的运行实例。</p>
+<p>比如，有一个image名称为ubuntu，那么比如现在我们启动这个image的container并且进入到这个container的bash命令行中：</p>
+<pre><code>docker run -t -i ubuntu /bin/bash
+</code></pre>
+<p>这样就进入container的内部了：</p>
+<pre><code>root@af8bae53bdd3:/#
+</code></pre>
+<p>如果有运行中的container，可以在container所在的外部操作系统中运行：</p>
+<pre><code>docker ps
+</code></pre>
+<p>如果要退出就：</p>
+<p>Ctrl-D</p>
+<p>或：</p>
+<pre><code>root@af8bae53bdd3:/# exit
+</code></pre>
+<h3 id="进入container容器">进入container（容器）</h3>
+<p>要想退出container时，让container仍然在后台运行着，可以使用“docker exec -it”命令。每次使用这个命令进入container，当退出container后，container仍然在后台运行，命令使用方法如下：</p>
+<ul>
+<li><strong>txz-demo：要启动的container的名称</strong></li>
+<li><strong>/bin/bash：在container中启动一个bash shell</strong></li>
+</ul>
+<pre><code>docker exec -it txz-demo /bin/bash
+</code></pre>
+<h2 id="数据处理">数据处理</h2>
+<h3 id="1-voc转coco数据">1、VOC转COCO数据</h3>
+<h4 id="voc格式与coco格式">VOC格式与COCO格式</h4>
+<h5 id="xml的文件格式">XML的文件格式</h5>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/09/28/MVgDPt8R9bU6Wr5.png" alt="image-20210803163739529" loading="lazy"></figure>
+<p>可以看到一个xml文件包含如下信息：</p>
+<ul>
+<li>
+<p><strong>folder</strong>: 文件夹</p>
+</li>
+<li>
+<p><strong>filename</strong>：文件名</p>
+</li>
+<li>
+<p><strong>path</strong>：路径</p>
+</li>
+<li>
+<p>source：我项目里没有用到</p>
+</li>
+<li>
+<p><strong>size</strong>：图片大小</p>
+</li>
+<li>
+<p>segmented：图像分割会用到，本文仅以目标检测（bounding box为例进行介绍）</p>
+</li>
+<li>
+<p>object</p>
+<p>：一个xml文件可以有多个object，每个object表示一个box，每个box有如下信息组成：</p>
+<ul>
+<li><strong>name</strong>：改box框出来的object属于哪一类，例如Apple</li>
+<li><strong>bndbox</strong>：给出左上角和右下角的坐标</li>
+<li>truncated:略</li>
+<li>difficult：略</li>
+</ul>
+</li>
+</ul>
+<h5 id="coco目录">COCO目录</h5>
+<p>https://zhuanlan.zhihu.com/p/309549190</p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2021/09/28/5PyD81CYdhBHNKi.png" alt="image-20210803163926093" loading="lazy"></figure>
+<p>或者annotations中只有两个json文件：train.json 和  val.json</p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2021/09/28/2kLCgKx9N3IFuOz.png" alt="image-20210803191443020" loading="lazy"></figure>
+<h5 id="coco的json文件格式">COCO的json文件格式</h5>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2021/09/28/MZHR5VyW2cD1pua.png" alt="image-20210803163951297" loading="lazy"></figure>
+<h4 id="voc数据集格式转化成coco数据集格式">VOC数据集格式转化成COCO数据集格式</h4>
+<p>https://www.pythonheidong.com/blog/article/322231/adafa1d556aea468052f/</p>
+<p>代码修改<code>xml</code>和<code>json</code>路径即可运行。</p>
+<p>结果：生成 train.json 和 val.json</p>
+<p>官方推荐格式如下：</p>
+<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2021/09/28/ZtNkzOGp1gQbmFx.png" alt="image-20210804162829400" loading="lazy"></figure>
+<p>但是不用严格按照该数据集，因为可以在如下路径中修改</p>
+<pre><code class="language-python">/workspace/mmdetection/configs/_base_/datasets/coco_detection.py
+</code></pre>
+<figure data-type="image" tabindex="6"><img src="https://i.loli.net/2021/09/28/RHcxhfSoYUDK18W.png" alt="image-20210804163005721" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://i.loli.net/2021/09/28/SAI9dJQF14G3czZ.png" alt="image-20210804163021473" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://i.loli.net/2021/09/28/7UMeIF4L3lDHsJQ.png" alt="image-20210804163131036" loading="lazy"></figure>
+<h3 id="2-config修改">2、config修改</h3>
+<h4 id="标签">标签</h4>
+<p>弯曲	1<br>
+磕碰	2<br>
+断柱	3<br>
+断裂	4<br>
+盲孔	5</p>
+<p>用xml to coco.py生成train.json 和 val.json后，修改configs文件</p>
+<p><code>mmdetection/configs/faster_rcnn/faster_rcnn_r101_fpn_1x_coco.py</code>	以该配置文件为例</p>
+<h4 id="定义数据种类">定义数据种类</h4>
+<p>把CLASSES的tuple改为自己数据集对应的种类tuple即可</p>
+<p>注意：如果只有一个类，要加上一个逗号，否则将会报错。</p>
+<pre><code class="language-python"># /workspace/mmdetection/mmdet/datasets/coco.py	 # 文件路径
+
+    CLASSES = ('弯曲', '磕碰', '断柱', '断裂', '盲孔')	# 37行
+</code></pre>
+<pre><code class="language-python"># /workspace/mmdetection/mmdet/core/evaluation/class_names.py	# 文件路径
+# 这个关系到后面test的时候结果图中显示的类别名称
+
+def voc_classes():	# 如果用voc数据集，就改voc_classes
+    return [
+        '弯曲', '磕碰', '断柱', '断裂', '盲孔'
+    ]
+   
+def coco_classes():	# 如果用coco数据集，就改coco_classes
+    return [
+        '弯曲', '磕碰', '断柱', '断裂', '盲孔'
+    ]
+</code></pre>
+<h4 id="修改模型文件">修改模型文件</h4>
+<p>（因为模型为faster_rcnn_r101_fpn_1x，所以配置对应的config文件）</p>
+<p>找到<code>mmdetection/configs/faster_rcnn/faster_rcnn_r101_fpn_1x_coco.py</code>文件，打开后发现</p>
+<pre><code class="language-python">_base_ = './faster_rcnn_r50_fpn_1x_coco.py'
+</code></pre>
+<p>继续沿着这个路径去找文件，发现指向的以下文件</p>
+<pre><code class="language-python">_base_ = [
+    '../_base_/models/faster_rcnn_r50_fpn.py',   
+    #指向的是model dict，修改其中的num_classes类别为自己的类别。
+    
+    '../_base_/datasets/coco_detection.py',
+    #data dict中的workers_per_gpu=2设置为0，train_pipeline和test_pipeline中的img_scale根据自己的图片尺寸修改。
+    
+    '../_base_/schedules/schedule_1x.py',
+    #optimizer dict中修改学习率lr。当gpu数量为8时,lr=0.02；当gpu数量为4时,lr=0.01；我只有一个gpu，所以设置lr=0.0025
+    
+     '../_base_/default_runtime.py'
+]
+
+# 如果是voc数据集，改为以下：
+# _base_ = [
+#     '../_base_/models/faster_rcnn_r50_fpn.py',
+#     '../_base_/datasets/voc0712.py',
+#     '../_base_/schedules/schedule_1x.py', '../_base_/default_runtime.py'
+# ]
+</code></pre>
+<h3 id="3-训练命令">3、训练命令</h3>
+<h4 id="开始训练">开始训练</h4>
+<p>训练前在mmdetection的目录下新建work_dirs文件夹。</p>
+<p>重要：若改动框架源代码后，一定要注意重新编译后再使用。类似这里修改了几个源代码文件后再使用train命令之前，先要编译，执行下面命令。</p>
+<pre><code class="language-python">pip install -v -e .  # or &quot;python setup.py develop&quot;
+</code></pre>
+<p>最后，执行训练指令。</p>
+<p>错误命令：</p>
+<pre><code class="language-python">python /workspace/mmdetection/tools/train.py /workspace/mmdetection/configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py \
+--gpus 1 \
+--work_dir /workspace/mmdetection/work_dir02
+</code></pre>
+<p>注意：work-dir 中间是-，不是_</p>
+<p>正确命令：</p>
+<pre><code class="language-python">cd mmdetection
+python tools/train.py configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py   --work-dir work_dir02
+</code></pre>
+<p>训练参考：https://blog.csdn.net/weixin_42035347/article/details/118692679</p>
+<p>训练结果显示：</p>
+<figure data-type="image" tabindex="9"><img src="https://i.loli.net/2021/09/28/NgROftaHcBhCsmk.png" alt="image-20210804184054344" loading="lazy"></figure>
+<h3 id="4-测试命令">4、测试命令</h3>
+<h4 id="参数显示">参数显示</h4>
+<p>测试命令	使用脚本test.py</p>
+<pre><code class="language-python">python tools/test.py /workspace/mmdetection/configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py /workspace/mmdetection/work_dir02/epoch_12.pth --out /workspace/mmdetection/work_dir02/result/result.pkl --eval bbox
+</code></pre>
+<blockquote>
+<p><code>configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py</code>：是模型文件<br>
+<code>./work_dirs/my_faster_rcnn_r50_fpn_1x_coco/latest.pth</code>：是我们自己训练保存的模型<br>
+<code>./result.pkl</code>：生成一个result.pkl文件，大小1.2M，该文件中会保存各个类别对应的信息，用于计算AP</p>
+</blockquote>
+<p>.pkl文件不能使用相对路径，要使用绝对路径，否则服务器会报错</p>
+<p>如下是我测试的结果显示（测试集图片有11张）：</p>
+<p>输出结果：</p>
+<figure data-type="image" tabindex="10"><img src="https://i.loli.net/2021/09/28/PsdJGNlVzi9vFa7.png" alt="image-20210804192108149" loading="lazy"></figure>
+<h4 id="预测图片并保存">预测图片并保存</h4>
+<p>使用<code>--show-dir</code> 参数，可以把测试的检测图片检测结果保存到指定文件夹中，如下命令：</p>
+<pre><code class="language-python">python tools/test.py ./configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py /workspace/mmdetection/work_dir02/epoch_12.pth --out /workspace/mmdetection/work_dir02/result/result.pkl --show-dir /workspace/mmdetection/work_dir02/test_hat_result
+</code></pre>
+<p>运行结果：</p>
+<figure data-type="image" tabindex="11"><img src="https://i.loli.net/2021/09/28/kNmZJrzgsOycVjt.png" alt="image-20210804192430160" loading="lazy"></figure>
+<p>生成的测试结果图片会被保存到`test_hat_result文件夹下，部分测试结果如下：</p>
+<figure data-type="image" tabindex="12"><img src="https://i.loli.net/2021/09/28/bjOEDHN8gevFISa.png" alt="image-20210804192501245" loading="lazy"></figure>
+<p>准确性不高</p>
+<p>测试参考：https://blog.csdn.net/weixin_41010198/article/details/106258366</p>
+<h1 id="报错">报错</h1>
+<h2 id="mmdetection-20-没有show_result的问题">mmdetection 2.0 没有show_result的问题</h2>
+<p>很多老旧版教材中有代码：</p>
+<pre><code class="language-python">from mmdet.apis import init_detector, inference_detector, show_result
+</code></pre>
+<p>应更改为：</p>
+<pre><code class="language-python">from mmdet.apis import inference_detector, init_detector, show_result_pyplot
+	# 函数使用方法为：
+	show_result_pyplot(model, img, result)
+</code></pre>
+<blockquote>
+<p>参考：</p>
+<p>https://blog.csdn.net/W1995S/article/details/117330783</p>
+</blockquote>
+<h2 id="modulenotfounderror-no-module-named-mmcv_ext解决方案">ModuleNotFoundError: No module named ‘mmcv._ext‘解决方案</h2>
+<p>可能是你在开始安装mmcv-full的时候，没有指定版本，选择直接安装</p>
+<p>采用默认安装mmcv-full的方式，如果与你环境里的cuda和torch版本不匹配，就容易出现上面报错</p>
+<p>解决方案：卸载原来的mmcv，重新安装正确版本的mmcv-full</p>
+<blockquote>
+<p>参考：</p>
+<p>https://blog.csdn.net/wjinjie/article/details/115164251</p>
+</blockquote>
+<h1 id="参考博客">参考博客</h1>
+<h2 id="mmdetection20-环境搭建-训练自己的数据集-测试以及常见错误集合">mmdetection2.0 环境搭建、训练自己的数据集、测试以及常见错误集合</h2>
+<p>https://shliang.blog.csdn.net/article/details/106258366</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[数据结构2 期末复习]]></title>
+        <id>https://amadeus1240.github.io/post/shu-ju-jie-gou-2-qi-mo-fu-xi/</id>
+        <link href="https://amadeus1240.github.io/post/shu-ju-jie-gou-2-qi-mo-fu-xi/">
+        </link>
+        <updated>2021-09-28T03:01:15.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="数据结构2习题集">数据结构2习题集</h2>
+<p>《数据结构》第九章习题参考答案</p>
+<p>https://wenku.baidu.com/view/baeb957e0342a8956bec0975f46527d3250ca61f.html</p>
+<p>数据结构考试题</p>
+<p>https://www.docin.com/p-571399345.html</p>
+<p>http://www.doc88.com/p-674609483272.html</p>
+<p>第十章复习题   看主页</p>
+<p>https://wenku.baidu.com/view/af31b93a27284b73f2425065</p>
+<h2 id="数据结构2-历年卷">数据结构2 历年卷</h2>
+<h3 id="2015~2016">2015~2016</h3>
+<h4 id="一-单选题">一、单选题</h4>
+<p>1、</p>
+<blockquote>
+<p>上三角→有向图	对角线元素均为零→无环</p>
+</blockquote>
+<p>2、在一个带权连通图G中,权值最小的边一定包含在G的()种.</p>
+<p>A.最小生成树	B.生成树 	C.广度优先生成树 	D.深度优先生成树</p>
+<blockquote>
+<p>A 最小生成树	这也是最小生成树的一个性质,构造最小生成树的方法都需要以此为基准<br>
+其他各个答案没有必然性</p>
+</blockquote>
+<p>3、排序过程中，对尚未确定最终位置的所有元素进行一遍处理称为一趟排序。下列排序方法中，每一趟排序结束时都至少能够确定一个元素最终位置的方法是（）。</p>
+<p>Ⅰ．简单选择排序</p>
+<p>Ⅱ．希尔排序</p>
+<p>Ⅲ．快速排序</p>
+<p>Ⅳ．堆排序</p>
+<p>Ⅴ．二路归并排序</p>
+<blockquote>
+<p>每一次排序之后都能确定至少一个元素位置的排序方法包括：</p>
+<p>​		1.选择排序：每次将最大的数放到最后。所以最大的数排一次序后位置就确定了。</p>
+<p>​		2.冒泡排序：同选择排序。每一次排序最大的值位置确定。</p>
+<p>​		3.快排：每一次排序pivot的位置确定。</p>
+<p>​		4.堆排序：每一次排序时，都是将堆顶的元素和最后一个节点互换，然后调整堆，再将堆大小减1。所以每一次排序堆顶元素确定。</p>
+<p>不能至少确定一个元素的位置的方法包括：</p>
+<p>​		1.插入排序：不到最后一步求的都是相对位置。</p>
+<p>​		2.希尔排序：对简单插入排序的改进。不到最后一步，是无法确定每个元素位置的。</p>
+<p>​		3.归并排序：局部有序，并不能确定任一元素在全局的位置。</p>
+<p>​		4.基数排序，计数排序：利用桶排序的思路，不是基于比较的排序，也无法在一次排序中确定某个元素的位置。因为每一次排序都是整体处理。</p>
+</blockquote>
+<p>4、将森林F转换为对应的二叉树T，F中叶结点的个数等于 （）</p>
+<blockquote>
+<p>在二叉树中，节点的左指针指向其孩子，节点的右指针指向其兄弟。</p>
+<p>所以在一颗二叉树中，如果某个节点的左指针为NULL，就说明这个节点在原来的森林中没有孩子，是叶子节点；如果某个节点的右指针为NULL，就说明这个节点在原来的森林中没有兄弟。</p>
+<p>所以森林中的叶子节点=二叉树中左指针为NULL的个数</p>
+</blockquote>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/09/28/yWaQ89i2SdVlPBE.png" alt="image-20210613014902796" loading="lazy"></figure>
+<p>5、分成3个等价类</p>
+<blockquote>
+<p>S1 = {1,2,3}</p>
+<p>S2 = {4,5,6,7,9,10}</p>
+<p>S3 = {8}</p>
+</blockquote>
+<p>6、下列选项中，不可能是快速排序第2趟排序结果的是 （）</p>
+<blockquote>
+<p>四个选项都是同样的数组元素，若完全有序，应为2345679</p>
+<p>每经过一趟快排，轴点元素都必然就位，也就是说，一趟下来至少有1个元素在其最终位置</p>
+<p>所以考察各个选项，看有几个元素就位即可。 A：2、3、6、7、9 	B：2、9	 C：9 	D：5、9 	第二趟至少应有2个元素就位，所以C不对。</p>
+</blockquote>
+<p>7、若将关键字1，2，3，4，5，6，7 依次插入到初始为空的平衡二叉树 T 中，则 T 中平衡因子为 0 的分支结点的个数是（ ）。</p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2021/09/28/vBOghMGFlKq1r8k.png" alt="image-20210613015258741" loading="lazy"></figure>
+<blockquote>
+<p>分支结点，即除去叶子结点的所有结点。</p>
+</blockquote>
+<blockquote>
+<p>度为1或者2的结点为分支结点，度为零的为终端结点。</p>
+</blockquote>
+<p>8、</p>
+<blockquote>
+<p>A.顺序查找：对表的结构或关键字是否有序没有要求</p>
+<p>B.折半查找：对有序表通常使用折半查找</p>
+<p>C.插值查找：类似于折半查找</p>
+<p>D.斐波那契查找：基于有序表的逐步缩小找区间的查找方法</p>
+</blockquote>
+<p>9、对于一个具有n个顶点和e条边的无向图，若采用<strong>邻接表</strong>表示，则表头向量的大小为( )，邻接表中的全部结点总数是( )</p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2021/09/28/g3f9X1a285qdCRw.png" alt="image-20210618110916301" loading="lazy"></figure>
+<blockquote>
+<p>严版教材163页倒数第三段“若无向图中有n个顶点、e条边，则它的<strong>邻接表</strong>需要n个头结点和2e个表结点”</p>
+</blockquote>
+<blockquote>
+<p>邻接多重表中，每条边用一个结点表示，每个顶点也用一个结点表示</p>
+<p>在无向图的邻接多重表中，图的每一条边用一个边结点表示</p>
+</blockquote>
+<p>10、查找效率最高的二叉排序树是</p>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2021/09/28/q2ibynj67umE3XT.png" alt="image-20210618110933017" loading="lazy"></figure>
+<blockquote>
+<p>二叉排序树查找算法的平均查找长度，主要取决于树的高度，即与二叉树的形态有关。</p>
+<p>如果二叉排序树是一个只有右(左)孩子的单支树，其平均查找长度和单链表相同为O(n)； 平衡二叉树的平均查找长度O(logN）。</p>
+<p>补充:当有序表是静态查找表时，宜用顺序表作为其存储结构，而采用二分查找实现其查找操作；</p>
+<p>当有序表是动态查找表时，应选择二叉排序树作为其逻辑结构</p>
+</blockquote>
+<blockquote>
+<p>完全二叉树确实平衡（平衡因子绝对值小于等于一）</p>
+</blockquote>
+<h4 id="二-填空题">二、填空题</h4>
+<p>1、假定一棵树的广义表表示为A（C，D（E，F，G），H（I，J）），则树的度为_________</p>
+<blockquote>
+<p>因为广义表本身是“嵌套”，这个表这么看：<br>
+根是A，有三个孩子C,D,H<br>
+D有三个孩子E,F,G<br>
+H有两个孩子I,J<br>
+根据这个结构就可以确定一颗树了，度为3.</p>
+</blockquote>
+<p>2、设有向图G的二元组形式表示为G =（D，R），D={1，2，3，4，5}，R = {&lt;1,2&gt;，&lt;2,4&gt;，&lt;4,5&gt;，&lt;1,3&gt;，❤️,2&gt;，❤️,5&gt;}，则给出该图的一种拓扑排序序列</p>
+<blockquote>
+<p>这就是根据R进行排序，由&lt;1,2&gt;，&lt;2,4&gt;，&lt;4,5&gt;可得&lt;1,2,4,5&gt;,由&lt;1,3&gt;，❤️,2&gt;可得&lt;1,3,2&gt;,</p>
+<p>之后由  &lt;1,2,4,5&gt;  &lt;1,3,2&gt;得(1,3,2,4,5)</p>
+</blockquote>
+<p>3、散列法存储的基本思想是由<strong>关键码的值</strong>决定数据的存储地址。</p>
+<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2021/09/28/Ewce64oHSRtQGrq.png" alt="image-20210613020452126" loading="lazy"></figure>
+<p>6、15次</p>
+<blockquote>
+<p>5趟：</p>
+<p>5+4+3+2+1=15次比较</p>
+</blockquote>
+<p>7、2.9</p>
+<p>例题：</p>
+<figure data-type="image" tabindex="6"><img src="https://i.loli.net/2021/09/28/kNVv9izgGRfmpsQ.png" alt="image-20210613021052518" loading="lazy"></figure>
+<p>同理，试卷题目的答案2.9=(1+4+12+12)/10</p>
+<p>8、设某无向图中顶点数和边数分别为 n 和 e ，所有顶点的度数之和为 d ，则 e=</p>
+<blockquote>
+<p>无向图中的度的定义是：出度+入度=图的度数，故边数e为度数d的一半</p>
+</blockquote>
+<p>9、在一棵度为4的树T中，若有20个度为4的结点，10个度为3的结点，1个度为2的结点，10个度为1的结点，则树T的叶节点个数是（）</p>
+<p>A.41</p>
+<p>B.82</p>
+<p>C.113</p>
+<p>D.122</p>
+<blockquote>
+<p>正确答案是 B</p>
+<p>除了根节点之外，树的每个节点都有唯一的一个入度，因此计算出共有多少出度，再加1就是树中总的节点数目。也就是20X4+10X3+1X2+10X1+1=123个<br>
+而四叉树里节点就5类，有4个孩子的，有3个孩子的，有2个孩子的，有1个孩子的，没有孩子的，现在前4类的数目知道了，是20+10+1+10=41，那么没有孩子的节点自然就是123-41=82个。</p>
+</blockquote>
+<figure data-type="image" tabindex="7"><img src="https://i.loli.net/2021/09/28/tBKmM8S2ZGavkLn.png" alt="image-20210613021821830" loading="lazy"></figure>
+<h4 id="三-是非题">三、是非题</h4>
+<p>3、对一棵二叉排序树按（）遍历，可得到结点值从小到大的排列序列。<br>
+A．先序<br>
+B．中序<br>
+C．后序<br>
+D．层次</p>
+<blockquote>
+<p>【◆答案◆】：B   参考课本P274</p>
+</blockquote>
+<p>4、</p>
+<figure data-type="image" tabindex="8"><img src="https://i.loli.net/2021/09/28/a3E9U6Q4L2hlemp.png" alt="image-20210613022711022" loading="lazy"></figure>
+<blockquote>
+<p>答案是B,  二叉排序树又叫二叉查找树，看课本P280相关概念就能得出答案</p>
+</blockquote>
+<p>5、</p>
+<figure data-type="image" tabindex="9"><img src="https://i.loli.net/2021/09/28/8SbhH5klafIGqYJ.png" alt="image-20210613023252654" loading="lazy"></figure>
+<blockquote>
+<p>正确答案：B</p>
+</blockquote>
+<figure data-type="image" tabindex="10"><img src="https://i.loli.net/2021/09/28/5qIlkUuYVcy2S9t.png" alt="image-20210613023307048" loading="lazy"></figure>
+<p>6、带权无向图的最小生成树是唯一的。（ ）</p>
+<blockquote>
+<p>无向图中连接同一个点相同权值的边不止一条的时候，最小生成树不唯一</p>
+</blockquote>
+<p>7、当向二叉排序树中插入一个结点，则该结点一定成为叶子结点。</p>
+<blockquote>
+<p>题目说的是二叉排序树，插入在叶子结点，不需要调整。</p>
+<p>而AVL树才需要调整，此时不一定是叶子结点。</p>
+</blockquote>
+<p>8、对连通图进行深度优先遍历可以访问到该图中的所有顶点。（ ）</p>
+<blockquote>
+<p>对连通图进行深度优先遍历是可以访问到该图的所有顶点的。注意前提：该图为连通图，不存在孤立点的情况。</p>
+</blockquote>
+<p>9、</p>
+<blockquote>
+<p>课本P323  在简单选择排序中，关键字比较次数与数据元素的初始排列无关。</p>
+</blockquote>
+<p>10、用邻接矩阵作为图的存储结构时，则其所占用的存储空间与图中顶点数无关而与图中边数有关。 ( )</p>
+<blockquote>
+<p>图的邻接矩阵存储所占用空间大小只与顶点个数有关，更准确地说，设顶点n个，则与n^2成正比</p>
+</blockquote>
+<figure data-type="image" tabindex="11"><img src="https://i.loli.net/2021/09/28/jFLqc4HzN9J17ky.png" alt="image-20210613024336887" loading="lazy"></figure>
+<h4 id="四-应用题">四、应用题</h4>
+<h5 id="1-各种排序方法">1、各种排序方法</h5>
+<h5 id="2-aoe网络图最短路径">2、AOE网络+图+最短路径</h5>
+<h5 id="3-森林与二叉树">3、森林与二叉树</h5>
+<p>https://blog.csdn.net/weixin_42356649/article/details/103036469</p>
+<figure data-type="image" tabindex="12"><img src="https://i.loli.net/2021/09/28/X5rmJYQTH4dvsFU.png" alt="image-20210614213007035" loading="lazy"></figure>
+<p>https://blog.csdn.net/u011240016/article/details/52824161</p>
+<h5 id="4-查找算法">4、查找算法</h5>
+<p>（1）二次探测再散列</p>
+<ul>
+<li>d<sub>i</sub>=1<sup>2</sup>,-1<sup>2</sup>,2<sup>2</sup>,-2<sup>2</sup>,...,k<sup>2</sup>,-k<sup>2</sup></li>
+</ul>
+<p>（2）散列查找的平均查找长度（成功、失败）</p>
+<p>https://blog.csdn.net/qq_41475583/article/details/107225296</p>
+<p>https://blog.csdn.net/wangran51/article/details/8826633/</p>
+<p>（3）平衡二叉树</p>
+<p>（4）B-树</p>
+<h3 id="2012~2013">2012~2013</h3>
+<h4 id="一-判断题">一、判断题</h4>
+<p>1、任意一棵二叉树都可以转换为树来表示（F）</p>
+<blockquote>
+<p>任何一棵树都可以表示成二叉树，并不是任何一棵二叉树都可以表示成树。那么树多还是二叉树多？</p>
+<ol>
+<li>
+<p>任何一棵树都可以表示成二叉树，结合以上题目很容易理解。</p>
+</li>
+<li>
+<p>不是任何一棵二叉树都可以表示成树：</p>
+<p>当根节点包含右子树的时候，就无法表示成树了。</p>
+</li>
+<li>
+<p>树多还是二叉树多的问题：</p>
+</li>
+</ol>
+<p>二叉树也是树的一种，如果按照包含关系来说，树肯定包含二叉树了，树多一些</p>
+</blockquote>
+<p>2、折半查找进行时间性能分析的判定树不一定是完全二叉树。  （T ）</p>
+<blockquote>
+<p>用二叉查找树（Binary Search Tree）来分析折半查找的查找性能</p>
+</blockquote>
+<figure data-type="image" tabindex="13"><img src="https://i.loli.net/2021/09/28/4tVd3qKmpcz8wEo.png" alt="image-20210614234015565" loading="lazy"></figure>
+<p>3、散列表的平均查找长度只与采用的散列函数及处理冲突的方法有关。（ F ）</p>
+<blockquote>
+<p>冲突的出现，与散列函数的选取（地址分布是否均匀）、处理冲突的方法（是否产生堆积）有关</p>
+</blockquote>
+<p>4、对B树删除某一个关键字值时,可能引起结点的分裂	(F)</p>
+<blockquote>
+<p>不正确，删除时是:合并， 插入时是:分裂</p>
+</blockquote>
+<p>5、有e条边的无向图，在邻接表中有e个结点。(F)</p>
+<blockquote>
+<p>有n个头节点，2e个表节点</p>
+</blockquote>
+<p>6、十字链表是有向图的一种存储结构。（T）</p>
+<blockquote>
+<p>无向图存储：邻接矩阵、邻接表、邻接多重表</p>
+<p>有向图存储：邻接矩阵、邻接表、十字链表</p>
+</blockquote>
+<p>7、不同的求最小生成树的方法最后得到的生成树是相同的. （F）</p>
+<blockquote>
+<p>最小生成树不唯一，但最小生成树上权值之和唯一</p>
+</blockquote>
+<blockquote>
+<p>最小生成树算法：适用范围：无向图</p>
+<p>其是完成的就是再保证这个图是连通图的同时，又能保证这个图的所有边的权值之和是最低的</p>
+<p>最小生成树的算法：包含两个一个是Kruskal（克鲁斯卡尔）算法，一个是Prim（普里姆）算法</p>
+<p>①克鲁斯卡尔算法：</p>
+<p>首先来看克鲁斯卡尔算法，其是就是从小权重的边开始，考虑两块，一是不能产生回路，否则，该边舍弃，再选小权重的边，直至到所有顶点均构成回路为止，因为各边的权值可能相同，即可能出现边的最小权值之和的最优解不止一个。</p>
+<p>②普里姆算法：</p>
+<p>普里姆算法是按照点来实现的</p>
+<p>逻辑实现：其实就是先从一个顶点开始，寻找权值最小的边，找到下一个顶点，解锁与该点所有相关的边，然后剩余的边中找到权值最小的边，看是否能解锁信的节点，不解锁，此边舍弃解锁，则把新解锁的顶点的所有边解锁，依次类推，直至所有节点都解锁为止，选中的边即为所求。P算法算出的最优解也可能不止一种。</p>
+</blockquote>
+<p>8、若一个有向图的邻接矩阵对角线以下元素均为零,则该图的拓扑有序序列必定存在。 (T)</p>
+<blockquote>
+<p>正确答案是 正确</p>
+<p>对角线以下元素均为零，表明只有顶点i到顶点j（i&lt;j）可能有边，而顶点j到顶点i一定没有边，即有向图是一个无环图，因此一定存在拓扑序列，但是该拓扑序列不一定唯一，可以举反例证明。另外，若题目说对角线以上均为1，以下均为0，则拓扑序列唯一。</p>
+</blockquote>
+<p>9、顺序表上的直接选择排序是一种稳定的排序方法。     （  F  ）</p>
+<img src="http://image.trouvaille0198.top/849589-20180402133438219-1946132192.png" style="zoom: 40%;" />
+<blockquote>
+<p>直接选择排序又称简单选择排序，是一种不稳定的排序方法，其是选择排序中最简单一种，其基本思想是：第 i 趟排序再待排序序列 a[i]~a[n] 中选取关键码最小的记录，并和第 i 个记录交换作为有序序列的第 i 个记录。</p>
+<p>其实现利用双重循环，外层 i 控制当前序列最小值存放的数组元素位置，内层循环 j 控制从 i+1 到 n 序列中选择最小的元素所在位置 k</p>
+<p>https://blog.csdn.net/u011815404/article/details/79256237</p>
+<p>https://blog.51cto.com/boyishachang/1292315</p>
+<p>基数排序，也被称为桶排序</p>
+</blockquote>
+<p>10、 对长度为n的表作快速排序，最坏情况下，算法时间复杂度为O(n2)。（  T  ）</p>
+<blockquote>
+<p>如上图</p>
+</blockquote>
+<h4 id="二-选择题">二、选择题</h4>
+<p>1、如果要求一个线性表既能较快的查找，又能适应动态变化的要求，则可采用( 分块 )查找法。</p>
+<blockquote>
+<p>分块查找是折半查找和顺序查找的一种改进方法，折半查找虽然具有很好的性能，但其前提条件时线性表顺序存储而且按照关键码排序，这一前提条件在结点树很大且表元素动态变化时是难以满足的。而顺序查找可以解决表元素动态变化的要求，但查找效率很低。如果既要保持对线性表的查找具有较快的速度，又要能够满足表元素动态变化的要求，则可采用分块查找的方法。</p>
+<p>分块查找的速度虽然不如折半查找算法，但比顺序查找算法快得多，同时又不需要对全部节点进行排序。当节点很多且块数很大时，对索引表可以采用折半查找，这样能够进一步提高查找的速度。</p>
+<p>分块查找由于只要求索引表是有序的，对块内节点没有排序要求，因此特别适合于节点动态变化的情况。当增加或减少节以及节点的关键码改变时，只需将该节点调整到所在的块即可。在空间复杂性上，分块查找的主要代价是增加了一个辅助数组。</p>
+</blockquote>
+<p>2、在一个无向图中，所有顶点的度数之和等于所有边数（  2   ）倍。</p>
+<p>3、用DFS遍历一个无环有向图，并在DFS算法退栈返回时打印相应的顶点，则输出的顶点序列是( 逆拓扑有序 )。</p>
+<blockquote>
+<p>DFS（深度优先遍历）  是一个递归算法,在遍历的过程中,先访问的点被压入栈底（栈是先进后出）</p>
+<p>拓扑有序    是指如果点U到点V有一条弧,则在拓扑序列中U一定在V之前.深度优先算法搜索路径恰恰是一条弧,栈的输出是从最后一个被访问点开始输出,最后一个输出的点是第一个被访问的点.所以是逆的拓扑有序序列</p>
+</blockquote>
+<blockquote>
+<p>用DFS遍历一个无环有向图，并在DFS算法退栈返回时打印相应的顶点，则输出的顶点序列是( )。</p>
+<p>如果是队列：拓扑有序</p>
+<p>如果是栈：逆拓扑有序</p>
+</blockquote>
+<p>4、下列哪一种图的邻接矩阵一定是对称矩阵（无向图）</p>
+<blockquote>
+<p>无向图，以斜边为对称</p>
+</blockquote>
+<p>5、用邻接矩阵A表示图，判定任意两个顶点Vi和Vj之间是否有长度为m 的路径相连，则只要检查（  A^m  ）的第i行第j列的元素是否为零即可</p>
+<blockquote>
+<p>长度为m，就求邻接矩阵A的m次方</p>
+</blockquote>
+<p>6、下面哪一个方法可以判断出一个有向图是否有环	(拓扑排序 )。</p>
+<blockquote>
+<p>关键路径能不能判断一个图有环还存在一些争议。关键路径本身虽然不允许有环，但求关键路径的算法本身无法判断是否有环，判断是否有环的是关键路径的第一步——拓扑排序。</p>
+</blockquote>
+<blockquote>
+<p>B,拓扑排序就是在无环图才有解的</p>
+</blockquote>
+<p>7、在图采用邻接表存储时，求最小生成树的Prime算法的时间复杂度为（O(n+e)）</p>
+<figure data-type="image" tabindex="14"><img src="https://i.loli.net/2021/09/28/hDSX4VRMmTfCJzK.png" alt="image-20210613025853989" loading="lazy"></figure>
+<p>8、下列关于AOE网的叙述中，不正确的是（ B ）。</p>
+<blockquote>
+<p>关键活动组成了关键路径</p>
+<p>关键路径是图中的最长路径</p>
+<p>关键路径长度代表整个工期的最短完成时间</p>
+<p>关键活动延期完成,必将导致关键路径长度增加,即整个工期的最短完成时间增加,因此A正确.</p>
+<p>关键路径并不唯一,当有多条关键路径存在时,其中一条关键路径上的关键活动时间缩短,只能导致本条关键路径变成非关键路径,而无法缩短整个工期,因为其他关键路径没有变化,因此B项不正确.</p>
+<p>对于A,B两项要搞懂的是,任何一条关键路径上的关键活动变长了,都会使这条关键路径变成更长的关键路径,并且导致其他关键路径变成非关键路径（如果关键路径不唯一）,因此整个工期延长.</p>
+<p>而某些关键活动缩短则不一定缩短整个工期.</p>
+<p>理解了A,B两项,C,D就很容易理解了</p>
+</blockquote>
+<blockquote>
+<p>从源点到汇点的所有路径中， 具有<strong>最大路径长度</strong>的路径称为关键路径</p>
+<p>对于关键路径，我们需要注意以下:</p>
+<p>1.关键路径上的所有活动都是关键活动，他是决定整个工程的关键因素。</p>
+<p>2.网中的关键路径并不唯一，对于有几条关键路径的网，必须加快那些包括在所有关键路径上的关键活动才能达到缩短工期的目的</p>
+</blockquote>
+<p>9、二叉查找树的查找效率与二叉树的树型有关，在（呈单枝树）时其查找效率最低</p>
+<blockquote>
+<p>当二叉查询树变成一条链表效率最差。所以有AVL平衡树——限制节点深度差不超过1，避免产生链表一般的树。</p>
+</blockquote>
+<blockquote>
+<p>为了提高二叉排序树的查找效率，改进成二叉平衡树，通过不让左右子树的相对深度大于1来提高效率。而单枝必然违背了这个原理，效率低。</p>
+</blockquote>
+<p>10、设有一个用线性探测法解决冲突得到的散列表：散列函数为H(k)=k mod 11,若要查找元素14，探测的次数是( 6 )。</p>
+<blockquote>
+<p>14%11=3    X mod 11 =8, X=19   19-14+1=6次</p>
+<p>由此可知，一旦发生冲突，则依次向后寻找“下一个”空桶Hi</p>
+<p>即用线性探测序列H0 + 1 , H0 + 2，⋯，m-1，0 , 1 , 2，⋯，H0-1在表中寻找下一个空桶的桶号。</p>
+<p>每当发生冲突后，就探测下一个桶。当循环m一1次后就会回到开始探测时的位置，说明待查数据元素不在表内，而且表己满，不能再进行插入。</p>
+</blockquote>
+<p>12、下列排序方法中，比较次数与待排序记录的初始状态无关的是（选择排序和基数排序）</p>
+<blockquote>
+<p>逐个分析下：</p>
+<p>插入排序	 时间复杂度与比较次数、移动次数	都与初始序列<strong>有关</strong></p>
+<p>快排 			时间复杂度与比较次数、移动次数	都与初始序列<strong>有关</strong></p>
+<p>归并排序	 时间复杂度与初始序列<strong>无关</strong>，比较次数<strong>有关</strong>（有序序列），移动次数<strong>无关</strong>（无论怎么有序，还是每个元素拷贝到新的数组）</p>
+<p>选择排序	 时间复杂度与初始序列<strong>无关</strong>，比较次数<strong>无关</strong>，移动次数<strong>无关</strong></p>
+<p>冒泡排序	 时间复杂度与初始序列<strong>无关</strong>，比较次数<strong>无关</strong>，移动次数<strong>有关</strong></p>
+</blockquote>
+<blockquote>
+<p>初始状态对归并排序的比较次数有影响，对其移动次数没影响。</p>
+<p>与数组初始状态无关的内排序算法详解：</p>
+<p>http://www.cnblogs.com/Xieyang-blog/p/8340578.html</p>
+</blockquote>
+<figure data-type="image" tabindex="15"><img src="https://i.loli.net/2021/09/28/ER5qmoZxXQy7laB.png" alt="image-20210615004237884" loading="lazy"></figure>
+<figure data-type="image" tabindex="16"><img src="https://i.loli.net/2021/09/28/RLW3ZDwB4X89sKV.png" alt="image-20210615004246967" loading="lazy"></figure>
+<p>13、设有5000个元素，希望用最快的速度挑选出前10个最大的，采用（ 堆排序 ）方法最好。</p>
+<blockquote>
+<p>一般来说：(Top K问题)找出N个数据中前K大(小)的K个数， 选堆排<br>
+因为堆排序来解决 Top K 问题并不需要全部排序， 只需要维护一个大小为K的最大(小)堆。它的时间复杂度为O(nlogK)</p>
+</blockquote>
+<p>14、并查集的结构是（ 双亲表示法存储的树  ）</p>
+<blockquote>
+<p>用树的根结点来代表相应的等价类集合。在此，等价类树用双亲表示法表示。</p>
+<p>课本P201</p>
+</blockquote>
+<p>15、下列哪一个关键码序列不符合堆的定义？（C）</p>
+<blockquote>
+<p>从答案看，都是小根堆关键码序列，根据小根堆的定义，<br>
+<strong>K[i]＜=K[2i]</strong><br>
+<strong>K[i]＜=K[2i+1]</strong><br>
+用完全二叉树表示很直观，也就是要能组成这样一个完全二叉树：所有的父结点的值都应该小于左右孩子结点的值。</p>
+<p>答案C中关键码序列用完全二叉树表示后很容易看出，在D结点值D大于右子结点值C，这不符合小根堆定义</p>
+<p>同样在r结点值r大于了左子结点值M和右子结点值H。</p>
+<p>而其他答案都符合小根堆定义。</p>
+</blockquote>
+<h4 id="三-填空题">三、填空题</h4>
+<p>1、G是一个非连通无向图，共有28条边，则该图至少有（9）个顶点。</p>
+<blockquote>
+<p>n个顶点 最多拥有 n(n-1)/2条边，所以8个顶点最多有28条边，要想28条边而且保持非连通，至少要9个节点，第9个节点是孤立的，不与任何节点连通。</p>
+</blockquote>
+<blockquote>
+<p>要使n个顶点的无向图连通，至少需要(n-1)(n-2)/2+1条边；即n=8时，至少需要23条边，无向图即可连通。</p>
+<p>则要使图不连通，n=9</p>
+<p>或者令(n-1)(n-2)/2+1=28,求得的n值取上整即可。也就是(n-1)(n-2)=54,n取上整可得n=9</p>
+</blockquote>
+<blockquote>
+<p>至少有 9 个顶点</p>
+<p>全连通图的定点n 和边数 m 满足：</p>
+<p>m = n(n-1)/2</p>
+<p>那么边 m = 22 时, 图 G:</p>
+<p>n(n-1)/2 &gt;= 22</p>
+<p>n &gt;= 8</p>
+<p>而且，当n = 7 时，全连通图 G' 的边数m = 21</p>
+<p>当我们把第 8 个定点加上来，必然还要再在这个定点和上面7个定点相连，以便构成第 22 边，8个顶点不足以构成22边非连通图。</p>
+<p>加上第 9 个定点后，可以在 (8, 9) 之间构成第22边，或者，选择 8, 或 9 作为孤立点，构成非连通图</p>
+<p>至少有 9 个顶点</p>
+<p><strong>扩展资料</strong></p>
+<p>任意一条边都代表u连v以及v连u。无向图是相对于有向图来说明的，就是说每条边都是双向边，而有向图每条边都是单向边，也就是说只能由一个点指向另一个点。</p>
+<p>证明:</p>
+<p>假设有8个顶点,则8个顶点的无向图最多有28条边且该图为连通图</p>
+<p>连通无向图构成条件:边=顶点数*(顶点数-1)/2</p>
+<p>顶点数&gt;=1，所以该函数存在单调递增的单值反函数</p>
+<p>所以边与顶点为增函数关系</p>
+<p>所以28个条边的连通无向图顶点数最少为8个</p>
+<p>所以28条边的非连通无向图为9个(加入一个孤立点)</p>
+</blockquote>
+<p>2、已知一无向图G=（V，E），其中V={a,b,c,d,e}, E={(a,b),(a,d),(a,c),(d,c),(b,e)}现用某一种图遍历方法从顶点a开始遍历图，得到的序列为abecd，则采用的是（深度优先）遍历方法</p>
+<p>3、求图的最小生成树有两种算法，其中（克鲁斯卡尔）算法适合于求稀疏图的最小生成树</p>
+<blockquote>
+<p>求图的最小生成树有两种算法</p>
+<p>克鲁斯卡尔算法适合于求边稀疏的图的最小生成树，普里姆算法适合稠密图</p>
+</blockquote>
+<p>4、求从某源点到其余各顶点的Dijkstra算法，当图的顶点数为10，用邻接矩阵表示图时计算时间约为10ms，则当图的顶点数为40时，计算时间为多少ms?</p>
+<blockquote>
+<p>dijkstra算法的时间复杂度是O(n²),<br>
+不妨设为kn²,其中次数小于1的项忽略<br>
+k(10×10）=10ms<br>
+那么k(40×40）=16[k×（10×10）]=160ms</p>
+</blockquote>
+<p>5、设有向图有n个顶点和e条边，采用邻接表作为其存储表示，在进行拓扑排序时，总的计算时间为（）。</p>
+<blockquote>
+<p><strong>标准答案：O(n+e)</strong></p>
+</blockquote>
+<p>6、</p>
+<blockquote>
+<p>若查找每个记录的概率均等，则在具有n个记录的连续顺序文件中采用顺序查找法查找一个记录，其平均查找长度ASL为（n+1）/2</p>
+</blockquote>
+<p>7、</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>关键码</td>
+<td>8</td>
+<td>11</td>
+<td>15</td>
+<td>19</td>
+<td>25</td>
+<td>26</td>
+<td>30</td>
+<td>33</td>
+<td>42</td>
+<td>48</td>
+<td>50</td>
+</tr>
+<tr>
+<td>1</td>
+<td>low</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>mid</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>high</td>
+</tr>
+<tr>
+<td>2</td>
+<td>low</td>
+<td></td>
+<td>mid</td>
+<td></td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3 找到8</td>
+<td>low mid</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>low</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>mid</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>high</td>
+</tr>
+<tr>
+<td>2</td>
+<td>low</td>
+<td></td>
+<td>mid</td>
+<td></td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+<td>low mid</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4 找不到20</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>low mid high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>8、</p>
+<blockquote>
+<p>https://wenku.baidu.com/view/83eb2a71a417866fb84a8ecf.html</p>
+<p>题目给出，空树的高度是-1  所以是F(h+3)</p>
+</blockquote>
+<figure data-type="image" tabindex="17"><img src="https://i.loli.net/2021/09/28/FLzDk3ZpQqtjglN.png" alt="image-20210616154926791" loading="lazy"></figure>
+<figure data-type="image" tabindex="18"><img src="https://i.loli.net/2021/09/28/9TZaALkrcvh8VuR.png" alt="image-20210616155553746" loading="lazy"></figure>
+<p>9、</p>
+<p>注意：求第三个元素，但要求从0开始计数，所以是第四个</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>关键码</td>
+<td>98</td>
+<td>36</td>
+<td>19</td>
+<td>5</td>
+<td>47</td>
+<td>23</td>
+<td>1</td>
+<td>8</td>
+<td>10</td>
+<td>7</td>
+</tr>
+<tr>
+<td>d=5</td>
+<td>23</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>98</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>36</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>8</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>19</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>7</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>47</td>
+</tr>
+</tbody>
+</table>
+<p>10、在对一组记录(54,38,106,21,15,72,60,45,83)进行直接插入排序时,当把第7个记录60插入到有序表时,为寻找插入位置需比较 (3) 次</p>
+<blockquote>
+<p>在插入第7个数，说明前面的数字已经有序了。</p>
+<p>即数字为15--- 21---38---54----72---106---60---45---83</p>
+<p>现在对第7个数字60进行插入，需要向前找到插入点。依次比较    106,72,54   最后插入在54后面。</p>
+<p>所以比较3次。</p>
+</blockquote>
+<figure data-type="image" tabindex="19"><img src="https://i.loli.net/2021/09/28/eX1973FJhuIkGSm.png" alt="image-20210613031659158" loading="lazy"></figure>
+<h4 id="四-简答题">四、简答题</h4>
+<h5 id="1-b-树的插入-删除">1、B-树的插入、删除</h5>
+<figure data-type="image" tabindex="20"><img src="https://i.loli.net/2021/09/28/BaFxwK9buPqYjUT.png" alt="image-20210616180731708" loading="lazy"></figure>
+<figure data-type="image" tabindex="21"><img src="https://i.loli.net/2021/09/28/uCPlhJjoWz8YIVO.png" alt="image-20210616180841980" loading="lazy"></figure>
+<h5 id="2-有向图邻接表最短路径">2、有向图+邻接表+最短路径</h5>
+<p>①有向图的邻接表</p>
+<p>②弗洛伊德（Floyd）算法</p>
+<p>第一次：长度为1</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>B</td>
+<td></td>
+<td>0</td>
+<td>20</td>
+<td>45</td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td>40</td>
+<td></td>
+<td>0</td>
+<td>20</td>
+<td>40</td>
+</tr>
+<tr>
+<td>D</td>
+<td>10</td>
+<td>20</td>
+<td>25</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>E</td>
+<td></td>
+<td></td>
+<td>60</td>
+<td>50</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>第二次：长度为2</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>40</td>
+<td>60</td>
+</tr>
+<tr>
+<td>B</td>
+<td>55</td>
+<td>0</td>
+<td>20</td>
+<td>40</td>
+<td>60</td>
+</tr>
+<tr>
+<td>C</td>
+<td>30</td>
+<td>40</td>
+<td>0</td>
+<td>20</td>
+<td>40</td>
+</tr>
+<tr>
+<td>D</td>
+<td>10</td>
+<td>20</td>
+<td>25</td>
+<td>0</td>
+<td>65</td>
+</tr>
+<tr>
+<td>E</td>
+<td>60</td>
+<td>70</td>
+<td>60</td>
+<td>50</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>第三次：长度为3</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>求和</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>40</td>
+<td>60</td>
+<td>130</td>
+</tr>
+<tr>
+<td>B</td>
+<td>50</td>
+<td>0</td>
+<td>20</td>
+<td>40</td>
+<td>60</td>
+<td>170</td>
+</tr>
+<tr>
+<td>C</td>
+<td>30</td>
+<td>40</td>
+<td>0</td>
+<td>20</td>
+<td>40</td>
+<td>130</td>
+</tr>
+<tr>
+<td>D</td>
+<td>10</td>
+<td>20</td>
+<td>25</td>
+<td>0</td>
+<td>65</td>
+<td>120</td>
+</tr>
+<tr>
+<td>E</td>
+<td>60</td>
+<td>70</td>
+<td>60</td>
+<td>50</td>
+<td>0</td>
+<td>240</td>
+</tr>
+</tbody>
+</table>
+<p>③最短路径</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>行求和</th>
+<th>行列求和</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>40</td>
+<td>60</td>
+<td>130</td>
+<td>280</td>
+</tr>
+<tr>
+<td>B</td>
+<td>50</td>
+<td>0</td>
+<td>20</td>
+<td>40</td>
+<td>60</td>
+<td>170</td>
+<td>310</td>
+</tr>
+<tr>
+<td>C</td>
+<td>30</td>
+<td>40</td>
+<td>0</td>
+<td>20</td>
+<td>40</td>
+<td>130</td>
+<td>255</td>
+</tr>
+<tr>
+<td>D</td>
+<td>10</td>
+<td>20</td>
+<td>25</td>
+<td>0</td>
+<td>65</td>
+<td>120</td>
+<td>270</td>
+</tr>
+<tr>
+<td>E</td>
+<td>60</td>
+<td>70</td>
+<td>60</td>
+<td>50</td>
+<td>0</td>
+<td>240</td>
+<td>465</td>
+</tr>
+<tr>
+<td>列求和</td>
+<td>150</td>
+<td>140</td>
+<td>125</td>
+<td>150</td>
+<td>225</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="3-各类排序方法">3、各类排序方法</h5>
+<p>基数排序的答案出错</p>
+<h4 id="五-算法题">五、算法题</h4>
+<h5 id="1-递归函数">1、递归函数</h5>
+<p>注意肯定是递归函数，答案里一定会用到函数名</p>
+<h5 id="2-有向图的遍历">2、有向图的遍历</h5>
+<h5 id="3-折半查找">3、折半查找</h5>
+<h4 id="六-算法设计题">六、算法设计题</h4>
+<h5 id="1-有向图的遍历">1、有向图的遍历</h5>
+<p>根据前面的题目，可以很容易设计出来</p>
+]]></content>
+    </entry>
+</feed>
